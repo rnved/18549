@@ -40,6 +40,7 @@
 		5B019F181CAC87730011A4F0 /* Perception_v2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Perception_v2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B019F1C1CAC87730011A4F0 /* Perception_v2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Perception_v2Tests.m; sourceTree = "<group>"; };
 		5B019F1E1CAC87730011A4F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B7B377B1CADB6DB00961058 /* SERVICES.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SERVICES.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +86,7 @@
 				5B019F061CAC87730011A4F0 /* AppDelegate.m */,
 				5B019F081CAC87730011A4F0 /* ViewController.h */,
 				5B019F091CAC87730011A4F0 /* ViewController.m */,
+				5B7B377B1CADB6DB00961058 /* SERVICES.h */,
 				5B019F0B1CAC87730011A4F0 /* Main.storyboard */,
 				5B019F0E1CAC87730011A4F0 /* Assets.xcassets */,
 				5B019F101CAC87730011A4F0 /* LaunchScreen.storyboard */,
@@ -160,6 +162,7 @@
 				TargetAttributes = {
 					5B019EFE1CAC87730011A4F0 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 3MGN9YP3AM;
 					};
 					5B019F171CAC87730011A4F0 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -341,10 +344,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Perception_v2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Perception-v2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -352,10 +358,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Perception_v2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Perception-v2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -402,6 +411,7 @@
 				5B019F231CAC87730011A4F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5B019F241CAC87730011A4F0 /* Build configuration list for PBXNativeTarget "Perception_v2Tests" */ = {
 			isa = XCConfigurationList;
@@ -410,6 +420,7 @@
 				5B019F261CAC87730011A4F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

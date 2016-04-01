@@ -1,0 +1,18 @@
+//
+//  SERVICES.h
+//  Perception_v2
+//
+//  Created by Rishi Ved on 3/31/16.
+//  Copyright © 2016 Rishi Ved. All rights reserved.
+//
+
+#ifndef SERVICES_h
+#define SERVICES_h
+
+#define SERVICE_UUID                    @"63146596-6BB6-4229-9928-C2F8C3B20C01"
+#define VB1_CHARACTERISTIC_UUID         @"420107B0-06BF-40C3-B977-6A0EEEC2A3DC"
+#define VB2_CHARACTERISTIC_UUID         @"706E2A15-B476-4096-9D0B-BDAB89F08938"
+#define VB3_CHARACTERISTIC_UUID         @"3AA4ED79-F7DF-4F69-98BF-11F69B9E6ED0"
+#define VB4_CHARACTERISTIC_UUID         @"E7CA3B78-5857-4841-BA50-38A3F1EDFE75"
+
+#endif /* SERVICES_h */

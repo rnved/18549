@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreBluetooth/CoreBluetooth.h>
+#import "SERVICES.h"
 
 @interface ViewController : UIViewController
 
+@property (strong, nonatomic) CBPeripheralManager *peripheralManager;
+@property (strong, nonatomic) CBMutableService *myService;
+@property (strong, nonatomic) CBMutableCharacteristic *intensity1;
+@property (strong, nonatomic) CBMutableCharacteristic *intensity2;
+@property (strong, nonatomic) CBMutableCharacteristic *intensity3;
+@property (strong, nonatomic) CBMutableCharacteristic *intensity4;
 
 @end
 
