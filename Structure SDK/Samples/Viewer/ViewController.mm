@@ -408,17 +408,6 @@ const uint16_t maxShiftValue = 2048;
 - (void)convertShiftToRGBA:(const uint16_t*)shiftValues depthValuesCount:(size_t)depthValuesCount
 {
     int valSize = sizeof(shiftValues);
-    //const uint16_t* val [valSize];
-    
-    
-    //printf("\n shiftValues: ");
-    
-    //for (int i = 0; i < valSize; i++)
-    //{
-    //    uint16_t val = shiftValues[i];
-    //    printf("\n%d",val);
-    //}
-    
     
     for (size_t i = 0; i < depthValuesCount; i++)
     {
@@ -512,12 +501,8 @@ const uint16_t maxShiftValue = 2048;
     size_t rows = depthFrame.height;
     
     // findMinDepth Code BEGIN +++++++++++++++++++++++++++++++ BEGIN
-    printf("\n DepthFrame: ");
-    printf("cols %zu, rows %zu",cols,rows);
     
     int minValueAndPixel[4];
-    
-    
     
     float* depthValues = depthFrame.depthInMillimeters;
     int min = 20000000;
@@ -537,35 +522,38 @@ const uint16_t maxShiftValue = 2048;
     int col = min_pixel % cols;
     minValueAndPixel[2] = row;
     minValueAndPixel[3] = col;
+    
+    NSString *hor = @"Center"; //Left, Center, or Right
 
+    if (col < 145) {
+        hor = @"Left";
+    }
+    else if (col > 175) {
+        hor = @"Right";
+    }
+    else {
+        hor = @"Center";
+    }
+    
+    NSString *ver = @"Center"; //Top, Center, or Bottom
+    
+    if (row < 105) {
+        ver = @"Top";
+    }
+    else if (row > 135) {
+        ver = @"Bottom";
+    }
+    else {
+        ver = @"Center";
+    }
 
     
-    printf ("Closest Pt: Depth=%d, Pixel=%d, row=%d, col=%d", min, min_pixel, row, col);
+    //printf ("Closest Pt: Depth=%d, Pixel=%d, row=%d, col=%d \n", min, min_pixel, row, col);
+    NSLog(@"Closest Object( %d mm) is at %@ & %@ row=%d, col=%d", min, ver, hor, row, col);
+
     //printf ("Closest Pt: Depth=%d, Pixel=%d, row=%d, col=%d", minValueAndPixel[0],  minValueAndPixel[1] , minValueAndPixel[2], minValueAndPixel[3]);
     // findMinDepth Code END +++++++++++++++++++++++++++++++ END
 
-    
-    
-    
-    
-    
-    //minValueAndPixel = [self findMinDepth: depthFrame];
-    
-    
-    
-    //float* depthValues = depthFrame.depthInMillimeters;
-    //int val_size =  cols*rows; //sizeof(depthValues);
-    
-    //printf("size of frame: %d ", val_size);
-    
-    //for (int i = 0; i < val_size; i++)
-    //{
-    //    printf("pix%d - depth: %f  |  ",i ,depthValues[i]);
-    //}
-    //printf("DONE with MAP");
-
-    
-    
     
     if (_linearizeBuffer == NULL || _normalsBuffer == NULL)
     {
@@ -626,30 +614,12 @@ const uint16_t maxShiftValue = 2048;
         _normalsBuffer = (uint8_t*)malloc(cols * rows * 4);
     }
     
-    //printf("\n normalsFrame: ");
-
-    //printf("cols: %zu ", cols);
-    //printf("rows: %zu ", rows);
     for (size_t i = 0; i < cols * rows; i++)
     {
-        //NSLog(@"%@", normalsFrame.normals[i].x);
-        //printf("x= %d", (uint8_t)normalsFrame.normals[i]);
-        
-        //float depth = GLKVector3Length(*(normalsFrame.normals));
-        //printf("pix%zu - depth: %f  |  ",i ,depth);
-        
         _normalsBuffer[4*i+0] = (uint8_t)( ( ( normalsFrame.normals[i].x / 2 ) + 0.5 ) * 255);
         _normalsBuffer[4*i+1] = (uint8_t)( ( ( normalsFrame.normals[i].y / 2 ) + 0.5 ) * 255);
         _normalsBuffer[4*i+2] = (uint8_t)( ( ( normalsFrame.normals[i].z / 2 ) + 0.5 ) * 255);
     }
-    
-    //printf("DONE with MAP");
-    
-    //printf("\n normalsBuffer: ");
-    //for (size_t i = 0; i < cols * rows * 4; i++)
-    //{
-    //    printf("pix %zu = %d", i, _normalsBuffer[i]);
-    //}
     
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     
