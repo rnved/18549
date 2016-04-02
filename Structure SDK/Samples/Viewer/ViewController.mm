@@ -231,6 +231,13 @@ struct AppStatus
         [self updateAppStatusMessage];
     }
     
+
+    
+    //Usage of wireless debugging API
+    //NSError* error = nil;
+    //[STWirelessLog broadcastLogsToWirelessConsoleAtAddress:@"128.237.240.174" usingPort:4999 error:&error];
+    //if (error) NSLog(@"Oh no! Can't start wireless log: %@", [error localizedDescription]);
+
     return didSucceed;
     
 }
@@ -400,6 +407,19 @@ const uint16_t maxShiftValue = 2048;
 // STDepthToRgbaStrategyRedToBlueGradient strategy. Not using the SDK here for didactic purposes.
 - (void)convertShiftToRGBA:(const uint16_t*)shiftValues depthValuesCount:(size_t)depthValuesCount
 {
+    int valSize = sizeof(shiftValues);
+    //const uint16_t* val [valSize];
+    
+    
+    //printf("\n shiftValues: ");
+    
+    //for (int i = 0; i < valSize; i++)
+    //{
+    //    uint16_t val = shiftValues[i];
+    //    printf("\n%d",val);
+    //}
+    
+    
     for (size_t i = 0; i < depthValuesCount; i++)
     {
         // We should not get higher values than maxShiftValue, but let's stay on the safe side.
@@ -457,10 +477,95 @@ const uint16_t maxShiftValue = 2048;
     }
 }
 
+
+-(int*) findMinDepth:(STDepthFrame *)depthFrame
+{
+    size_t cols = depthFrame.width;
+    size_t rows = depthFrame.height;
+    float* depthValues = depthFrame.depthInMillimeters;
+    int min = 20000000;
+    int min_pixel = 0;
+    int minValueAndPixel[4];
+    for (int i = 0; i < cols*rows; i++)
+    {
+        int depthValue = (int)depthValues[i];
+        if(depthValue < min & depthValue != isnan(depthValue))
+        {
+            min = depthValue;
+            min_pixel = i;
+        }
+    }
+    minValueAndPixel[0] = min;
+    minValueAndPixel[1] = min_pixel;
+    int row = min_pixel / cols;
+    int col = min_pixel % cols;
+    minValueAndPixel[2] = row;
+    minValueAndPixel[3] = col;
+    return minValueAndPixel;
+    
+}
+
+
 - (void)renderDepthFrame:(STDepthFrame *)depthFrame
 {
     size_t cols = depthFrame.width;
     size_t rows = depthFrame.height;
+    
+    // findMinDepth Code BEGIN +++++++++++++++++++++++++++++++ BEGIN
+    printf("\n DepthFrame: ");
+    printf("cols %zu, rows %zu",cols,rows);
+    
+    int minValueAndPixel[4];
+    
+    
+    
+    float* depthValues = depthFrame.depthInMillimeters;
+    int min = 20000000;
+    int min_pixel = 0;
+    for (int i = 0; i < cols*rows; i++)
+    {
+        int depthValue = (int)depthValues[i];
+        if(depthValue < min & depthValue != isnan(depthValue))
+        {
+            min = depthValue;
+            min_pixel = i;
+        }
+    }
+    minValueAndPixel[0] = min;
+    minValueAndPixel[1] = min_pixel;
+    int row = min_pixel / cols;
+    int col = min_pixel % cols;
+    minValueAndPixel[2] = row;
+    minValueAndPixel[3] = col;
+
+
+    
+    printf ("Closest Pt: Depth=%d, Pixel=%d, row=%d, col=%d", min, min_pixel, row, col);
+    //printf ("Closest Pt: Depth=%d, Pixel=%d, row=%d, col=%d", minValueAndPixel[0],  minValueAndPixel[1] , minValueAndPixel[2], minValueAndPixel[3]);
+    // findMinDepth Code END +++++++++++++++++++++++++++++++ END
+
+    
+    
+    
+    
+    
+    //minValueAndPixel = [self findMinDepth: depthFrame];
+    
+    
+    
+    //float* depthValues = depthFrame.depthInMillimeters;
+    //int val_size =  cols*rows; //sizeof(depthValues);
+    
+    //printf("size of frame: %d ", val_size);
+    
+    //for (int i = 0; i < val_size; i++)
+    //{
+    //    printf("pix%d - depth: %f  |  ",i ,depthValues[i]);
+    //}
+    //printf("DONE with MAP");
+
+    
+    
     
     if (_linearizeBuffer == NULL || _normalsBuffer == NULL)
     {
@@ -509,6 +614,8 @@ const uint16_t maxShiftValue = 2048;
     // Estimate surface normal direction from depth float values
     STNormalFrame *normalsFrame = [_normalsEstimator calculateNormalsWithDepthFrame:depthFrame];
     
+    
+    
     size_t cols = normalsFrame.width;
     size_t rows = normalsFrame.height;
     
@@ -518,12 +625,31 @@ const uint16_t maxShiftValue = 2048;
     {
         _normalsBuffer = (uint8_t*)malloc(cols * rows * 4);
     }
+    
+    //printf("\n normalsFrame: ");
+
+    //printf("cols: %zu ", cols);
+    //printf("rows: %zu ", rows);
     for (size_t i = 0; i < cols * rows; i++)
     {
+        //NSLog(@"%@", normalsFrame.normals[i].x);
+        //printf("x= %d", (uint8_t)normalsFrame.normals[i]);
+        
+        //float depth = GLKVector3Length(*(normalsFrame.normals));
+        //printf("pix%zu - depth: %f  |  ",i ,depth);
+        
         _normalsBuffer[4*i+0] = (uint8_t)( ( ( normalsFrame.normals[i].x / 2 ) + 0.5 ) * 255);
         _normalsBuffer[4*i+1] = (uint8_t)( ( ( normalsFrame.normals[i].y / 2 ) + 0.5 ) * 255);
         _normalsBuffer[4*i+2] = (uint8_t)( ( ( normalsFrame.normals[i].z / 2 ) + 0.5 ) * 255);
     }
+    
+    //printf("DONE with MAP");
+    
+    //printf("\n normalsBuffer: ");
+    //for (size_t i = 0; i < cols * rows * 4; i++)
+    //{
+    //    printf("pix %zu = %d", i, _normalsBuffer[i]);
+    //}
     
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     

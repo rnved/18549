@@ -200,6 +200,11 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Occipital;
+				TargetAttributes = {
+					6F7C0CBC17F0EA0500692EC1 = {
+						DevelopmentTeam = R726SF8CJS;
+					};
+				};
 			};
 			buildConfigurationList = 6F7C0CB817F0EA0500692EC1 /* Build configuration list for PBXProject "Viewer" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -288,6 +293,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Viewer/Viewer-Prefix.pch";
 				INFOPLIST_FILE = "Viewer/Viewer-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "baekkyok-18-549";
 				PRODUCT_NAME = Viewer;
 				PROVISIONING_PROFILE = "";
 			};
@@ -320,6 +326,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Viewer/Viewer-Prefix.pch";
 				INFOPLIST_FILE = "Viewer/Viewer-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "baekkyok-18-549";
 				PRODUCT_NAME = Viewer;
 				PROVISIONING_PROFILE = "";
 			};
