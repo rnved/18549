@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Structure SDK Reference</title>
+
+	<link rel="stylesheet" href="css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="index.html">Structure SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="index.html">Occipital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="hierarchy.html">Hierarchy</a></li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview-contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">Structure SDK Reference</h1>
+
+					
+					<div class="section section-overview index-overview">
+						
+						
+						<!--<div style="float: left"><img src="../assets/structure-sdk-banner.png"/></div>-->
+
+
+
+
+<div style="float: right; margin-left: 16px;"><img src="../assets/sdk-logo.png"/></div>
+
+
+<h1>Welcome, Structure App Developer!</h1>
+
+<p>The Structure SDK is made of the <a href="#structure-framework">Structure Framework</a>, <a href="#sample-apps">sample applications</a> to get you started, and a <a href="#framework-references">complete framework documentation</a> generated from its headers.</p>
+
+<p>You can find out more about <a href="#app-dev">Structure app development</a> at: <a href="http://structure.io/developers">http://structure.io/developers</a>.</p>
+
+<div style="clear: both;"></div>
+
+
+<h2><a name="structure-framework"></a>Framework Overview</h2>
+
+<p>The <a href="../../Frameworks/Structure.Framework">Structure framework</a> defines an Objective-C interface for developing applications leveraging the <a href="http://structure.io">Structure Sensor</a> on iOS devices.</p>
+
+<p>It is split in two parts:</p>
+
+<ul>
+<li>A low-level <a href="#sensor-controller">Sensor Controller</a> layer, exposing raw depth &amp; color stream access along with sensor information &amp; status.</li>
+<li>A high-level <a href="#slam-engine">SLAM Engine</a>, including 3D mapping, tracking and scanning features.</li>
+</ul>
+
+
+<h3><a name="sensor-controller"></a>Sensor Controller</h3>
+
+<h4>Framework Header</h4>
+
+<pre><code>#import &lt;Structure/Structure.h&gt;
+</code></pre>
+
+<h4>Main Classes &amp; Protocols</h4>
+
+<ul>
+<li><a href="Classes/STSensorController.html">STSensorController</a></li>
+<li><a href="Protocols/STSensorControllerDelegate.html">STSensorControllerDelegate</a></li>
+<li><a href="Classes/STDepthFrame.html">STDepthFrame</a></li>
+<li><a href="Classes/STColorFrame.html">STColorFrame</a></li>
+</ul>
+
+
+<h3><a name="slam-engine"></a>SLAM Engine</h3>
+
+<h4>Framework Header</h4>
+
+<pre><code>#import &lt;Structure/StructureSLAM.h&gt;
+</code></pre>
+
+<h4>Main Classes</h4>
+
+<ul>
+<li><a href="Classes/STMapper.html">STMapper</a></li>
+<li><a href="Classes/STTracker.html">STTracker</a></li>
+<li><a href="Classes/STScene.html">STScene</a></li>
+<li><a href="Classes/STMesh.html">STMesh</a></li>
+<li><a href="Classes/STColorizer.html">STColorizer</a></li>
+</ul>
+
+
+<h2><a name="sample-apps"></a>Sample Apps (Native)</h2>
+
+<p>The following sample apps have no non-standard dependencies (other than the Structure framework), and can be built and run with Xcode alone.</p>
+
+<p>&nbsp;</p>
+
+<h3><a name="viewer"></a>Viewer</h3>
+
+<div style="float: right; margin-left: 8px"><img src="../assets/viewer-logo.png"/></div>
+
+
+<p>The <a href="../../Samples/Viewer">Viewer application</a> is a simple stream viewer displaying the raw color camera stream, colored depth stream, and the estimated surface normal of each depth frame.</p>
+
+<div style="clear: both;"></div>
+
+
+<h3><a name="scanner"></a>Scanner</h3>
+
+<div style="float: right; margin-left: 8px"><img src="../assets/scanner-logo.png"/></div>
+
+
+<p>The <a href="../../Samples/Scanner">Scanner application</a> is a minimal yet powerful mobile 3D scanner, covering a majority of the Structure framework functionality (high-level and low-level).</p>
+
+<div style="clear: both;"></div>
+
+
+<h3><a name="roomcapture"></a>Room Capture</h3>
+
+<div style="float: right; margin-left: 8px"><img src="../assets/roomcapture-logo.png"/></div>
+
+
+<p>The <a href="../../Samples/RoomCapture">Room Capture application</a> demonstrates the acquisition of larger, textured environments. After a capture, the resulting mesh can be measured in true metric scale.</p>
+
+<div style="clear: both;"></div>
+
+
+<h3><a name="unboundedtracker"></a>Unbounded Tracker</h3>
+
+<div style="float: right; margin-left: 8px"><img src="../assets/unboundedtracker-logo.png"/></div>
+
+
+<p>The <a href="../../Samples/UnboundedTracker">Unbounded Tracker application</a> demonstrates 6DOF positional tracking over an effectively infinite environment. The sample includes some assets from our released game S.T.A.R. OPS (available in the App store).</p>
+
+<div style="clear: both;"></div>
+
+
+<h2><a name="sample-apps"></a>Unity Plugins</h2>
+
+<p>Two Unity packages are available to make it easy to get started with Structure SDK for developers who are familiar with Unity. Both packages use the native Structure SDK internally, and can be extended as needed by developers.</p>
+
+<p>See the <code>Unity</code> folder for more, including <a href="../../Samples/Unity/Overview.pdf">Unity Plugins Overview</a>.</p>
+
+<h3><a name="fetch"></a>StructureUnityAR</h3>
+
+<p>StructureUnityAR enables small-scene Augmented Reality experiences complete with occlusion and drift-free tracking within Unity.  Two sample scenes, <em>Fetch</em> and <em>Ball Physics</em> are provided. See <a href="../../Samples/Unity/StructureUnityAR-Getting-Started.pdf">StructureUnityAR: Getting Started</a>.</p>
+
+<h3><a name="fetch"></a>StructureUnityUBT</h3>
+
+<p>StructureUnityUBT enables Structure SDK&rsquo;s unbounded 6-DoF positonal tracking (UBT) within Unity.  Several sample scenes, <em>Barebones</em>,  <em>Example</em>, <em>MotionLogging</em>, <em>Stacker</em>, <em>SanFranciscoApartment</em>, are provided. See <a href="../../Samples/Unity/StructureUnityUBT-Getting-Started.pdf">StructureUnityUBT: Getting Started</a>.</p>
+
+<h2><a name="app-dev"></a>App Development</h2>
+
+<p>Developing applications for the Structure sensor requires Xcode 6 or above, freely available on the <a href="https://developer.apple.com/xcode">Apple developer site</a>.</p>
+
+<div class="warning"><p><strong>Important:</strong> The Structure framework requires the C++ runtime. In order to link it into your application, you need to:
+<ul>
+<li>Either <code>#import <Structure/Structure.h></code> from a <code>.mm</code> source.</li>
+<li>Or append <code>-lc++</code> to Xcode's other linker flags and define <code>HAS_LIBCXX</code> before <code>#import</code>ing the framework headers.</li>
+</ul>
+</p>
+</div>
+
+
+
+
+<div class="warning"><p><strong>Important:</strong> When creating a new application using the Structure SDK, the main <code>Info.plist</code> needs to contain an additional key "<code>Supported external accessory protocols</code>", with the following array of values:
+<ul>
+<li><code>io.structure.control</code></li>
+<li><code>io.structure.depth</code></li>
+<li><code>io.structure.infrared</code></li>
+</ul>
+Without this modification to the property list, the application will not be able to connect to the sensor. All sample applications have this key/value array. Check them out!
+</p>
+</div>
+
+
+<h2><a name="framework-references"></a>Framework References</h2>
+						
+						
+					</div>
+					
+
+					<div class="index-container">
+						
+
+						
+						<div class="index-column">
+							<h2 class="index-title">Class References</h2>
+							<ul>
+								
+								<li><a href="Classes/STBackgroundTask.html">STBackgroundTask</a></li>
+								
+								<li><a href="Classes/STCameraPoseInitializer.html">STCameraPoseInitializer</a></li>
+								
+								<li><a href="Classes/STColorFrame.html">STColorFrame</a></li>
+								
+								<li><a href="Classes/STColorizer.html">STColorizer</a></li>
+								
+								<li><a href="Classes/STCubeRenderer.html">STCubeRenderer</a></li>
+								
+								<li><a href="Classes/STDepthFrame.html">STDepthFrame</a></li>
+								
+								<li><a href="Classes/STDepthToRgba.html">STDepthToRgba</a></li>
+								
+								<li><a href="Classes/STGLTextureShaderGray.html">STGLTextureShaderGray</a></li>
+								
+								<li><a href="Classes/STGLTextureShaderRGBA.html">STGLTextureShaderRGBA</a></li>
+								
+								<li><a href="Classes/STGLTextureShaderYCbCr.html">STGLTextureShaderYCbCr</a></li>
+								
+								<li><a href="Classes/STInfraredFrame.html">STInfraredFrame</a></li>
+								
+								<li><a href="Classes/STKeyFrame.html">STKeyFrame</a></li>
+								
+								<li><a href="Classes/STKeyFrameManager.html">STKeyFrameManager</a></li>
+								
+								<li><a href="Classes/STMapper.html">STMapper</a></li>
+								
+								<li><a href="Classes/STMesh.html">STMesh</a></li>
+								
+								<li><a href="Classes/STNormalEstimator.html">STNormalEstimator</a></li>
+								
+								<li><a href="Classes/STNormalFrame.html">STNormalFrame</a></li>
+								
+								<li><a href="Classes/STScene.html">STScene</a></li>
+								
+								<li><a href="Classes/STSensorController.html">STSensorController</a></li>
+								
+								<li><a href="Classes/STTracker.html">STTracker</a></li>
+								
+								<li><a href="Classes/STWirelessLog.html">STWirelessLog</a></li>
+								
+							</ul>
+						</div>
+						
+
+						
+						<div class="index-column">
+							
+							<h2 class="index-title">Protocol References</h2>
+							<ul>
+								
+								<li><a href="Protocols/STBackgroundTaskDelegate.html">STBackgroundTaskDelegate</a></li>
+								
+								<li><a href="Protocols/STSensorControllerDelegate.html">STSensorControllerDelegate</a></li>
+								
+							</ul>
+							
+
+							
+							<h2 class="index-title">Constant References</h2>
+							<ul>
+								
+									<li><a href="Constants/STCalibrationType.html">STCalibrationType</a></li>
+								
+									<li><a href="Constants/STCameraPoseInitializerStrategy.html">STCameraPoseInitializerStrategy</a></li>
+								
+									<li><a href="Constants/STColorizerQuality.html">STColorizerQuality</a></li>
+								
+									<li><a href="Constants/STColorizerType.html">STColorizerType</a></li>
+								
+									<li><a href="Constants/STDepthToRgbaStrategy.html">STDepthToRgbaStrategy</a></li>
+								
+									<li><a href="Constants/STErrorCode.html">STErrorCode</a></li>
+								
+									<li><a href="Constants/STFrameSyncConfig.html">STFrameSyncConfig</a></li>
+								
+									<li><a href="Constants/STMeshWriteOptionFileFormat.html">STMeshWriteOptionFileFormat</a></li>
+								
+									<li><a href="Constants/STSensorControllerDidStopStreamingReason.html">STSensorControllerDidStopStreamingReason</a></li>
+								
+									<li><a href="Constants/STSensorControllerInitStatus.html">STSensorControllerInitStatus</a></li>
+								
+									<li><a href="Constants/STStreamConfig.html">STStreamConfig</a></li>
+								
+									<li><a href="Constants/STTrackerQuality.html">STTrackerQuality</a></li>
+								
+									<li><a href="Constants/STTrackerStatus.html">STTrackerStatus</a></li>
+								
+									<li><a href="Constants/STTrackerType.html">STTrackerType</a></li>
+								
+							</ul>
+							
+
+							
+						</div>
+						
+					</div>
+
+					<footer>
+						<div class="footer-copyright">
+							
+							<p class="copyright">Copyright &copy; 2016 Occipital. All rights reserved. Updated: 2016-02-29</p>
+							
+							
+							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+							
+						</div>
+					</footer>
+				</main>
+			</div>
+		</div>
+	</article>
+
+	<script src="js/script.js"></script>
+</body>
+</html>

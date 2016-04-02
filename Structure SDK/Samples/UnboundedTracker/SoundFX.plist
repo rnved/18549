@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>vo-drop-the-box</string>
+	<string>vo-pick-up-box</string>
+	<string>vo-view-locking</string>
+	<string>vo-warping</string>
+	<string>vo-welcome-to-2715</string>
+	<string>Door_Open</string>
+</array>
+</plist>

@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>STMapper Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Structure SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Occipital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/scene">scene</option>
+		
+		<option value="//api/name/liveTriangleMeshEnabled">liveTriangleMeshEnabled</option>
+		
+		<option value="//api/name/liveWireframeMeshEnabled">liveWireframeMeshEnabled</option>
+		
+		<option value="//api/name/liveTriangleMeshSubsamplingFactor">liveTriangleMeshSubsamplingFactor</option>
+		
+		<option value="//api/name/liveWireframeMeshSubsamplingFactor">liveWireframeMeshSubsamplingFactor</option>
+		
+		<option value="//api/name/volumeSizeInMeters">volumeSizeInMeters</option>
+		
+		<option value="//api/name/volumeResolution">volumeResolution</option>
+		
+	</optgroup>
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/initWithScene:options:">- initWithScene:options:</option>
+		
+		<option value="//api/name/setHasSupportPlane:">- setHasSupportPlane:</option>
+		
+		<option value="//api/name/reset">- reset</option>
+		
+		<option value="//api/name/integrateDepthFrame:cameraPose:">- integrateDepthFrame:cameraPose:</option>
+		
+		<option value="//api/name/finalizeTriangleMeshWithSubsampling:">- finalizeTriangleMeshWithSubsampling:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">STMapper Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>StructureSLAM.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Integrate sensor data to reconstruct a 3D model of a <a href="#//api/name/scene">scene</a>.</p>
+
+<p>STMapper will update the <a href="#//api/name/scene">scene</a> mesh progressively as new depth frames are integrated.
+It works in a background thread, which means that it may update the <a href="#//api/name/scene">scene</a> object at any time.</p>
+
+<p>The mapper works over a fixed cuboid defining the volume of interest in the <a href="#//api/name/scene">scene</a>.
+This volume can be initialized interactively using <a href="../Classes/STCameraPoseInitializer.html">STCameraPoseInitializer</a>.</p>
+
+<p>The volume is defined by its size in the real world, in meters, and is discretized into cells.
+The volume resolution specifies the number of cells. As a consequence, the maximal level of detail which can be obtained by STMapper is roughly determined by <a href="#//api/name/volumeSizeInMeters">volumeSizeInMeters</a> / <a href="#//api/name/volumeResolution">volumeResolution</a>.
+In short, the bigger the volume size, the higher the resolution has to be to keep the same level of detail.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/scene" title="scene"></a>
+	<h3 class="method-title"><code><a href="#//api/name/scene">&nbsp;&nbsp;scene</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The <a href="../Classes/STScene.html">STScene</a> model which will be updated.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) STScene *scene</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/liveTriangleMeshEnabled" title="liveTriangleMeshEnabled"></a>
+	<h3 class="method-title"><code><a href="#//api/name/liveTriangleMeshEnabled">&nbsp;&nbsp;liveTriangleMeshEnabled</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Whether the STMapper should automatically build a triangle mesh in background when new depth frames are provided. Default is FALSE.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL liveTriangleMeshEnabled</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/liveWireframeMeshEnabled" title="liveWireframeMeshEnabled"></a>
+	<h3 class="method-title"><code><a href="#//api/name/liveWireframeMeshEnabled">&nbsp;&nbsp;liveWireframeMeshEnabled</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Whether the STMapper should automatically build a wireframe mesh in background when new depth frames are provided. Default is FALSE.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL liveWireframeMeshEnabled</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/liveTriangleMeshSubsamplingFactor" title="liveTriangleMeshSubsamplingFactor"></a>
+	<h3 class="method-title"><code><a href="#//api/name/liveTriangleMeshSubsamplingFactor">&nbsp;&nbsp;liveTriangleMeshSubsamplingFactor</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Subsampling factor to apply when building a live triangle mesh. The minimal value is 1, corresponding to the maximal density. A value of N means that the triangle density will be divided by N, making processing faster. Default is 1.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic) int liveTriangleMeshSubsamplingFactor</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/liveWireframeMeshSubsamplingFactor" title="liveWireframeMeshSubsamplingFactor"></a>
+	<h3 class="method-title"><code><a href="#//api/name/liveWireframeMeshSubsamplingFactor">&nbsp;&nbsp;liveWireframeMeshSubsamplingFactor</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Subsampling factor to apply when building a live wireframe mesh. The minimal value is 1, corresponding to the maximal density. A value of N means that the line density will be divided by N, making processing faster. Default is 2.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic) int liveWireframeMeshSubsamplingFactor</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/volumeSizeInMeters" title="volumeSizeInMeters"></a>
+	<h3 class="method-title"><code><a href="#//api/name/volumeSizeInMeters">&nbsp;&nbsp;volumeSizeInMeters</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The rectangular cuboid size in meters.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic) GLKVector3 volumeSizeInMeters</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/volumeResolution" title="volumeResolution"></a>
+	<h3 class="method-title"><code><a href="#//api/name/volumeResolution">&nbsp;&nbsp;volumeResolution</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Number of cells for each dimension.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) GLKVector3 volumeResolution</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>To keep the level of details isotropic, it is recommended to use a similar same aspect ratio as <a href="#//api/name/volumeSizeInMeters">volumeSizeInMeters</a>.
+To keep mapping real-time, the recommended value is 128x128x128.</p><div class="note"><p><strong>Note:</strong> The volume resolution cannot be changed after initialization.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithScene:options:" title="initWithScene:options:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithScene:options:">&ndash;&nbsp;initWithScene:options:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initialize with a given <a href="#//api/name/scene">scene</a> and volume resolution.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithScene:(STScene *)<em>scene</em> options:(NSDictionary *)<em>options</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>scene</code></th>
+						<td><p>The <a href="../Classes/STScene.html">STScene</a> context.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>options</code></th>
+						<td><p>Dictionary of options. The valid keys are:</p>
+
+<ul>
+<li><code>kSTMapperVolumeResolutionKey</code>: Specifies the volume resolution as an NSArray, e.g. @[@128, @128, @128].</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setHasSupportPlane:" title="setHasSupportPlane:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setHasSupportPlane:">&ndash;&nbsp;setHasSupportPlane:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Specify whether the volume cuboid has been initialized on top of a support plane.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setHasSupportPlane:(BOOL)<em>hasIt</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>hasIt</code></th>
+						<td><p>YES to enable support plane adjustment, NO to disable it.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>If the mapper is aware that the volume is on top of a support plane, it will adapt the pipeline to be more robust.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/reset" title="reset"></a>
+	<h3 class="method-title"><code><a href="#//api/name/reset">&ndash;&nbsp;reset</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Reset the mapper state. This will also stop any background processing.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)reset</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/integrateDepthFrame:cameraPose:" title="integrateDepthFrame:cameraPose:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/integrateDepthFrame:cameraPose:">&ndash;&nbsp;integrateDepthFrame:cameraPose:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Integrate a new depth frame to the model. The processing will be performed in a background queue, so this method is non-blocking.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)integrateDepthFrame:(STDepthFrame *)<em>depthFrame</em> cameraPose:(GLKMatrix4)<em>cameraPose</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>depthFrame</code></th>
+						<td><p>The depth Frame.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>cameraPose</code></th>
+						<td><p>the viewpoint to use for mapping.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/finalizeTriangleMeshWithSubsampling:" title="finalizeTriangleMeshWithSubsampling:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/finalizeTriangleMeshWithSubsampling:">&ndash;&nbsp;finalizeTriangleMeshWithSubsampling:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Waits until ongoing processing in the background queue finishes, and build the final triangle mesh with the given density. If the same instance of STMapper is to be used after this call, the <a href="#//api/name/reset"><code>reset</code></a> method should be called for both the STMapper and the <a href="../Classes/STScene.html">STScene</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)finalizeTriangleMeshWithSubsampling:(int)<em>subsamplingLevel</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>subsamplingLevel</code></th>
+						<td><p>controls the mesh density. The minimal value is 1, corresponding to the maximal density. A value of N means that the triangle density will be divided by N. See also <a href="#//api/name/liveTriangleMeshSubsamplingFactor">[STMapper liveTriangleMeshSubsamplingFactor]</a>.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<div class="note"><p><strong>Note:</strong> If <a href="#//api/name/liveTriangleMeshEnabled">liveTriangleMeshEnabled</a> was set and <a href="#//api/name/liveTriangleMeshSubsamplingFactor">liveTriangleMeshSubsamplingFactor</a> is equal to subsamplingLevel, this operation will be very fast.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Occipital. All rights reserved. Updated: 2016-02-29</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

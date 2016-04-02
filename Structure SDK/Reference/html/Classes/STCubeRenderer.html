@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>STCubeRenderer Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Structure SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Occipital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/initWithContext:">- initWithContext:</option>
+		
+		<option value="//api/name/setDepthFrame:">- setDepthFrame:</option>
+		
+		<option value="//api/name/setCubeHasSupportPlane:">- setCubeHasSupportPlane:</option>
+		
+		<option value="//api/name/adjustCubeSize:volumeResolution:">- adjustCubeSize:volumeResolution:</option>
+		
+		<option value="//api/name/renderHighlightedDepthWithCameraPose:alpha:">- renderHighlightedDepthWithCameraPose:alpha:</option>
+		
+		<option value="//api/name/renderCubeOutlineWithCameraPose:depthTestEnabled:occlusionTestEnabled:">- renderCubeOutlineWithCameraPose:depthTestEnabled:occlusionTestEnabled:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">STCubeRenderer Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>StructureSLAM.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Helper class to render a cuboid.</p>
+
+<p>STCubeRenderer can render a wireframe outline of a cube, and also highlight the part of scene which fits in the given cube.
+This can be used to better visualize where the current cuboid scanning volume is located.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/initWithContext:" title="initWithContext:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithContext:">&ndash;&nbsp;initWithContext:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initialize with required properties.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithContext:(EAGLContext *)<em>glContext</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>glContext</code></th>
+						<td><p>The EAGLContext.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setDepthFrame:" title="setDepthFrame:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setDepthFrame:">&ndash;&nbsp;setDepthFrame:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>A depth frame is required before using renderHighlightedDepth.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setDepthFrame:(STDepthFrame *)<em>depthFrame</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>depthFrame</code></th>
+						<td><p>The depth frame.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setCubeHasSupportPlane:" title="setCubeHasSupportPlane:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setCubeHasSupportPlane:">&ndash;&nbsp;setCubeHasSupportPlane:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Whether the cube has a support plane. Rendering will be adjusted in that case.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setCubeHasSupportPlane:(BOOL)<em>hasSupportPlane</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>hasSupportPlane</code></th>
+						<td><p>The boolean to enable adjustment of support plane in rendering.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/adjustCubeSize:volumeResolution:" title="adjustCubeSize:volumeResolution:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/adjustCubeSize:volumeResolution:">&ndash;&nbsp;adjustCubeSize:volumeResolution:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Specify the cube size and the volume resolution in cells.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)adjustCubeSize:(const GLKVector3)<em>sizeInMeters</em> volumeResolution:(const GLKVector3)<em>resolution</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>sizeInMeters</code></th>
+						<td><p>The current volume size in meters.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>resolution</code></th>
+						<td><p>The current volume resolution.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/renderHighlightedDepthWithCameraPose:alpha:" title="renderHighlightedDepthWithCameraPose:alpha:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/renderHighlightedDepthWithCameraPose:alpha:">&ndash;&nbsp;renderHighlightedDepthWithCameraPose:alpha:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Highlight the depth frame area which fits inside the cube.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)renderHighlightedDepthWithCameraPose:(GLKMatrix4)<em>cameraPose</em> alpha:(float)<em>alpha</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>cameraPose</code></th>
+						<td><p>the viewpoint to use for rendering.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>alpha</code></th>
+						<td><p>transparency factor between 0 (fully transparent) and 1 (fully opaque)</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/renderCubeOutlineWithCameraPose:depthTestEnabled:occlusionTestEnabled:" title="renderCubeOutlineWithCameraPose:depthTestEnabled:occlusionTestEnabled:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/renderCubeOutlineWithCameraPose:depthTestEnabled:occlusionTestEnabled:">&ndash;&nbsp;renderCubeOutlineWithCameraPose:depthTestEnabled:occlusionTestEnabled:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Render the cube wireframe outline at the given pose.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)renderCubeOutlineWithCameraPose:(GLKMatrix4)<em>cameraPose</em> depthTestEnabled:(BOOL)<em>depthTestEnabled</em> occlusionTestEnabled:(BOOL)<em>occlusionTestEnabled</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>cameraPose</code></th>
+						<td><p>the viewpoint to use for rendering.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>depthTestEnabled</code></th>
+						<td><p>whether the lines should be drawn with <code>GL_DEPTH_TEST</code> enabled. This should typically be disabled if used in combination with renderHighlightedDepthWithCameraPose: to avoid having the lines occluded, but enabled if a mesh is also being rendered in the scene.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>occlusionTestEnabled</code></th>
+						<td><p>whether to use the current depth frame to do occlusion testing. You can turn this off for better performance.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Occipital. All rights reserved. Updated: 2016-02-29</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

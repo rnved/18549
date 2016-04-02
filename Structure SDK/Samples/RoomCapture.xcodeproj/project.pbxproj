@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1F52A1A11ACA3146004205DD /* Structure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F52A1A01ACA3146004205DD /* Structure.framework */; };
+		2A0BA3E418500398008FBE2E /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A0BA3E318500398008FBE2E /* CoreImage.framework */; };
+		2A35A0101975B89700D8C0B1 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A35A00F1975B89700D8C0B1 /* AppDelegate.mm */; };
+		2A35A0151975B89F00D8C0B1 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A35A0141975B89F00D8C0B1 /* ViewController.mm */; };
+		2A35A0181975B8A700D8C0B1 /* MeshViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A35A0171975B8A700D8C0B1 /* MeshViewController.mm */; };
+		2A35A01E1975B8C100D8C0B1 /* EAGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A35A01D1975B8C100D8C0B1 /* EAGLView.mm */; };
+		2A35A0201975B8C800D8C0B1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A35A01F1975B8C800D8C0B1 /* Images.xcassets */; };
+		2A35A0311975B8D100D8C0B1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A35A0241975B8D100D8C0B1 /* Default-568h@2x.png */; };
+		2A35A0321975B8D100D8C0B1 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A35A0251975B8D100D8C0B1 /* Default-Landscape@2x~ipad.png */; };
+		2A35A0331975B8D100D8C0B1 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A35A0261975B8D100D8C0B1 /* Default-Landscape~ipad.png */; };
+		2A35A0341975B8D100D8C0B1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A35A0271975B8D100D8C0B1 /* Default@2x.png */; };
+		2A35A0391975B8D100D8C0B1 /* Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A35A02C1975B8D100D8C0B1 /* Splash.png */; };
+		2A35A03D1975B8E800D8C0B1 /* MeshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A35A03C1975B8E800D8C0B1 /* MeshView.xib */; };
+		2A35A0421975B8F600D8C0B1 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A35A03E1975B8F600D8C0B1 /* ViewController_iPad.xib */; };
+		2A35A0481975B90F00D8C0B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A35A0461975B90F00D8C0B1 /* InfoPlist.strings */; };
+		2A35A04A1975B91400D8C0B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A35A0491975B91400D8C0B1 /* main.m */; };
+		2A38C13719B8CEE200563312 /* GraphicsRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A38C13619B8CEE200563312 /* GraphicsRenderer.mm */; };
+		2A3F2BB01857FB1600EE7A96 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3F2BAF1857FB1600EE7A96 /* MessageUI.framework */; };
+		2A40186C19BA8D1E0000CA48 /* measurementTape.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A40186B19BA8D1E0000CA48 /* measurementTape.png */; };
+		2A5AA3841771397A0092391A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5AA3831771397A0092391A /* OpenGLES.framework */; };
+		2A839F68197DC88C00A5B817 /* Joystick.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A839F67197DC88C00A5B817 /* Joystick.mm */; };
+		2A839F92197F111600A5B817 /* innerCircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A839F90197F111600A5B817 /* innerCircle@2x.png */; };
+		2A839F93197F111600A5B817 /* outerCircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A839F91197F111600A5B817 /* outerCircle@2x.png */; };
+		2AB8B9C717EA78280097C231 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB8B9C617EA78280097C231 /* AVFoundation.framework */; };
+		2AB8B9CB17EA786F0097C231 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB8B9CA17EA786F0097C231 /* CoreVideo.framework */; };
+		2AB8B9CD17EA78860097C231 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB8B9CC17EA78860097C231 /* CoreMedia.framework */; };
+		2AD988CC1A643C9D00CB1B94 /* ViewController+Camera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AD988C51A643C9D00CB1B94 /* ViewController+Camera.mm */; };
+		2AD988CD1A643C9D00CB1B94 /* ViewController+OpenGL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AD988C71A643C9D00CB1B94 /* ViewController+OpenGL.mm */; };
+		2AD988CE1A643C9D00CB1B94 /* ViewController+Sensor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AD988C91A643C9D00CB1B94 /* ViewController+Sensor.mm */; };
+		2AD988CF1A643C9D00CB1B94 /* ViewController+SLAM.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AD988CB1A643C9D00CB1B94 /* ViewController+SLAM.mm */; };
+		2AEE4CE61A6DE2D100BEB2F9 /* doneButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AEE4CE31A6DE2D100BEB2F9 /* doneButton@2x.png */; };
+		2AEE4CE71A6DE2D100BEB2F9 /* resetScanButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AEE4CE41A6DE2D100BEB2F9 /* resetScanButton@2x.png */; };
+		2AEE4CE81A6DE2D100BEB2F9 /* startScanButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AEE4CE51A6DE2D100BEB2F9 /* startScanButton@2x.png */; };
+		2AF0FFF7199D1D4A002B407B /* calibration.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AF0FFF6199D1D4A002B407B /* calibration.png */; };
+		2AF77B8B17F2575500A99E20 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF77B8A17F2575500A99E20 /* CoreGraphics.framework */; };
+		2AFC8D78176F966000F7F3B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AFC8D77176F966000F7F3B5 /* UIKit.framework */; };
+		2AFC8D7A176F966000F7F3B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AFC8D79176F966000F7F3B5 /* Foundation.framework */; };
+		2AFC8D7E176F966000F7F3B5 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AFC8D7D176F966000F7F3B5 /* GLKit.framework */; };
+		2AFC8E19176FD4D600F7F3B5 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AFC8E18176FD4D600F7F3B5 /* ExternalAccessory.framework */; };
+		2D5B8571199CAF7F00F22AB9 /* CustomShaders.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D5B856E199CAF7F00F22AB9 /* CustomShaders.mm */; };
+		2D5B8572199CAF7F00F22AB9 /* MeshRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D5B8570199CAF7F00F22AB9 /* MeshRenderer.mm */; };
+		2D5B8574199CB4D700F22AB9 /* ViewpointController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D5B8573199CB4D700F22AB9 /* ViewpointController.mm */; };
+		2D74AC2E18461A83009F7B5B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB8B9C817EA78590097C231 /* QuartzCore.framework */; };
+		2DC7D69718438E1D005BEE8B /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC7D69518438E1D005BEE8B /* ImageIO.framework */; };
+		2DC7D69818438E1D005BEE8B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC7D69618438E1D005BEE8B /* CoreMotion.framework */; };
+		2DC7D69A18438E42005BEE8B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC7D69918438E42005BEE8B /* Accelerate.framework */; };
+		6FAD6839199E8C9700033FCC /* CalibrationOverlay.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6FAD6838199E8C9700033FCC /* CalibrationOverlay.mm */; };
+		7E2288C9198FE3D300F6E3B2 /* CustomUIKitStyles.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E2288C8198FE3D300F6E3B2 /* CustomUIKitStyles.mm */; };
+		7EAD268F198AACD500638C9C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EAD268E198AACD500638C9C /* libz.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1F52A1A01ACA3146004205DD /* Structure.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Structure.framework; path = ../Frameworks/Structure.framework; sourceTree = "<group>"; };
+		2A0BA3E318500398008FBE2E /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		2A35A00E1975B89700D8C0B1 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = RoomCapture/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		2A35A00F1975B89700D8C0B1 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = RoomCapture/AppDelegate.mm; sourceTree = SOURCE_ROOT; };
+		2A35A0131975B89F00D8C0B1 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = RoomCapture/ViewController.h; sourceTree = SOURCE_ROOT; };
+		2A35A0141975B89F00D8C0B1 /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ViewController.mm; path = RoomCapture/ViewController.mm; sourceTree = SOURCE_ROOT; };
+		2A35A0161975B8A700D8C0B1 /* MeshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeshViewController.h; path = RoomCapture/MeshViewController.h; sourceTree = SOURCE_ROOT; };
+		2A35A0171975B8A700D8C0B1 /* MeshViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MeshViewController.mm; path = RoomCapture/MeshViewController.mm; sourceTree = SOURCE_ROOT; };
+		2A35A01B1975B8BA00D8C0B1 /* ViewpointController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewpointController.h; path = RoomCapture/ViewpointController.h; sourceTree = SOURCE_ROOT; };
+		2A35A01C1975B8C100D8C0B1 /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EAGLView.h; path = RoomCapture/EAGLView.h; sourceTree = SOURCE_ROOT; };
+		2A35A01D1975B8C100D8C0B1 /* EAGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = EAGLView.mm; path = RoomCapture/EAGLView.mm; sourceTree = SOURCE_ROOT; };
+		2A35A01F1975B8C800D8C0B1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RoomCapture/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		2A35A0241975B8D100D8C0B1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		2A35A0251975B8D100D8C0B1 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		2A35A0261975B8D100D8C0B1 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		2A35A0271975B8D100D8C0B1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		2A35A02C1975B8D100D8C0B1 /* Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash.png; sourceTree = "<group>"; };
+		2A35A03C1975B8E800D8C0B1 /* MeshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MeshView.xib; path = RoomCapture/MeshView.xib; sourceTree = SOURCE_ROOT; };
+		2A35A03F1975B8F600D8C0B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = RoomCapture/en.lproj/ViewController_iPad.xib; sourceTree = SOURCE_ROOT; };
+		2A35A0441975B90000D8C0B1 /* RoomCapture-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "RoomCapture-Info.plist"; path = "RoomCapture/RoomCapture-Info.plist"; sourceTree = "<group>"; };
+		2A35A0471975B90F00D8C0B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = RoomCapture/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		2A35A0491975B91400D8C0B1 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RoomCapture/main.m; sourceTree = SOURCE_ROOT; };
+		2A35A04B1975B91C00D8C0B1 /* RoomCapture-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "RoomCapture-Prefix.pch"; path = "RoomCapture/RoomCapture-Prefix.pch"; sourceTree = "<group>"; };
+		2A38C13519B8CEE200563312 /* GraphicsRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphicsRenderer.h; path = RoomCapture/GraphicsRenderer.h; sourceTree = "<group>"; };
+		2A38C13619B8CEE200563312 /* GraphicsRenderer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GraphicsRenderer.mm; path = RoomCapture/GraphicsRenderer.mm; sourceTree = "<group>"; };
+		2A3F2BAF1857FB1600EE7A96 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		2A40186B19BA8D1E0000CA48 /* measurementTape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = measurementTape.png; sourceTree = "<group>"; };
+		2A5AA3831771397A0092391A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		2A839F66197DC88C00A5B817 /* Joystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Joystick.h; path = RoomCapture/Joystick.h; sourceTree = "<group>"; };
+		2A839F67197DC88C00A5B817 /* Joystick.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Joystick.mm; path = RoomCapture/Joystick.mm; sourceTree = "<group>"; };
+		2A839F90197F111600A5B817 /* innerCircle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "innerCircle@2x.png"; sourceTree = "<group>"; };
+		2A839F91197F111600A5B817 /* outerCircle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "outerCircle@2x.png"; sourceTree = "<group>"; };
+		2AB8B9C617EA78280097C231 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2AB8B9C817EA78590097C231 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		2AB8B9CA17EA786F0097C231 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		2AB8B9CC17EA78860097C231 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		2AD988C41A643C9D00CB1B94 /* ViewController+Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ViewController+Camera.h"; path = "RoomCapture/ViewController+Camera.h"; sourceTree = "<group>"; };
+		2AD988C51A643C9D00CB1B94 /* ViewController+Camera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "ViewController+Camera.mm"; path = "RoomCapture/ViewController+Camera.mm"; sourceTree = "<group>"; };
+		2AD988C61A643C9D00CB1B94 /* ViewController+OpenGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ViewController+OpenGL.h"; path = "RoomCapture/ViewController+OpenGL.h"; sourceTree = "<group>"; };
+		2AD988C71A643C9D00CB1B94 /* ViewController+OpenGL.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "ViewController+OpenGL.mm"; path = "RoomCapture/ViewController+OpenGL.mm"; sourceTree = "<group>"; };
+		2AD988C81A643C9D00CB1B94 /* ViewController+Sensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ViewController+Sensor.h"; path = "RoomCapture/ViewController+Sensor.h"; sourceTree = "<group>"; };
+		2AD988C91A643C9D00CB1B94 /* ViewController+Sensor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "ViewController+Sensor.mm"; path = "RoomCapture/ViewController+Sensor.mm"; sourceTree = "<group>"; };
+		2AD988CA1A643C9D00CB1B94 /* ViewController+SLAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ViewController+SLAM.h"; path = "RoomCapture/ViewController+SLAM.h"; sourceTree = "<group>"; };
+		2AD988CB1A643C9D00CB1B94 /* ViewController+SLAM.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "ViewController+SLAM.mm"; path = "RoomCapture/ViewController+SLAM.mm"; sourceTree = "<group>"; };
+		2AEE4CE31A6DE2D100BEB2F9 /* doneButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doneButton@2x.png"; sourceTree = "<group>"; };
+		2AEE4CE41A6DE2D100BEB2F9 /* resetScanButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "resetScanButton@2x.png"; sourceTree = "<group>"; };
+		2AEE4CE51A6DE2D100BEB2F9 /* startScanButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "startScanButton@2x.png"; sourceTree = "<group>"; };
+		2AF0FFF6199D1D4A002B407B /* calibration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calibration.png; sourceTree = "<group>"; };
+		2AF77B8A17F2575500A99E20 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2AFC8D74176F966000F7F3B5 /* RoomCapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AFC8D77176F966000F7F3B5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2AFC8D79176F966000F7F3B5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2AFC8D7D176F966000F7F3B5 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		2AFC8E18176FD4D600F7F3B5 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		2D5B856D199CAF7F00F22AB9 /* CustomShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomShaders.h; path = RoomCapture/CustomShaders.h; sourceTree = "<group>"; };
+		2D5B856E199CAF7F00F22AB9 /* CustomShaders.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CustomShaders.mm; path = RoomCapture/CustomShaders.mm; sourceTree = "<group>"; };
+		2D5B856F199CAF7F00F22AB9 /* MeshRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeshRenderer.h; path = RoomCapture/MeshRenderer.h; sourceTree = "<group>"; };
+		2D5B8570199CAF7F00F22AB9 /* MeshRenderer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MeshRenderer.mm; path = RoomCapture/MeshRenderer.mm; sourceTree = "<group>"; };
+		2D5B8573199CB4D700F22AB9 /* ViewpointController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ViewpointController.mm; path = RoomCapture/ViewpointController.mm; sourceTree = "<group>"; };
+		2DC7D69518438E1D005BEE8B /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		2DC7D69618438E1D005BEE8B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		2DC7D69918438E42005BEE8B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		6FAD6837199E8C9700033FCC /* CalibrationOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalibrationOverlay.h; path = RoomCapture/CalibrationOverlay.h; sourceTree = "<group>"; };
+		6FAD6838199E8C9700033FCC /* CalibrationOverlay.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CalibrationOverlay.mm; path = RoomCapture/CalibrationOverlay.mm; sourceTree = "<group>"; };
+		7E2288C8198FE3D300F6E3B2 /* CustomUIKitStyles.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CustomUIKitStyles.mm; path = RoomCapture/CustomUIKitStyles.mm; sourceTree = "<group>"; };
+		7EAD268E198AACD500638C9C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		7EAD26A9198B015000638C9C /* CustomUIKitStyles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CustomUIKitStyles.h; path = RoomCapture/CustomUIKitStyles.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2AFC8D71176F966000F7F3B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F52A1A11ACA3146004205DD /* Structure.framework in Frameworks */,
+				7EAD268F198AACD500638C9C /* libz.dylib in Frameworks */,
+				2A3F2BB01857FB1600EE7A96 /* MessageUI.framework in Frameworks */,
+				2A0BA3E418500398008FBE2E /* CoreImage.framework in Frameworks */,
+				2D74AC2E18461A83009F7B5B /* QuartzCore.framework in Frameworks */,
+				2DC7D69A18438E42005BEE8B /* Accelerate.framework in Frameworks */,
+				2AF77B8B17F2575500A99E20 /* CoreGraphics.framework in Frameworks */,
+				2AB8B9CD17EA78860097C231 /* CoreMedia.framework in Frameworks */,
+				2AB8B9CB17EA786F0097C231 /* CoreVideo.framework in Frameworks */,
+				2AB8B9C717EA78280097C231 /* AVFoundation.framework in Frameworks */,
+				2A5AA3841771397A0092391A /* OpenGLES.framework in Frameworks */,
+				2AFC8E19176FD4D600F7F3B5 /* ExternalAccessory.framework in Frameworks */,
+				2AFC8D78176F966000F7F3B5 /* UIKit.framework in Frameworks */,
+				2AFC8D7A176F966000F7F3B5 /* Foundation.framework in Frameworks */,
+				2AFC8D7E176F966000F7F3B5 /* GLKit.framework in Frameworks */,
+				2DC7D69718438E1D005BEE8B /* ImageIO.framework in Frameworks */,
+				2DC7D69818438E1D005BEE8B /* CoreMotion.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2A35A0211975B8D100D8C0B1 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				2AEE4CE31A6DE2D100BEB2F9 /* doneButton@2x.png */,
+				2AEE4CE41A6DE2D100BEB2F9 /* resetScanButton@2x.png */,
+				2AEE4CE51A6DE2D100BEB2F9 /* startScanButton@2x.png */,
+				2AF0FFF6199D1D4A002B407B /* calibration.png */,
+				2A839F90197F111600A5B817 /* innerCircle@2x.png */,
+				2A839F91197F111600A5B817 /* outerCircle@2x.png */,
+				2A35A0241975B8D100D8C0B1 /* Default-568h@2x.png */,
+				2A35A0251975B8D100D8C0B1 /* Default-Landscape@2x~ipad.png */,
+				2A35A0261975B8D100D8C0B1 /* Default-Landscape~ipad.png */,
+				2A35A0271975B8D100D8C0B1 /* Default@2x.png */,
+				2A35A02C1975B8D100D8C0B1 /* Splash.png */,
+				2A40186B19BA8D1E0000CA48 /* measurementTape.png */,
+			);
+			name = Graphics;
+			path = RoomCapture/Graphics;
+			sourceTree = SOURCE_ROOT;
+		};
+		2AFC8D6B176F966000F7F3B5 = {
+			isa = PBXGroup;
+			children = (
+				2AFC8D81176F966000F7F3B5 /* RoomCapture */,
+				2AFC8D76176F966000F7F3B5 /* Frameworks */,
+				2AFC8D75176F966000F7F3B5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2AFC8D75176F966000F7F3B5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2AFC8D74176F966000F7F3B5 /* RoomCapture.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2AFC8D76176F966000F7F3B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F52A1A01ACA3146004205DD /* Structure.framework */,
+				7EAD268E198AACD500638C9C /* libz.dylib */,
+				2A3F2BAF1857FB1600EE7A96 /* MessageUI.framework */,
+				2A0BA3E318500398008FBE2E /* CoreImage.framework */,
+				2DC7D69918438E42005BEE8B /* Accelerate.framework */,
+				2DC7D69518438E1D005BEE8B /* ImageIO.framework */,
+				2DC7D69618438E1D005BEE8B /* CoreMotion.framework */,
+				2AF77B8A17F2575500A99E20 /* CoreGraphics.framework */,
+				2AB8B9CC17EA78860097C231 /* CoreMedia.framework */,
+				2AB8B9CA17EA786F0097C231 /* CoreVideo.framework */,
+				2AB8B9C817EA78590097C231 /* QuartzCore.framework */,
+				2AB8B9C617EA78280097C231 /* AVFoundation.framework */,
+				2AFC8D79176F966000F7F3B5 /* Foundation.framework */,
+				2AFC8D77176F966000F7F3B5 /* UIKit.framework */,
+				2AFC8E18176FD4D600F7F3B5 /* ExternalAccessory.framework */,
+				2AFC8D7D176F966000F7F3B5 /* GLKit.framework */,
+				2A5AA3831771397A0092391A /* OpenGLES.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2AFC8D81176F966000F7F3B5 /* RoomCapture */ = {
+			isa = PBXGroup;
+			children = (
+				7EAD26A9198B015000638C9C /* CustomUIKitStyles.h */,
+				7E2288C8198FE3D300F6E3B2 /* CustomUIKitStyles.mm */,
+				2A35A00E1975B89700D8C0B1 /* AppDelegate.h */,
+				2A35A00F1975B89700D8C0B1 /* AppDelegate.mm */,
+				2A35A0131975B89F00D8C0B1 /* ViewController.h */,
+				2A35A0141975B89F00D8C0B1 /* ViewController.mm */,
+				2AD988C41A643C9D00CB1B94 /* ViewController+Camera.h */,
+				2AD988C51A643C9D00CB1B94 /* ViewController+Camera.mm */,
+				2AD988C61A643C9D00CB1B94 /* ViewController+OpenGL.h */,
+				2AD988C71A643C9D00CB1B94 /* ViewController+OpenGL.mm */,
+				2AD988C81A643C9D00CB1B94 /* ViewController+Sensor.h */,
+				2AD988C91A643C9D00CB1B94 /* ViewController+Sensor.mm */,
+				2AD988CA1A643C9D00CB1B94 /* ViewController+SLAM.h */,
+				2AD988CB1A643C9D00CB1B94 /* ViewController+SLAM.mm */,
+				2A35A0161975B8A700D8C0B1 /* MeshViewController.h */,
+				2A35A0171975B8A700D8C0B1 /* MeshViewController.mm */,
+				2D5B856D199CAF7F00F22AB9 /* CustomShaders.h */,
+				2D5B856E199CAF7F00F22AB9 /* CustomShaders.mm */,
+				2D5B856F199CAF7F00F22AB9 /* MeshRenderer.h */,
+				2D5B8570199CAF7F00F22AB9 /* MeshRenderer.mm */,
+				2A38C13519B8CEE200563312 /* GraphicsRenderer.h */,
+				2A38C13619B8CEE200563312 /* GraphicsRenderer.mm */,
+				2A35A01B1975B8BA00D8C0B1 /* ViewpointController.h */,
+				2D5B8573199CB4D700F22AB9 /* ViewpointController.mm */,
+				2A839F66197DC88C00A5B817 /* Joystick.h */,
+				2A839F67197DC88C00A5B817 /* Joystick.mm */,
+				2A35A01C1975B8C100D8C0B1 /* EAGLView.h */,
+				2A35A01D1975B8C100D8C0B1 /* EAGLView.mm */,
+				6FAD6837199E8C9700033FCC /* CalibrationOverlay.h */,
+				6FAD6838199E8C9700033FCC /* CalibrationOverlay.mm */,
+				2A35A01F1975B8C800D8C0B1 /* Images.xcassets */,
+				433C3B9D186CBEA900552A10 /* Supporting Files */,
+			);
+			name = RoomCapture;
+			sourceTree = SOURCE_ROOT;
+		};
+		433C3B9D186CBEA900552A10 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2A35A0211975B8D100D8C0B1 /* Graphics */,
+				2A35A03C1975B8E800D8C0B1 /* MeshView.xib */,
+				2A35A03E1975B8F600D8C0B1 /* ViewController_iPad.xib */,
+				2A35A0441975B90000D8C0B1 /* RoomCapture-Info.plist */,
+				2A35A0461975B90F00D8C0B1 /* InfoPlist.strings */,
+				2A35A0491975B91400D8C0B1 /* main.m */,
+				2A35A04B1975B91C00D8C0B1 /* RoomCapture-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2AFC8D73176F966000F7F3B5 /* RoomCapture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AFC8DA2176F966000F7F3B5 /* Build configuration list for PBXNativeTarget "RoomCapture" */;
+			buildPhases = (
+				2AFC8D70176F966000F7F3B5 /* Sources */,
+				2AFC8D71176F966000F7F3B5 /* Frameworks */,
+				2AFC8D72176F966000F7F3B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RoomCapture;
+			productName = GLViewer;
+			productReference = 2AFC8D74176F966000F7F3B5 /* RoomCapture.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2AFC8D6C176F966000F7F3B5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = Occipital;
+			};
+			buildConfigurationList = 2AFC8D6F176F966000F7F3B5 /* Build configuration list for PBXProject "RoomCapture" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				global,
+			);
+			mainGroup = 2AFC8D6B176F966000F7F3B5;
+			productRefGroup = 2AFC8D75176F966000F7F3B5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2AFC8D73176F966000F7F3B5 /* RoomCapture */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2AFC8D72176F966000F7F3B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AEE4CE61A6DE2D100BEB2F9 /* doneButton@2x.png in Resources */,
+				2A35A03D1975B8E800D8C0B1 /* MeshView.xib in Resources */,
+				2AEE4CE81A6DE2D100BEB2F9 /* startScanButton@2x.png in Resources */,
+				2A40186C19BA8D1E0000CA48 /* measurementTape.png in Resources */,
+				2A35A0421975B8F600D8C0B1 /* ViewController_iPad.xib in Resources */,
+				2A839F92197F111600A5B817 /* innerCircle@2x.png in Resources */,
+				2A35A0311975B8D100D8C0B1 /* Default-568h@2x.png in Resources */,
+				2A35A0201975B8C800D8C0B1 /* Images.xcassets in Resources */,
+				2A35A0331975B8D100D8C0B1 /* Default-Landscape~ipad.png in Resources */,
+				2A35A0481975B90F00D8C0B1 /* InfoPlist.strings in Resources */,
+				2A35A0341975B8D100D8C0B1 /* Default@2x.png in Resources */,
+				2AEE4CE71A6DE2D100BEB2F9 /* resetScanButton@2x.png in Resources */,
+				2A839F93197F111600A5B817 /* outerCircle@2x.png in Resources */,
+				2A35A0391975B8D100D8C0B1 /* Splash.png in Resources */,
+				2A35A0321975B8D100D8C0B1 /* Default-Landscape@2x~ipad.png in Resources */,
+				2AF0FFF7199D1D4A002B407B /* calibration.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2AFC8D70176F966000F7F3B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A35A0151975B89F00D8C0B1 /* ViewController.mm in Sources */,
+				2A38C13719B8CEE200563312 /* GraphicsRenderer.mm in Sources */,
+				7E2288C9198FE3D300F6E3B2 /* CustomUIKitStyles.mm in Sources */,
+				2D5B8572199CAF7F00F22AB9 /* MeshRenderer.mm in Sources */,
+				2A839F68197DC88C00A5B817 /* Joystick.mm in Sources */,
+				2AD988CF1A643C9D00CB1B94 /* ViewController+SLAM.mm in Sources */,
+				2AD988CD1A643C9D00CB1B94 /* ViewController+OpenGL.mm in Sources */,
+				2A35A0101975B89700D8C0B1 /* AppDelegate.mm in Sources */,
+				2A35A01E1975B8C100D8C0B1 /* EAGLView.mm in Sources */,
+				2D5B8571199CAF7F00F22AB9 /* CustomShaders.mm in Sources */,
+				2A35A04A1975B91400D8C0B1 /* main.m in Sources */,
+				2AD988CE1A643C9D00CB1B94 /* ViewController+Sensor.mm in Sources */,
+				2D5B8574199CB4D700F22AB9 /* ViewpointController.mm in Sources */,
+				6FAD6839199E8C9700033FCC /* CalibrationOverlay.mm in Sources */,
+				2AD988CC1A643C9D00CB1B94 /* ViewController+Camera.mm in Sources */,
+				2A35A0181975B8A700D8C0B1 /* MeshViewController.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2A35A03E1975B8F600D8C0B1 /* ViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A35A03F1975B8F600D8C0B1 /* en */,
+			);
+			name = ViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		2A35A0461975B90F00D8C0B1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A35A0471975B90F00D8C0B1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2AAA81FF1A72FC7900CBAF27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = RoomCapture;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2AAA82001A72FC7900CBAF27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					../Frameworks,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RoomCapture/RoomCapture-Prefix.pch";
+				INFOPLIST_FILE = "RoomCapture/RoomCapture-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		2AFC8DA1176F966000F7F3B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = RoomCapture;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2AFC8DA4176F966000F7F3B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					../Frameworks,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RoomCapture/RoomCapture-Prefix.pch";
+				INFOPLIST_FILE = "RoomCapture/RoomCapture-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2AFC8D6F176F966000F7F3B5 /* Build configuration list for PBXProject "RoomCapture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AAA81FF1A72FC7900CBAF27 /* Debug */,
+				2AFC8DA1176F966000F7F3B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2AFC8DA2176F966000F7F3B5 /* Build configuration list for PBXNativeTarget "RoomCapture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AAA82001A72FC7900CBAF27 /* Debug */,
+				2AFC8DA4176F966000F7F3B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2AFC8D6C176F966000F7F3B5 /* Project object */;
+}
