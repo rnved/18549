@@ -20,7 +20,11 @@
 }
 
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral {
-    // TODO: Implement this
+    NSLog(@"Changed State : %d", (int)peripheral.state);
+    
+    if(peripheral.state != CBPeripheralManagerStatePoweredOn) {
+        return;
+    }
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral
