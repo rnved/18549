@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>STErrorCode Constants Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Structure SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Occipital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">STErrorCode Constants Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Declared in</th>
+	<td>Structure.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+
+                    
+                    <h3 class="subsubtitle method-title">STErrorCode</h3>
+                    
+					
+					<div class="section section-overview">
+                        <p>Error codes that specify an error. These may appear in NSError objects returned by various Structure Framework methods.</p>
+
+<p><code>NSString* const StructureSDKErrorDomain;</code></p>
+
+<p>is the constant to identify the Structure Framework error domain.</p>
+					</div>
+					
+					
+                    <div class="section">
+                        <!-- display enum values -->
+                        
+                        <h4 class="method-subtitle">Definition</h4>
+                        <code>typedef NS_ENUM(NSInteger, STErrorCode ) {<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorOptionNotRecognized</a> = 0,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorOptionInvalidValue</a> = 1,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorOptionMissingValue</a> = 2,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorOptionCannotBeUpdated</a> = 3,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorInvalidValue</a> = 10,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorCameraPoseInitializerDepthFrameMissing</a> = 20,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorFileNoSuchFile</a> = 30,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorFileWriteInvalidFileName</a> = 31,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorTrackerLostTrack</a> = 40,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorTrackerNotInitialized</a> = 41,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorTrackerColorSampleBufferFormatNotSupported</a> = 42,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorTrackerColorSampleBufferMissing</a> = 43,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorTrackerColorExposureTimeChanged</a> = 44,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorTrackerDeviceMotionMissing</a> = 45,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorTrackerTrackAgainstModelWithoutLiveTriangleMesh</a> = 46,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorTrackerPoorQuality</a> = 47,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorMeshEmpty</a> = 60,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorMeshTaskCancelled</a> = 61,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorMeshInvalidTextureFormat</a> = 62,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorColorizerNoKeyframes</a> = 80,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STErrorColorizerEmptyMesh</a> = 81,<br>
+                            
+                            };</code>
+                    
+                    </div>
+                    
+                    <div class="section section-methods">
+                        <h4 class="method-subtitle">Constants</h4>
+                        <dl class="termdef">
+                            
+                            <dt><a name="" title="STErrorOptionNotRecognized"></a><code>STErrorOptionNotRecognized</code></dt>
+<dd>
+
+
+<p>The operation could not be completed because one or more keys in the options dictionary were not recognized.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorOptionInvalidValue"></a><code>STErrorOptionInvalidValue</code></dt>
+<dd>
+
+
+<p>The operation could not be completed because one or more values in the options dictionary were invalid.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorOptionMissingValue"></a><code>STErrorOptionMissingValue</code></dt>
+<dd>
+
+
+<p>The operation could not be completed because one or more required values in the options dictionary were missing.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorOptionCannotBeUpdated"></a><code>STErrorOptionCannotBeUpdated</code></dt>
+<dd>
+
+
+<p>The operation could not be completed because the options dictionary contained one or more non-dynamic properties that could not be updated.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorInvalidValue"></a><code>STErrorInvalidValue</code></dt>
+<dd>
+
+
+<p>The operation could not be completed because parameters passed to the SDK method contains non-valid values.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorCameraPoseInitializerDepthFrameMissing"></a><code>STErrorCameraPoseInitializerDepthFrameMissing</code></dt>
+<dd>
+
+
+<p><a href="../Classes/STCameraPoseInitializer.html">STCameraPoseInitializer</a> tried to initialize a camera pose using without a depth frame.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorFileNoSuchFile"></a><code>STErrorFileNoSuchFile</code></dt>
+<dd>
+
+
+<p>No such file was found.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorFileWriteInvalidFileName"></a><code>STErrorFileWriteInvalidFileName</code></dt>
+<dd>
+
+
+<p>The operation could not be completed because file output path is invalid.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorTrackerLostTrack"></a><code>STErrorTrackerLostTrack</code></dt>
+<dd>
+
+
+<p><a href="../Classes/STTracker.html"><code>STTracker</code></a> lost tracking.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorTrackerNotInitialized"></a><code>STErrorTrackerNotInitialized</code></dt>
+<dd>
+
+
+<p><a href="../Classes/STTracker.html"><code>STTracker</code></a> is not initialized yet.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorTrackerColorSampleBufferFormatNotSupported"></a><code>STErrorTrackerColorSampleBufferFormatNotSupported</code></dt>
+<dd>
+
+
+<p><a href="../Classes/STTracker.html"><code>STTracker</code></a> doesn&rsquo;t support the input color sample buffer format.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorTrackerColorSampleBufferMissing"></a><code>STErrorTrackerColorSampleBufferMissing</code></dt>
+<dd>
+
+
+<p><a href="../Classes/STTracker.html"><code>STTracker</code></a> doesn&rsquo;t have color sample buffer and cannot continue tracking.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorTrackerColorExposureTimeChanged"></a><code>STErrorTrackerColorExposureTimeChanged</code></dt>
+<dd>
+
+
+<p><a href="../Classes/STTracker.html"><code>STTracker</code></a> detected the color sample buffer exposure has changed.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorTrackerDeviceMotionMissing"></a><code>STErrorTrackerDeviceMotionMissing</code></dt>
+<dd>
+
+
+<p><a href="../Classes/STTracker.html"><code>STTracker</code></a> doesn&rsquo;t have device motion and cannot continue tracking.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorTrackerTrackAgainstModelWithoutLiveTriangleMesh"></a><code>STErrorTrackerTrackAgainstModelWithoutLiveTriangleMesh</code></dt>
+<dd>
+
+
+<p><a href="../Classes/STTracker.html"><code>STTracker</code></a> doesn&rsquo;t have live triangle mesh to proceed tracking against model. Make sure <code>setLiveTriangleMeshEnabled</code> is enabled.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorTrackerPoorQuality"></a><code>STErrorTrackerPoorQuality</code></dt>
+<dd>
+
+
+<p><a href="../Classes/STTracker.html"><code>STTracker</code></a> could not return a high quality camera pose estimate.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorMeshEmpty"></a><code>STErrorMeshEmpty</code></dt>
+<dd>
+
+
+<p>The <a href="../Classes/STMesh.html">STMesh</a> operation could not be completed because it contains an empty mesh.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorMeshTaskCancelled"></a><code>STErrorMeshTaskCancelled</code></dt>
+<dd>
+
+
+<p>The <a href="../Classes/STMesh.html">STMesh</a> operation could not be completed because it was cancelled.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorMeshInvalidTextureFormat"></a><code>STErrorMeshInvalidTextureFormat</code></dt>
+<dd>
+
+
+<p>The <a href="../Classes/STMesh.html">STMesh</a> operation could not be completed because it contains an invalid texture format.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorColorizerNoKeyframes"></a><code>STErrorColorizerNoKeyframes</code></dt>
+<dd>
+
+
+<p>The colorize operation could not be completed because <a href="../Classes/STColorizer.html"><code>STColorizer</code></a> doesn&rsquo;t have keyframes.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STErrorColorizerEmptyMesh"></a><code>STErrorColorizerEmptyMesh</code></dt>
+<dd>
+
+
+<p>The colorize operation could not be completed because <a href="../Classes/STColorizer.html"><code>STColorizer</code></a> doesn&rsquo;t have a mesh.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                        </dl>
+                    </div>
+                    
+
+                    
+                    
+
+                    
+
+                    
+                    <div class="method-subsection declared-in-section">
+                        <h4 class="method-subtitle">Declared In</h4>
+                        <p><code class="declared-in-ref">Structure.h</code></p>
+                    </div>
+                    
+                    
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Occipital. All rights reserved. Updated: 2016-02-29</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

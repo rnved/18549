@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>STSensorControllerDelegate Protocol Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Structure SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Occipital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/sensorDidConnect">- sensorDidConnect</option>
+		
+		<option value="//api/name/sensorDidDisconnect">- sensorDidDisconnect</option>
+		
+		<option value="//api/name/sensorDidStopStreaming:">- sensorDidStopStreaming:</option>
+		
+		<option value="//api/name/sensorDidLeaveLowPowerMode">- sensorDidLeaveLowPowerMode</option>
+		
+		<option value="//api/name/sensorBatteryNeedsCharging">- sensorBatteryNeedsCharging</option>
+		
+		<option value="//api/name/sensorDidOutputDepthFrame:">- sensorDidOutputDepthFrame:</option>
+		
+		<option value="//api/name/sensorDidOutputInfraredFrame:">- sensorDidOutputInfraredFrame:</option>
+		
+		<option value="//api/name/sensorDidOutputSynchronizedDepthFrame:andColorFrame:">- sensorDidOutputSynchronizedDepthFrame:andColorFrame:</option>
+		
+		<option value="//api/name/sensorDidOutputSynchronizedInfraredFrame:andColorFrame:">- sensorDidOutputSynchronizedInfraredFrame:andColorFrame:</option>
+		
+		<option value="//api/name/sensorDidEnterLowPowerMode">- sensorDidEnterLowPowerMode</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">STSensorControllerDelegate Protocol Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Conforms to</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>Structure.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Sensor Controller Delegate</p>
+
+<p>The interface that your application-specific class must implement in order to receive sensor controller callbacks.</p><div class="warning"><p><strong>Warning:</strong> When creating a new application implementing a sensor controller delegate, the main <code>Info.plist</code> needs to contain an additional key &ldquo;<code>Supported external accessory protocols</code>&rdquo;, with the following array of values:</p>
+
+<ul>
+<li><code>io.structure.control</code></li>
+<li><code>io.structure.depth</code></li>
+<li><code>io.structure.infrared</code></li>
+</ul>
+
+
+<p>Without this modification to the plist, the app will not be able to connect to the sensor. All sample apps have this key/value array.</p>
+
+<p>See also <a href="../Classes/STSensorController.html#//api/name/sharedController">[STSensorController sharedController]</a> &amp; <a href="../Classes/STSensorController.html#//api/name/delegate">[STSensorController delegate]</a>.</p></div><div class="note"><p><strong>Note:</strong> Delegate Registration Example</p>
+
+<p>[ <a href="../Classes/STSensorController.html">STSensorController</a> sharedController ].delegate = self;</p></div>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						<a title="Connection Status" name="task_Connection Status"></a>
+						<h2 class="task-title">Connection Status</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/sensorDidConnect" title="sensorDidConnect"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sensorDidConnect">&ndash;&nbsp;sensorDidConnect</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notifies the delegate that the controller established a successful connection to the sensor.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sensorDidConnect</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Structure.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sensorDidDisconnect" title="sensorDidDisconnect"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sensorDidDisconnect">&ndash;&nbsp;sensorDidDisconnect</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notifies the delegate that the sensor was disconnected from the controller.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sensorDidDisconnect</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Structure.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sensorDidStopStreaming:" title="sensorDidStopStreaming:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sensorDidStopStreaming:">&ndash;&nbsp;sensorDidStopStreaming:</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notifies the delegate that the sensor stopped streaming frames to the controller.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sensorDidStopStreaming:(STSensorControllerDidStopStreamingReason)<em>reason</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>reason</code></th>
+						<td><p>The reason why the stream was stopped. See: <a href="../Constants/STSensorControllerDidStopStreamingReason.html">STSensorControllerDidStopStreamingReason</a>.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Structure.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Power Management" name="task_Power Management"></a>
+						<h2 class="task-title">Power Management</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/sensorDidLeaveLowPowerMode" title="sensorDidLeaveLowPowerMode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sensorDidLeaveLowPowerMode">&ndash;&nbsp;sensorDidLeaveLowPowerMode</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notifies the delegate that the sensor has left low power mode.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sensorDidLeaveLowPowerMode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Structure.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sensorBatteryNeedsCharging" title="sensorBatteryNeedsCharging"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sensorBatteryNeedsCharging">&ndash;&nbsp;sensorBatteryNeedsCharging</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notifies the delegate that the sensor needs charging.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sensorBatteryNeedsCharging</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Structure.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Colorless Frames" name="task_Colorless Frames"></a>
+						<h2 class="task-title">Colorless Frames</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/sensorDidOutputDepthFrame:" title="sensorDidOutputDepthFrame:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sensorDidOutputDepthFrame:">&ndash;&nbsp;sensorDidOutputDepthFrame:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notifies the delegate that the sensor made a new depth frame available to the controller. If the data is needed beyond the scope of this method, the depthFrame or its data must be copied by the receiver, e.g. using [STDepthFrame copy].</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sensorDidOutputDepthFrame:(STDepthFrame *)<em>depthFrame</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>depthFrame</code></th>
+						<td><p>The new depth frame.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Structure.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sensorDidOutputInfraredFrame:" title="sensorDidOutputInfraredFrame:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sensorDidOutputInfraredFrame:">&ndash;&nbsp;sensorDidOutputInfraredFrame:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notifies the delegate that the sensor made a new infrared frame available to the controller. If the data is needed beyond the scope of this method, the irFrame and its data must be copied by the receiver.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sensorDidOutputInfraredFrame:(STInfraredFrame *)<em>irFrame</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>irFrame</code></th>
+						<td><p>The new infrared frame.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Structure.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Color-synchronized Frames" name="task_Color-synchronized Frames"></a>
+						<h2 class="task-title">Color-synchronized Frames</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/sensorDidOutputSynchronizedDepthFrame:andColorFrame:" title="sensorDidOutputSynchronizedDepthFrame:andColorFrame:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sensorDidOutputSynchronizedDepthFrame:andColorFrame:">&ndash;&nbsp;sensorDidOutputSynchronizedDepthFrame:andColorFrame:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notifies the delegate that the sensor made a new pair of depth and color frames available to the controller.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sensorDidOutputSynchronizedDepthFrame:(STDepthFrame *)<em>depthFrame</em> andColorFrame:(STColorFrame *)<em>colorFrame</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>depthFrame</code></th>
+						<td><p>The new <a href="../Classes/STDepthFrame.html">STDepthFrame</a> depth frame.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>colorFrame</code></th>
+						<td><p>The new <a href="../Classes/STColorFrame.html">STColorFrame</a> color buffer.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Frame sync methods will only be used if <code>kSTFrameSyncConfigKey</code> has been configured in <a href="../Classes/STSensorController.html#//api/name/startStreamingWithOptions:error:">[STSensorController startStreamingWithOptions:error:]</a> to sync frames .
+Also, data will only be delivered if frameSyncNewColorBuffer: is called every time a new sample buffer is available. The driver needs the CMSampleBuffers in order to return them through these methods.
+If the STDepthFrame is needed beyond the scope of this function, the data must be copied by the receiver, e.g. using [STDepthFrame copy].</p>
+
+<p>See also:</p>
+
+<ul>
+<li><a href="../Classes/STSensorController.html#//api/name/startStreamingWithOptions:error:">[STSensorController startStreamingWithOptions:error:]</a></li>
+<li><a href="../Classes/STSensorController.html#//api/name/frameSyncNewColorBuffer:">[STSensorController frameSyncNewColorBuffer:]</a></li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Structure.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sensorDidOutputSynchronizedInfraredFrame:andColorFrame:" title="sensorDidOutputSynchronizedInfraredFrame:andColorFrame:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sensorDidOutputSynchronizedInfraredFrame:andColorFrame:">&ndash;&nbsp;sensorDidOutputSynchronizedInfraredFrame:andColorFrame:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notifies the delegate that the sensor made a new pair of synchronized infrared and color frames available to the controller.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sensorDidOutputSynchronizedInfraredFrame:(STInfraredFrame *)<em>irFrame</em> andColorFrame:(STColorFrame *)<em>colorFrame</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>irFrame</code></th>
+						<td><p>The new <a href="../Classes/STInfraredFrame.html">STInfraredFrame</a> infrared frame.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>colorFrame</code></th>
+						<td><p>The <a href="../Classes/STColorFrame.html">STColorFrame</a> new color buffer.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Frame sync methods will only be used if <code>kSTFrameSyncConfigKey</code> has been configured in <a href="../Classes/STSensorController.html#//api/name/startStreamingWithOptions:error:">[STSensorController startStreamingWithOptions:error:]</a> to sync frames .
+Also, data will only be delivered if frameSyncNewColorBuffer: is called every time a new sample buffer is available. The driver needs the CMSampleBuffers in order to return them through these methods.
+If the STInfraredFrame is needed beyond the scope of this function, the data must be copied by the receiver.</p>
+
+<p>See also:</p>
+
+<ul>
+<li><a href="../Classes/STSensorController.html#//api/name/startStreamingWithOptions:error:">[STSensorController startStreamingWithOptions:error:]</a></li>
+<li><a href="../Classes/STSensorController.html#//api/name/frameSyncNewColorBuffer:">[STSensorController frameSyncNewColorBuffer:]</a></li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Structure.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Power Management" name="task_Power Management"></a>
+						<h2 class="task-title">Power Management</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/sensorDidEnterLowPowerMode" title="sensorDidEnterLowPowerMode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sensorDidEnterLowPowerMode">&ndash;&nbsp;sensorDidEnterLowPowerMode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notifies the delegate that the sensor has entered low power mode, this currently does nothing and is reserved for future usage.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sensorDidEnterLowPowerMode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Structure.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Occipital. All rights reserved. Updated: 2016-02-29</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

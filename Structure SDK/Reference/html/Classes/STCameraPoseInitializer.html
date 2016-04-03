@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>STCameraPoseInitializer Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Structure SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Occipital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/volumeSizeInMeters">volumeSizeInMeters</option>
+		
+		<option value="//api/name/cameraPose">cameraPose</option>
+		
+		<option value="//api/name/hasValidPose">hasValidPose</option>
+		
+		<option value="//api/name/hasSupportPlane">hasSupportPlane</option>
+		
+	</optgroup>
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/initWithVolumeSizeInMeters:options:error:">- initWithVolumeSizeInMeters:options:error:</option>
+		
+		<option value="//api/name/updateCameraPoseWithGravity:depthFrame:error:">- updateCameraPoseWithGravity:depthFrame:error:</option>
+		
+		<option value="//api/name/detectInnerPixelsWithDepthFrame:mask:">- detectInnerPixelsWithDepthFrame:mask:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">STCameraPoseInitializer Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>StructureSLAM.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Determine an initial camera pose to make the best use of the cuboid scanning volume.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/volumeSizeInMeters" title="volumeSizeInMeters"></a>
+	<h3 class="method-title"><code><a href="#//api/name/volumeSizeInMeters">&nbsp;&nbsp;volumeSizeInMeters</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Width, height and depth of the volume cuboid.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic) GLKVector3 volumeSizeInMeters</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/cameraPose" title="cameraPose"></a>
+	<h3 class="method-title"><code><a href="#//api/name/cameraPose">&nbsp;&nbsp;cameraPose</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Most recent estimated camera pose, taking Structure Sensor as a reference.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) GLKMatrix4 cameraPose</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/hasValidPose" title="hasValidPose"></a>
+	<h3 class="method-title"><code><a href="#//api/name/hasValidPose">&nbsp;&nbsp;hasValidPose</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Whether the pose initializer could find a good pose.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL hasValidPose</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/hasSupportPlane" title="hasSupportPlane"></a>
+	<h3 class="method-title"><code><a href="#//api/name/hasSupportPlane">&nbsp;&nbsp;hasSupportPlane</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Whether the last cube placement was made with a supporting plane. Useful for <a href="../Classes/STMapper.html">STMapper</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL hasSupportPlane</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithVolumeSizeInMeters:options:error:" title="initWithVolumeSizeInMeters:options:error:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithVolumeSizeInMeters:options:error:">&ndash;&nbsp;initWithVolumeSizeInMeters:options:error:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initialize with all the required fields.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithVolumeSizeInMeters:(GLKVector3)<em>volumeSize</em> options:(NSDictionary *)<em>options</em> error:(NSError *__autoreleasing *)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>volumeSize</code></th>
+						<td><p>The current volume size in meters. Not used by the <code>STCameraPoseInitializerStrategyGravityAlignedAtOrigin</code> strategy.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>options</code></th>
+						<td><p>The option dictionary. The valid keys are:</p>
+
+<ul>
+<li><code>kSTCameraPoseInitializerStrategyKey</code>: <a href="../Constants/STCameraPoseInitializerStrategy.html">STCameraPoseInitializerStrategy</a> value to specify the estimation strategy. Required.</li>
+</ul>
+</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>will contain detailed information if the provided options are incorrect.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateCameraPoseWithGravity:depthFrame:error:" title="updateCameraPoseWithGravity:depthFrame:error:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateCameraPoseWithGravity:depthFrame:error:">&ndash;&nbsp;updateCameraPoseWithGravity:depthFrame:error:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Update the current pose estimate from a depth frame and a CoreMotion gravity vector, using the strategy specified at init.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)updateCameraPoseWithGravity:(GLKVector3)<em>gravity</em> depthFrame:(STDepthFrame *)<em>depthFrame</em> error:(NSError *__autoreleasing *)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>gravity</code></th>
+						<td><p>a gravity vector in IMU coordinates, e.g. as provided by CMDeviceMotion.gravity.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>depthFrame</code></th>
+						<td><p>the current processed depth from Structure Sensor. Can be <code>nil</code> if using the strategies <code>STCameraPoseInitializerStrategyGravityAlignedAtOrigin</code> or <code>STCameraPoseInitializerStrategyGravityAlignedAtVolumeCenter</code>.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>will contain detailed information if the estimation failed.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>TRUE on success, FALSE on failure.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/detectInnerPixelsWithDepthFrame:mask:" title="detectInnerPixelsWithDepthFrame:mask:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/detectInnerPixelsWithDepthFrame:mask:">&ndash;&nbsp;detectInnerPixelsWithDepthFrame:mask:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Determine which pixels of a depth frame are inside the current scanning volume.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)detectInnerPixelsWithDepthFrame:(STDepthFrame *)<em>depthFrame</em> mask:(uint8_t *)<em>outputMask</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>depthFrame</code></th>
+						<td><p>the current processed depth from Structure Sensor.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>outputMask</code></th>
+						<td><p>should point to an allocated buffer of (<code>depthFrame.width * depthFrame.height</code>) pixels. A mask pixel will be 255 if the corresponding 3D point fits inside the volume, 0 if outside or if there is no depth.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Occipital. All rights reserved. Updated: 2016-02-29</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

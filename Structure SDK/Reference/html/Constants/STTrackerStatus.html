@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>STTrackerStatus Constants Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Structure SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Occipital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">STTrackerStatus Constants Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Declared in</th>
+	<td>StructureSLAM.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+
+                    
+                    <h3 class="subsubtitle method-title">STTrackerStatus</h3>
+                    
+					
+					<div class="section section-overview">
+                        <p>Constants indicating the status of an STTracker.</p>
+
+<p>See also:</p>
+
+<ul>
+<li><a href="../Classes/STTracker.html#//api/name/status">[STTracker status]</a></li>
+</ul>
+
+					</div>
+					
+					
+                    <div class="section">
+                        <!-- display enum values -->
+                        
+                        <h4 class="method-subtitle">Definition</h4>
+                        <code>typedef NS_ENUM(NSInteger, STTrackerStatus ) {<br>
+                            
+                            &nbsp;&nbsp; <a href="">STTrackerStatusNotAvailable</a> = -1,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STTrackerStatusGood</a> = 0,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STTrackerStatusDodgyForUnknownReason</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STTrackerStatusFastMotion</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STTrackerStatusTooClose</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STTrackerStatusTooFar</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STTrackerStatusRecovering</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STTrackerStatusModelLost</a>,<br>
+                            
+                            };</code>
+                    
+                    </div>
+                    
+                    <div class="section section-methods">
+                        <h4 class="method-subtitle">Constants</h4>
+                        <dl class="termdef">
+                            
+                            <dt><a name="" title="STTrackerStatusNotAvailable"></a><code>STTrackerStatusNotAvailable</code></dt>
+<dd>
+
+
+<p>Information not available, e.g. in case of complete track loss or before initialization.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">StructureSLAM.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STTrackerStatusGood"></a><code>STTrackerStatusGood</code></dt>
+<dd>
+
+
+<p>Everything went fine.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">StructureSLAM.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STTrackerStatusDodgyForUnknownReason"></a><code>STTrackerStatusDodgyForUnknownReason</code></dt>
+<dd>
+
+
+<p>The tracker is dodgy, with an unknown reason.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">StructureSLAM.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STTrackerStatusFastMotion"></a><code>STTrackerStatusFastMotion</code></dt>
+<dd>
+
+
+<p>The camera is moving fast or the camera is far from the model, making pose estimate less accurate.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">StructureSLAM.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STTrackerStatusTooClose"></a><code>STTrackerStatusTooClose</code></dt>
+<dd>
+
+
+<p>Structure Sensor is too close to the scene and maybe parts are thus out of range.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">StructureSLAM.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STTrackerStatusTooFar"></a><code>STTrackerStatusTooFar</code></dt>
+<dd>
+
+
+<p>Structure Sensor is too far to the model, making the tracker less stable.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">StructureSLAM.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STTrackerStatusRecovering"></a><code>STTrackerStatusRecovering</code></dt>
+<dd>
+
+
+<p>The tracker is being successful again after being lost. But it is still not yet totally confident about the estimates.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">StructureSLAM.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STTrackerStatusModelLost"></a><code>STTrackerStatusModelLost</code></dt>
+<dd>
+
+
+<p>The tracker does not see the model anymore, so it is likely to drift.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">StructureSLAM.h</code>.
+	</p>
+	
+</dd>
+                            
+                        </dl>
+                    </div>
+                    
+
+                    
+                    
+
+                    
+
+                    
+                    <div class="method-subsection declared-in-section">
+                        <h4 class="method-subtitle">Declared In</h4>
+                        <p><code class="declared-in-ref">StructureSLAM.h</code></p>
+                    </div>
+                    
+                    
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Occipital. All rights reserved. Updated: 2016-02-29</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

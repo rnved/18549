@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+ <asset>
+  <contributor>
+   <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
+  </contributor>
+  <created>2014-12-26T00:36:02Z</created>
+  <modified>2014-12-26T00:36:02Z</modified>
+  <unit meter="0.010000"/>
+  <up_axis>Y_UP</up_axis>
+ </asset>
+ <library_lights>
+  <light id="light1" name="_Light">
+   <technique_common>
+    <spot>
+     <color>1 1 1</color>
+     <constant_attenuation>0</constant_attenuation>
+     <linear_attenuation>0</linear_attenuation>
+     <quadratic_attenuation>1</quadratic_attenuation>
+     <falloff_angle>120</falloff_angle>
+     <falloff_exponent>1</falloff_exponent>
+    </spot>
+   </technique_common>
+   <extra>
+    <technique profile="SceneKit">
+     <attenuationStart>0</attenuationStart>
+     <attenuationEnd>0</attenuationEnd>
+     <attenuationFalloffExponent>2</attenuationFalloffExponent>
+     <shadow>
+      <enable>1</enable>
+      <color>0 0 0 0.5</color>
+      <shadowRadius>3</shadowRadius>
+      <zNear>1</zNear>
+      <zFar>100</zFar>
+      <orthographicScale>1</orthographicScale>
+     </shadow>
+     <spotParameters>
+      <outerAngle>120</outerAngle>
+      <falloffExponent>1</falloffExponent>
+      <innerAngle>0</innerAngle>
+     </spotParameters>
+    </technique>
+   </extra>
+  </light>
+ </library_lights>
+ <library_visual_scenes>
+  <visual_scene id="scene1">
+   <node id="locator295Node" name="Locator">
+    <matrix>1 0 0 0 0 5.960464e-08 0.9999999 6.94 0 -0.9999999 5.960464e-08 0 0 0 0 1 </matrix>
+    <instance_light url="#light1"/>
+   </node>
+  </visual_scene>
+ </library_visual_scenes>
+ <scene>
+  <instance_visual_scene url="#scene1"/>
+ </scene>
+</COLLADA>

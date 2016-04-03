@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>STFrameSyncConfig Constants Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Structure SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Occipital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">STFrameSyncConfig Constants Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Declared in</th>
+	<td>Structure.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+
+                    
+                    <h3 class="subsubtitle method-title">STFrameSyncConfig</h3>
+                    
+					
+					<div class="section section-overview">
+                        <p>Frame Sync Configuration.</p>
+
+<p>Constants indicating whether the driver should attempt to synchronize depth or infrared frames with color frames from AVFoundation.</p>
+
+<p>When frame sync is active (i.e. <strong>not</strong> equal to <code>STFrameSyncOff</code>), one of the following methods is used in lieu of <a href="../Protocols/STSensorControllerDelegate.html#//api/name/sensorDidOutputDepthFrame:">[STSensorControllerDelegate sensorDidOutputDepthFrame:]</a>, depending on the selected configuration:</p>
+
+<ul>
+<li><a href="../Protocols/STSensorControllerDelegate.html#//api/name/sensorDidOutputSynchronizedDepthFrame:andColorFrame:">[STSensorControllerDelegate sensorDidOutputSynchronizedDepthFrame:andColorFrame:]</a></li>
+<li><a href="../Protocols/STSensorControllerDelegate.html#//api/name/sensorDidOutputSynchronizedInfraredFrame:andColorFrame:">[STSensorControllerDelegate sensorDidOutputSynchronizedInfraredFrame:andColorFrame:]</a></li>
+</ul>
+
+
+<p>You must then repeatedly call frameSyncNewColorBuffer: from the AVFoundation video capture delegate methods. Otherwise, the sensor controller delegate methods will never deliver any frames. This is simply because synchronized frames cannot be delivered if there are no color frames to synchronize.</p><div class="note"><p><strong>Note:</strong> Frame sync of depth+infrared+RGB and 60 FPS depth are not currently supported.</p></div><div class="note"><p><strong>Note:</strong> For frame sync to be effective, the AVCaptureDevice must be configured to have a min and max frame rate of 30fps.</p></div>
+					</div>
+					
+					
+                    <div class="section">
+                        <!-- display enum values -->
+                        
+                        <h4 class="method-subtitle">Definition</h4>
+                        <code>typedef NS_ENUM(NSInteger, STFrameSyncConfig ) {<br>
+                            
+                            &nbsp;&nbsp; <a href="">STFrameSyncOff</a> = 0,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STFrameSyncDepthAndRgb</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STFrameSyncInfraredAndRgb</a>,<br>
+                            
+                            };</code>
+                    
+                    </div>
+                    
+                    <div class="section section-methods">
+                        <h4 class="method-subtitle">Constants</h4>
+                        <dl class="termdef">
+                            
+                            <dt><a name="" title="STFrameSyncOff"></a><code>STFrameSyncOff</code></dt>
+<dd>
+
+
+<p>Default mode, frame sync is off.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STFrameSyncDepthAndRgb"></a><code>STFrameSyncDepthAndRgb</code></dt>
+<dd>
+
+
+<p>Frame sync between AVFoundation video frame and depth frame.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STFrameSyncInfraredAndRgb"></a><code>STFrameSyncInfraredAndRgb</code></dt>
+<dd>
+
+
+<p>Frame sync between AVFoundation video frame and infrared frame.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Structure.h</code>.
+	</p>
+	
+</dd>
+                            
+                        </dl>
+                    </div>
+                    
+
+                    
+                    
+
+                    
+
+                    
+                    <div class="method-subsection declared-in-section">
+                        <h4 class="method-subtitle">Declared In</h4>
+                        <p><code class="declared-in-ref">Structure.h</code></p>
+                    </div>
+                    
+                    
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Occipital. All rights reserved. Updated: 2016-02-29</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

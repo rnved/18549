@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>STKeyFrameManager Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Structure SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Occipital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/initWithOptions:error:">- initWithOptions:error:</option>
+		
+		<option value="//api/name/wouldBeNewKeyframeWithColorCameraPose:">- wouldBeNewKeyframeWithColorCameraPose:</option>
+		
+		<option value="//api/name/processKeyFrameCandidateWithColorCameraPose:colorFrame:depthFrame:">- processKeyFrameCandidateWithColorCameraPose:colorFrame:depthFrame:</option>
+		
+		<option value="//api/name/addKeyFrame:">- addKeyFrame:</option>
+		
+		<option value="//api/name/getKeyFrames">- getKeyFrames</option>
+		
+		<option value="//api/name/clear">- clear</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">STKeyFrameManager Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>StructureSLAM.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Automatically selects and manages keyframes.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/initWithOptions:error:" title="initWithOptions:error:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithOptions:error:">&ndash;&nbsp;initWithOptions:error:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initialize with the provided options.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithOptions:(NSDictionary *)<em>options</em> error:(NSError *__autoreleasing *)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>options</code></th>
+						<td><p>The option dictionary. The valid keys are:</p>
+
+<ul>
+<li><code>kSTKeyFrameManagerMaxSizeKey</code>: integer value to set the maximal number of keyframes. Default is 48.</li>
+<li><code>kSTKeyFrameManagerMaxDeltaRotationKey</code>: float value to set the maximal rotation in radians tolerated between a frame and the previous keyframes before considering that it is a new keyframe. Default is 30.0*M_PI/180.0 (30 degrees).</li>
+<li><code>kSTKeyFrameManagerMaxDeltaTranslationKey</code>: float value to set the maximal translation in meters tolerated between a frame and the previous keyframes before considering that it is a new keyframe. Default is 0.3 meters.</li>
+</ul>
+</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>will contain detailed information if the provided options are incorrect.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/wouldBeNewKeyframeWithColorCameraPose:" title="wouldBeNewKeyframeWithColorCameraPose:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/wouldBeNewKeyframeWithColorCameraPose:">&ndash;&nbsp;wouldBeNewKeyframeWithColorCameraPose:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Check if the given pose would be a new keyframe.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)wouldBeNewKeyframeWithColorCameraPose:(GLKMatrix4)<em>colorCameraPose</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>colorCameraPose</code></th>
+						<td><p>The camera pose for this keyFrame.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>TRUE if the new pose exceeds the <code>kSTKeyFrameManagerMaxDeltaRotationKey</code> or <code>kSTKeyFrameManagerMaxDeltaTranslationKey</code> criteria.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/processKeyFrameCandidateWithColorCameraPose:colorFrame:depthFrame:" title="processKeyFrameCandidateWithColorCameraPose:colorFrame:depthFrame:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/processKeyFrameCandidateWithColorCameraPose:colorFrame:depthFrame:">&ndash;&nbsp;processKeyFrameCandidateWithColorCameraPose:colorFrame:depthFrame:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Potentially add the candidate frame as a keyframe if it meets the new keyframe criteria.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)processKeyFrameCandidateWithColorCameraPose:(GLKMatrix4)<em>colorCameraPose</em> colorFrame:(STColorFrame *)<em>colorFrame</em> depthFrame:(STDepthFrame *)<em>depthFrame</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>colorCameraPose</code></th>
+						<td><p>The GLKMatrix4 camera pose for this keyFrame.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>colorFrame</code></th>
+						<td><p>The <a href="../Classes/STColorFrame.html">STColorFrame</a> color buffer.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>depthFrame</code></th>
+						<td><p>The <a href="../Classes/STDepthFrame.html">STDepthFrame</a> depth frame.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>TRUE if the frame was considered a new keyframe, FALSE otherwise.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<div class="note"><p><strong>Note:</strong> Only <code>kCVPixelFormatType_420YpCbCr8BiPlanarFullRange</code> is supported for sampleBuffer format.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addKeyFrame:" title="addKeyFrame:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addKeyFrame:">&ndash;&nbsp;addKeyFrame:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Manual addition of a keyFrame. This will bypass the criteria of the manager.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addKeyFrame:(STKeyFrame *)<em>keyFrame</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>keyFrame</code></th>
+						<td><p>The <a href="../Classes/STKeyFrame.html">STKeyFrame</a> to add into STKeyFrameManager.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getKeyFrames" title="getKeyFrames"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getKeyFrames">&ndash;&nbsp;getKeyFrames</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get the array of <a href="../Classes/STKeyFrame.html">STKeyFrame</a> accumulated so far.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSArray *)getKeyFrames</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/clear" title="clear"></a>
+	<h3 class="method-title"><code><a href="#//api/name/clear">&ndash;&nbsp;clear</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Clear the current array of keyframes</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)clear</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Occipital. All rights reserved. Updated: 2016-02-29</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

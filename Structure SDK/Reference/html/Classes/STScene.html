@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>STScene Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Structure SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Occipital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/initWithContext:freeGLTextureUnit:">- initWithContext:freeGLTextureUnit:</option>
+		
+		<option value="//api/name/lockAndGetSceneMesh">- lockAndGetSceneMesh</option>
+		
+		<option value="//api/name/unlockSceneMesh">- unlockSceneMesh</option>
+		
+		<option value="//api/name/renderMeshFromViewpoint:cameraGLProjection:alpha:highlightOutOfRangeDepth:wireframe:">- renderMeshFromViewpoint:cameraGLProjection:alpha:highlightOutOfRangeDepth:wireframe:</option>
+		
+		<option value="//api/name/clear">- clear</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">STScene Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>StructureSLAM.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Common data shared and updated by the SLAM pipeline.</p>
+
+<p>An STScene object contains information about the sensor and the reconstructed mesh.
+Special care should be taken when accessing STScene members if an <a href="../Classes/STTracker.html">STTracker</a> or <a href="../Classes/STMapper.html">STMapper</a> is still active, as they could be accessing the STScene from background threads.
+In particular, <a href="../Classes/STMesh.html">STMesh</a> objects should be properly locked.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/initWithContext:freeGLTextureUnit:" title="initWithContext:freeGLTextureUnit:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithContext:freeGLTextureUnit:">&ndash;&nbsp;initWithContext:freeGLTextureUnit:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Mandatory initializer for STScene.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithContext:(EAGLContext *)<em>glContext</em> freeGLTextureUnit:(GLenum)<em>textureUnit</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>glContext</code></th>
+						<td><p>a valid EAGLContext.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>textureUnit</code></th>
+						<td><p>A GL_TEXTUREX unit which will be used when SLAM objects need to render meshes to an OpenGL texture.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/lockAndGetSceneMesh" title="lockAndGetSceneMesh"></a>
+	<h3 class="method-title"><code><a href="#//api/name/lockAndGetSceneMesh">&ndash;&nbsp;lockAndGetSceneMesh</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Reference to the current scene mesh.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (STMesh *)lockAndGetSceneMesh</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This mesh may be modified by a background thread if an instance of <a href="../Classes/STMapper.html">STMapper</a> is running, so proper locking is necessary.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/unlockSceneMesh" title="unlockSceneMesh"></a>
+	<h3 class="method-title"><code><a href="#//api/name/unlockSceneMesh">&ndash;&nbsp;unlockSceneMesh</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Unlocks the mesh previously locked with <a href="#//api/name/lockAndGetSceneMesh"><code>lockAndGetSceneMesh</code></a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)unlockSceneMesh</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/renderMeshFromViewpoint:cameraGLProjection:alpha:highlightOutOfRangeDepth:wireframe:" title="renderMeshFromViewpoint:cameraGLProjection:alpha:highlightOutOfRangeDepth:wireframe:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/renderMeshFromViewpoint:cameraGLProjection:alpha:highlightOutOfRangeDepth:wireframe:">&ndash;&nbsp;renderMeshFromViewpoint:cameraGLProjection:alpha:highlightOutOfRangeDepth:wireframe:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Render the scene mesh from the given viewpoint.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)renderMeshFromViewpoint:(GLKMatrix4)<em>cameraPose</em> cameraGLProjection:(GLKMatrix4)<em>glProjection</em> alpha:(float)<em>alpha</em> highlightOutOfRangeDepth:(BOOL)<em>highlightOutOfRangeDepth</em> wireframe:(BOOL)<em>wireframe</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>cameraPose</code></th>
+						<td><p>A GLKMatrix4 camera position used for rendering.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>glProjection</code></th>
+						<td><p>projection matrix used during rendering. See also <a href="../Classes/STDepthFrame.html#//api/name/glProjectionMatrix">[STDepthFrame glProjectionMatrix]</a> and <a href="../Classes/STColorFrame.html#//api/name/glProjectionMatrix">[STColorFrame glProjectionMatrix]</a>.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>alpha</code></th>
+						<td><p>A float value for transparency between 0 (fully transparent) and 1 (fully opaque)</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>highlightOutOfRangeDepth</code></th>
+						<td><p>whether the areas of the mesh which are below Structure Sensor minimal depth range should be highlighted in red.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>wireframe</code></th>
+						<td><p>whether or not to render a wireframe of the mesh or filled polygons. If enabled, <a href="../Classes/STMapper.html">STMapper</a> needs <code>liveWireframeMeshEnabled</code> to be set.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>TRUE on success, FALSE if there is no <a href="../Classes/STMapper.html">STMapper</a> attached to the same STScene with the corresponding (wireframe or triangles) live mode enabled.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>A virtual camera with the given projection and pose matrices will be used to render the mesh using OpenGL. This method is generally faster than using sceneMeshRef and manually rendering it, since in most cases STScene can reuse mesh data previously uploaded to the GPU.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/clear" title="clear"></a>
+	<h3 class="method-title"><code><a href="#//api/name/clear">&ndash;&nbsp;clear</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Clear the scene mesh and state.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)clear</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Occipital. All rights reserved. Updated: 2016-02-29</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

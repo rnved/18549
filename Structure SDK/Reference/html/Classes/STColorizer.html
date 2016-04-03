@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>STColorizer Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Structure SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Occipital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/newColorizeTaskWithMesh:scene:keyframes:completionHandler:options:error:">+ newColorizeTaskWithMesh:scene:keyframes:completionHandler:options:error:</option>
+		
+	</optgroup>
+	
+
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">STColorizer Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>StructureSLAM.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Uses the color images from a vector of <a href="../Classes/STKeyFrame.html">STKeyFrame</a> to colorize an <a href="../Classes/STMesh.html">STMesh</a>.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/newColorizeTaskWithMesh:scene:keyframes:completionHandler:options:error:" title="newColorizeTaskWithMesh:scene:keyframes:completionHandler:options:error:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/newColorizeTaskWithMesh:scene:keyframes:completionHandler:options:error:">+&nbsp;newColorizeTaskWithMesh:scene:keyframes:completionHandler:options:error:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns a background task to colorize the given mesh using the provided keyframes.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (STBackgroundTask *)newColorizeTaskWithMesh:(STMesh *)<em>mesh</em> scene:(STScene *)<em>scene</em> keyframes:(NSArray *)<em>keyframes</em> completionHandler:(void ( ^ ) ( NSError *error ))<em>completionHandler</em> options:(NSDictionary *)<em>options</em> error:(NSError *__autoreleasing *)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mesh</code></th>
+						<td><p>The <a href="../Classes/STMesh.html">STMesh</a> to colorize.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>scene</code></th>
+						<td><p>The <a href="../Classes/STScene.html">STScene</a> context.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>keyframes</code></th>
+						<td><p>Array of keyframes, e.g. as provided by <a href="../Classes/STKeyFrameManager.html">STKeyFrameManager</a>.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>Block to execute once the task is finished or cancelled.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>options</code></th>
+						<td><p>The option dictionary. The valid keys are:</p>
+
+<ul>
+<li><code>kSTColorizerTypeKey</code>: <a href="../Constants/STColorizerType.html">STColorizerType</a> value specifying the colorizing algorithm.</li>
+<li><code>kSTColorizerPrioritizeFirstFrameColorKey</code>: boolean value to specify whether the colorizer should give the first frame the highest priority. This is particularly useful when we want to emphasize the appearance in the first frame, e.g., scanning a face. Only supported by <code>STColorizerTextureMapForObject</code>.</li>
+<li><code>kSTColorizerTargetNumberOfFacesKey</code>: integer value to specify a target number of faces for the final mesh. Only supported by <code>STColorizerTextureMapForObject</code>.</li>
+<li><code>kSTColorizerQualityKey</code>: <a href="../Constants/STColorizerQuality.html">STColorizerQuality</a> value specifying the desired speed/quality trade-off. Note: only <code>STColorizerTextureMapForObject</code> will honor this option. Default is <code>STColorizerHighQuality</code>.</li>
+</ul>
+</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>will contain detailed information if the provided options are incorrect.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<div class="note"><p><strong>Note:</strong> All the keyframes must have the same image size.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StructureSLAM.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Occipital. All rights reserved. Updated: 2016-02-29</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BV1-FR-VrT">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Light.ttf">
+            <string>OpenSans-Light</string>
+            <string>OpenSans-Light</string>
+            <string>OpenSans-Light</string>
+            <string>OpenSans-Light</string>
+            <string>OpenSans-Light</string>
+            <string>OpenSans-Light</string>
+            <string>OpenSans-Light</string>
+        </mutableArray>
+        <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController id="BV1-FR-VrT" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="E9S-5O-7jO"/>
+                        <viewControllerLayoutGuide type="bottom" id="CDu-Xu-Wuf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SCNView">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mission Statements" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vnm-aO-GdX">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="36" id="2Q6-zw-xk7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="30"/>
+                                <color key="textColor" red="0.99215686270000003" green="0.99215686270000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fgt-5G-aJ4" userLabel="Reset">
+                                <rect key="frame" x="0.0" y="42" width="256" height="42"/>
+                                <color key="backgroundColor" red="0.56210134700000003" green="0.92743981669999997" blue="1" alpha="0.32000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="256" id="3Be-fj-r7R"/>
+                                    <constraint firstAttribute="height" constant="42" id="MRs-de-YOm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="30"/>
+                                <state key="normal" title="Reset">
+                                    <color key="titleColor" red="0.97851941589094704" green="0.95976881635614375" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="375-Lh-4AP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X7z-Md-Osz" userLabel="Jump to Lab">
+                                <rect key="frame" x="0.0" y="100" width="256" height="42"/>
+                                <color key="backgroundColor" red="0.56210134700000003" green="0.92743981669999997" blue="1" alpha="0.32000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="256" id="6dZ-xB-SZs"/>
+                                    <constraint firstAttribute="height" constant="42" id="DxF-qc-hH9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="30"/>
+                                <state key="normal" title="Jump to Lab">
+                                    <color key="titleColor" red="0.97851941590000002" green="0.9597688164" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="jumpToLabButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="RY0-kK-5f5"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uAh-Rg-6up" userLabel="Reticle View">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQj-Z6-2wT" userLabel="LockPanView">
+                                        <rect key="frame" x="202" y="650" width="619" height="95"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Virtual Position Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v64-nK-6IJ">
+                                                <rect key="frame" x="196" y="6" width="226" height="21"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="19"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LockPanIcon_Locked" translatesAutoresizingMaskIntoConstraints="NO" id="L7r-84-OgQ">
+                                                <rect key="frame" x="280" y="29" width="59" height="51"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="619" id="PCC-3o-Jb3"/>
+                                            <constraint firstAttribute="height" constant="95" id="xqh-Nb-uvp"/>
+                                        </constraints>
+                                    </view>
+                                    <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gIp-7f-KkQ" userLabel="LockHintView">
+                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PersonMove4" translatesAutoresizingMaskIntoConstraints="NO" id="DUQ-ss-CSL">
+                                                <rect key="frame" x="406" y="321" width="213" height="213"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="gQj-Z6-2wT" firstAttribute="centerX" secondItem="uAh-Rg-6up" secondAttribute="centerX" id="3bi-3T-CC7"/>
+                                    <constraint firstAttribute="bottom" secondItem="gQj-Z6-2wT" secondAttribute="bottom" constant="23" id="3qy-eE-WQ9"/>
+                                    <constraint firstAttribute="bottom" secondItem="gIp-7f-KkQ" secondAttribute="bottom" id="Tho-Vj-lNU"/>
+                                    <constraint firstItem="gIp-7f-KkQ" firstAttribute="leading" secondItem="uAh-Rg-6up" secondAttribute="leading" id="XES-Fq-6bp"/>
+                                    <constraint firstItem="gIp-7f-KkQ" firstAttribute="top" secondItem="uAh-Rg-6up" secondAttribute="top" id="r3w-Er-BTW"/>
+                                    <constraint firstAttribute="trailing" secondItem="gIp-7f-KkQ" secondAttribute="trailing" id="vz4-23-wRC"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Mki-BC-TuQ" userLabel="Right Button (Action)">
+                                <rect key="frame" x="838" y="450" width="200" height="400"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="30"/>
+                                <color key="tintColor" red="0.042568496347496647" green="0.19212641694765417" blue="0.23738061327077753" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentEdgeInsets" minX="16" minY="16" maxX="0.0" maxY="0.0"/>
+                                <size key="titleShadowOffset" width="2" height="2"/>
+                                <state key="normal" title="START">
+                                    <color key="titleColor" red="0.99215686270000003" green="0.99215686270000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="actionButtonDown:" destination="BV1-FR-VrT" eventType="touchDown" id="ZgS-uy-ryF"/>
+                                    <action selector="actionButtonUp:" destination="BV1-FR-VrT" eventType="touchUpOutside" id="X2c-FS-43b"/>
+                                    <action selector="actionButtonUp:" destination="BV1-FR-VrT" eventType="touchUpInside" id="mvp-T0-qeo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="fhA-as-K1e" userLabel="Left Button (Warp)">
+                                <rect key="frame" x="-16" y="450" width="200" height="400"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="30"/>
+                                <color key="tintColor" red="0.042568496349999999" green="0.19212641690000001" blue="0.23738061329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="16" maxX="16" maxY="0.0"/>
+                                <size key="titleShadowOffset" width="2" height="2"/>
+                                <state key="normal" title="WARP">
+                                    <color key="titleColor" red="0.99215686270000003" green="0.99215686270000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="warpButtonDown:" destination="BV1-FR-VrT" eventType="touchDown" id="2Kf-Ux-6cp"/>
+                                    <action selector="warpButtonUp:" destination="BV1-FR-VrT" eventType="touchUpOutside" id="QmY-TW-JDz"/>
+                                    <action selector="warpButtonUp:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Zhc-Pz-Qd9"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flj-ta-Vem" userLabel="Label - Tracking Status">
+                                <rect key="frame" x="232" y="200" width="600" height="89"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Too close!">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" metaFont="system" size="30"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="30" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Hold a finger on the device to lock, then turn towards open space.">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" metaFont="system" size="30"/>
+                                            <font key="NSOriginalFont" metaFont="system" size="30"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcM-NT-Evz" userLabel="Play Motion Logs">
+                                <rect key="frame" x="674" y="42" width="350" height="42"/>
+                                <color key="backgroundColor" red="0.56210134700000003" green="0.92743981669999997" blue="1" alpha="0.32000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="1WB-IE-dzd"/>
+                                    <constraint firstAttribute="height" constant="42" id="QHi-DZ-ZFR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="30"/>
+                                <state key="normal" title="Play Last Log">
+                                    <color key="titleColor" red="0.97851941590000002" green="0.9597688164" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playMotionLogsButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="JSd-s8-KK4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haA-JA-7i9" userLabel="Record Motion Log">
+                                <rect key="frame" x="674" y="100" width="350" height="42"/>
+                                <color key="backgroundColor" red="0.56210134700000003" green="0.92743981669999997" blue="1" alpha="0.32000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="ERI-LH-d0k"/>
+                                    <constraint firstAttribute="width" constant="350" id="Smk-U2-F5j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="30"/>
+                                <state key="normal" title="Record Motion Log">
+                                    <color key="titleColor" red="0.97851941590000002" green="0.9597688164" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="recordButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="VHF-H9-S29"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="haA-JA-7i9" firstAttribute="trailing" secondItem="dcM-NT-Evz" secondAttribute="trailing" id="3ID-yt-LCV"/>
+                            <constraint firstItem="Fgt-5G-aJ4" firstAttribute="top" secondItem="Vnm-aO-GdX" secondAttribute="bottom" constant="6" id="5d3-sX-DyJ"/>
+                            <constraint firstItem="X7z-Md-Osz" firstAttribute="top" secondItem="Fgt-5G-aJ4" secondAttribute="bottom" constant="16" id="HT7-jR-BLm"/>
+                            <constraint firstItem="Fgt-5G-aJ4" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" constant="-20" id="JjX-U9-44y"/>
+                            <constraint firstItem="Vnm-aO-GdX" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="topMargin" id="LHV-Gy-Hcp"/>
+                            <constraint firstItem="X7z-Md-Osz" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" constant="-20" id="Pgh-Pm-tZl"/>
+                            <constraint firstItem="haA-JA-7i9" firstAttribute="top" secondItem="dcM-NT-Evz" secondAttribute="bottom" constant="16" id="Ply-TD-8Yk"/>
+                            <constraint firstItem="Vnm-aO-GdX" firstAttribute="width" secondItem="3se-qz-xqx" secondAttribute="width" id="Zjz-D9-tcW"/>
+                            <constraint firstItem="uAh-Rg-6up" firstAttribute="trailing" secondItem="dcM-NT-Evz" secondAttribute="trailing" id="adF-NU-NjY"/>
+                            <constraint firstItem="uAh-Rg-6up" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" id="bri-iA-Szc"/>
+                            <constraint firstItem="uAh-Rg-6up" firstAttribute="bottom" secondItem="CDu-Xu-Wuf" secondAttribute="top" id="gA8-Eo-F3B"/>
+                            <constraint firstAttribute="trailing" secondItem="uAh-Rg-6up" secondAttribute="trailing" id="ibi-33-2aN"/>
+                            <constraint firstItem="dcM-NT-Evz" firstAttribute="top" secondItem="Vnm-aO-GdX" secondAttribute="bottom" constant="6" id="jnx-FX-yk7"/>
+                            <constraint firstItem="uAh-Rg-6up" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" id="wqg-Me-1He"/>
+                            <constraint firstAttribute="centerX" secondItem="Vnm-aO-GdX" secondAttribute="centerX" id="zY1-05-gPo"/>
+                        </constraints>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="1024" height="768"/>
+                    <connections>
+                        <outlet property="actionButton" destination="Mki-BC-TuQ" id="ez0-hR-Lg3"/>
+                        <outlet property="lockHintImage" destination="DUQ-ss-CSL" id="rBh-cu-nJU"/>
+                        <outlet property="lockHintView" destination="gIp-7f-KkQ" id="obL-XP-VFn"/>
+                        <outlet property="lockPanView" destination="gQj-Z6-2wT" id="QHE-Ec-jos"/>
+                        <outlet property="missionLabel" destination="Vnm-aO-GdX" id="C5E-y6-l9M"/>
+                        <outlet property="playMotionLogsButton" destination="dcM-NT-Evz" id="1ne-E8-fEo"/>
+                        <outlet property="recordButton" destination="haA-JA-7i9" id="TcU-0T-jO1"/>
+                        <outlet property="reticleView" destination="uAh-Rg-6up" id="QOl-qh-5gq"/>
+                        <outlet property="trackingLostLabel" destination="flj-ta-Vem" id="m8i-cb-RQG"/>
+                        <outlet property="warpButton" destination="fhA-as-K1e" id="92Z-V4-xjW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="58" y="182"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="LockPanIcon_Locked" width="123" height="46"/>
+        <image name="PersonMove4" width="256" height="256"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+    <color key="tintColor" red="0.45506310459999999" green="0.65578073260000003" blue="0.99792951350000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+</document>
