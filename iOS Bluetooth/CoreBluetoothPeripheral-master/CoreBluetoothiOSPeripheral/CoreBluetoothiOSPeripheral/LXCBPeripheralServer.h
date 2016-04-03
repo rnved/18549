@@ -21,7 +21,10 @@
 
 @property(nonatomic, strong) NSString *serviceName;
 @property(nonatomic, strong) CBUUID *serviceUUID;
-@property(nonatomic, strong) CBUUID *characteristicUUID;
+@property(nonatomic, strong) CBUUID *vb1UUID;
+@property(nonatomic, strong) CBUUID *vb2UUID;
+@property(nonatomic, strong) CBUUID *vb3UUID;
+@property(nonatomic, strong) CBUUID *vb4UUID;
 
 // Returns YES if Bluetooth 4 LE is supported on this operation system.
 + (BOOL)isBluetoothSupported;

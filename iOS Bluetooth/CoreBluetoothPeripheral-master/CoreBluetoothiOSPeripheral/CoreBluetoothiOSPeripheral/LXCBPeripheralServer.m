@@ -12,7 +12,10 @@
     UIAlertViewDelegate>
 
 @property(nonatomic, strong) CBPeripheralManager *peripheral;
-@property(nonatomic, strong) CBMutableCharacteristic *characteristic;
+@property(nonatomic, strong) CBMutableCharacteristic *vb1;
+@property(nonatomic, strong) CBMutableCharacteristic *vb2;
+@property(nonatomic, strong) CBMutableCharacteristic *vb3;
+@property(nonatomic, strong) CBMutableCharacteristic *vb4;
 @property(nonatomic, assign) BOOL serviceRequiresRegistration;
 @property(nonatomic, strong) CBMutableService *service;
 @property(nonatomic, strong) NSData *pendingData;
@@ -59,21 +62,42 @@
   self.service = [[CBMutableService alloc]
                     initWithType:self.serviceUUID primary:YES];
 
-  // Set up the characteristic in the service. This characteristic is only
+  // Set up the vibe motor characteristics in the service. These characteristics are only
   // readable through subscription (CBCharacteristicsPropertyNotify) and has
   // no default value set.
   //
   // There is no need to set the permission on characteristic.
-  self.characteristic =
+  self.vb1 =
       [[CBMutableCharacteristic alloc]
-          initWithType:self.characteristicUUID
+          initWithType:self.vb1UUID
+            properties:CBCharacteristicPropertyNotify
+                 value:nil
+           permissions:0];
+    
+  self.vb2 =
+      [[CBMutableCharacteristic alloc]
+          initWithType:self.vb2UUID
+            properties:CBCharacteristicPropertyNotify
+                 value:nil
+           permissions:0];
+    
+  self.vb3 =
+      [[CBMutableCharacteristic alloc]
+          initWithType:self.vb3UUID
+            properties:CBCharacteristicPropertyNotify
+                 value:nil
+           permissions:0];
+    
+  self.vb4 =
+      [[CBMutableCharacteristic alloc]
+          initWithType:self.vb4UUID
             properties:CBCharacteristicPropertyNotify
                  value:nil
            permissions:0];
 
   // Assign the characteristic.
   self.service.characteristics =
-      [NSArray arrayWithObject:self.characteristic];
+      [NSArray arrayWithObjects:self.vb1, self.vb2, self.vb3, self.vb4, nil];
 
   // Add the service to the peripheral manager.
   [self.peripheral addService:self.service];
@@ -118,7 +142,7 @@
   }
 
   BOOL success = [self.peripheral updateValue:data
-                            forCharacteristic:self.characteristic
+                            forCharacteristic:self.vb1
                          onSubscribedCentrals:nil];
   if (!success) {
     LXCBLog(@"Failed to send data, buffering data for retry once ready.");
@@ -146,6 +170,7 @@
 - (void)peripheralManager:(CBPeripheralManager *)peripheral
             didAddService:(CBService *)service
                     error:(NSError *)error {
+  
   // As soon as the service is added, we should start advertising.
   [self startAdvertising];
 }
