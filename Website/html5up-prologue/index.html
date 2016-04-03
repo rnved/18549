@@ -52,6 +52,10 @@
 
 								<li><a href="#requirements" id="requirements-link" class="skel-layers-ignoreHref"><span class="icon fa-list-alt">Requirements</span></a></li>
 
+								<li><a href="#architecture" id="architecture-link" class="skel-layers-ignoreHref"><span class="icon fa-picture-o">Architecture</span></a></li>
+
+								<li><a href="#progress" id="progress-link" class="skel-layers-ignoreHref"><span class="icon fa-line-chart">Progress Update</span></a></li>
+
 								<li><a href="#techspecs" id="techspecs-link" class="skel-layers-ignoreHref"><span class="icon fa-list-ol">Technical Specifications</span></a></li>
 
 								<li><a href="#team" id="team-link" class="skel-layers-ignoreHref"><span class="icon fa-users">Meet the Team</span></a></li>
@@ -214,6 +218,49 @@
 						</div>
 					</section>
 
+					<!-- Interaction Diagrams -->
+					<section id="architecture" class="three">
+						<div class="container">
+
+							<header>
+								<h2>Architecture</h2>
+							</header>
+
+							<a href="#" class="image featured"><img src="images/architecture.png" alt="" /></a>
+
+							<ol>
+								<li>The architecture is divided up into 3 phases: perception, detection/computation, and feedback </li>
+								<li>In the perception phase, the Structure camera actively scans an indoor space to deliver depth data to an iOS device. Then in Detection/Computation phase, the major directional categorization of various object detection points happens. Based on the data from Structure, the iOS application will compute and match the zone type with close object point detections. Finally, in the feedback phase, haptic feedback is delivered through the vibration motor based on object zone type match. Additionally, the vibration intensity will vary depending on the proximity of the user to the object.</li>
+							</ol>
+
+						</div>
+					</section>
+
+					<!-- Progress Update -->
+					<section id="progress" class="three">
+						<div class="container">
+
+							<header>
+								<h2>Progress Update (Up to March 28, 2016)</h2>
+							</header>
+
+							<h3>Software</h3>
+
+								<ol>
+									<li>We now have a full application that connects to the Structure sensor. With it, we are able to read and process depth data, find the distance and location of the closest object, and also divide the screen into seperate sectors depending on where the cloest object is.</li>
+								</ol>
+
+							<h3>Hardware</h3>
+
+								<ol>
+									<li>We now have a stand alone iOS app that broadcasts a service with 4 characteristics. These different characteristics represent vibe motor intensity which controlled by the PWM duty cycle. BLE module chip Atmel SAM B11-MR210CA is now able to scan for these services, subsribe to 4 charactistics. By subscribing to these characteristics, we are able to monitor data from the module in real time. Below is a reference of the protocol we are following.</li>
+								</ol>
+
+								<a href="#" class="image featured"><img src="images/bleProtocol.png" alt="" /></a>
+						
+						</div>
+					</section>
+
 					<!-- Technical Specifications -->
 					<section id="techspecs" class="three">
 						<div class="container">
@@ -261,6 +308,10 @@
 
 						</div>
 					</section>
+
+					
+
+					
 
 					<!-- Meet the Team -->
 					<section id="team" class="four">
