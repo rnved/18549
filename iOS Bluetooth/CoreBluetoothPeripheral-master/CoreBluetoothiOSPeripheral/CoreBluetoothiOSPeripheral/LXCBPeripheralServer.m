@@ -135,18 +135,18 @@
 
 #pragma mark -
 
-- (void)sendToSubscribers:(NSData *)data {
+- (void)sendToSubscribers:(NSArray *)data {
   if (self.peripheral.state != CBPeripheralManagerStatePoweredOn) {
-    LXCBLog(@"sendToSubscribers: peripheral not ready for sending state: %d", self.peripheral.state);
+    LXCBLog(@"sendToSubscribers: peripheral not ready for sending state: %ld", (long)self.peripheral.state);
     return;
   }
 
-  BOOL success = [self.peripheral updateValue:data
+  BOOL success = [self.peripheral updateValue:data[0]
                             forCharacteristic:self.vb1
                          onSubscribedCentrals:nil];
   if (!success) {
     LXCBLog(@"Failed to send data, buffering data for retry once ready.");
-    self.pendingData = data;
+    self.pendingData = data[0];
     return;
   }
 }
@@ -243,7 +243,7 @@ didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic {
   if (self.pendingData) {
     NSData *data = [self.pendingData copy];
     self.pendingData = nil;
-    [self sendToSubscribers:data];
+    [self sendToSubscribers:@[data]];
   }
 }
 

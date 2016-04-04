@@ -35,8 +35,9 @@
 
 
   self.peripheral = [[LXCBPeripheralServer alloc] initWithDelegate:self];
-  self.peripheral.serviceName = @"Rishi";
-  self.peripheral.serviceUUID = [CBUUID UUIDWithString:@"63146596-6BB6-4229-9928-C2F8C3B20C01"];
+  self.peripheral.serviceName = @"Perception";
+  self.peripheral.serviceUUID = [CBUUID UUIDWithString:@"6314"];
+  //self.peripheral.serviceUUID = [CBUUID UUIDWithString:@"63146596-6BB6-4229-9928-C2F8C3B20C01"];
   self.peripheral.vb1UUID = [CBUUID UUIDWithString:@"420107B0-06BF-40C3-B977-6A0EEEC2A3DC"];
   self.peripheral.vb2UUID = [CBUUID UUIDWithString:@"706E2A15-B476-4096-9D0B-BDAB89F08938"];
   self.peripheral.vb3UUID = [CBUUID UUIDWithString:@"3AA4ED79-F7DF-4F69-98BF-11F69B9E6ED0"];
@@ -77,10 +78,10 @@
 #pragma mark - LXCBPeripheralServerDelegate
 
 - (void)peripheralServer:(LXCBPeripheralServer *)peripheral centralDidSubscribe:(CBCentral *)central {
-  [self.peripheral sendToSubscribers:/*@[*/[@"Hello" dataUsingEncoding:NSUTF8StringEncoding]/*,
-                                       [@"Hello" dataUsingEncoding:NSUTF8StringEncoding]
-                                       [@"Hello" dataUsingEncoding:NSUTF8StringEncoding]
-                                       [@"Hello" dataUsingEncoding:NSUTF8StringEncoding]*/];
+  [self.peripheral sendToSubscribers:@[[@"Vibe 1" dataUsingEncoding:NSUTF8StringEncoding],
+                                       [@"Vibe 2" dataUsingEncoding:NSUTF8StringEncoding],
+                                       [@"Vibe 3" dataUsingEncoding:NSUTF8StringEncoding],
+                                       [@"Vibe 4" dataUsingEncoding:NSUTF8StringEncoding]]];
   // TODO: How to do multiple characteristics? 
   [self.viewController centralDidConnect];
 }

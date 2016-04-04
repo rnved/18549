@@ -31,7 +31,7 @@
 
 - (id)initWithDelegate:(id<LXCBPeripheralServerDelegate>)delegate;
 
-- (void)sendToSubscribers:(NSData *)data;
+- (void)sendToSubscribers:(NSArray *)data;
 
 // Called by the application if it enters the background.
 - (void)applicationDidEnterBackground;
