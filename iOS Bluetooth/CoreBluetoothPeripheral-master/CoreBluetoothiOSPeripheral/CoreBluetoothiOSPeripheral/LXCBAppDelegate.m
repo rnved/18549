@@ -1,6 +1,7 @@
 #import "LXCBAppDelegate.h"
 #import "LXCBPeripheralServer.h"
 #import "LXCBViewController.h"
+#import "UUIDs.h"
 
 @interface LXCBAppDelegate () <LXCBPeripheralServerDelegate>
 
@@ -33,15 +34,13 @@
     [self attachUserInterface];
   }
 
-
   self.peripheral = [[LXCBPeripheralServer alloc] initWithDelegate:self];
-  self.peripheral.serviceName = @"Perception";
-  self.peripheral.serviceUUID = [CBUUID UUIDWithString:@"6314"];
-  //self.peripheral.serviceUUID = [CBUUID UUIDWithString:@"63146596-6BB6-4229-9928-C2F8C3B20C01"];
-  self.peripheral.vb1UUID = [CBUUID UUIDWithString:@"420107B0-06BF-40C3-B977-6A0EEEC2A3DC"];
-  self.peripheral.vb2UUID = [CBUUID UUIDWithString:@"706E2A15-B476-4096-9D0B-BDAB89F08938"];
-  self.peripheral.vb3UUID = [CBUUID UUIDWithString:@"3AA4ED79-F7DF-4F69-98BF-11F69B9E6ED0"];
-  self.peripheral.vb4UUID = [CBUUID UUIDWithString:@"E7CA3B78-5857-4841-BA50-38A3F1EDFE75"];
+  self.peripheral.serviceName = SERVICE_NAME;
+  self.peripheral.serviceUUID = [CBUUID UUIDWithString:SERVICE_UUID];
+  self.peripheral.vb1UUID = [CBUUID UUIDWithString:VB1_UUID];
+  self.peripheral.vb2UUID = [CBUUID UUIDWithString:VB2_UUID];
+  self.peripheral.vb3UUID = [CBUUID UUIDWithString:VB3_UUID];
+  self.peripheral.vb4UUID = [CBUUID UUIDWithString:VB4_UUID];
 
   [self.peripheral startAdvertising];
 
@@ -77,12 +76,25 @@
 
 #pragma mark - LXCBPeripheralServerDelegate
 
-- (void)peripheralServer:(LXCBPeripheralServer *)peripheral centralDidSubscribe:(CBCentral *)central {
-  [self.peripheral sendToSubscribers:@[[@"Vibe 1" dataUsingEncoding:NSUTF8StringEncoding],
-                                       [@"Vibe 2" dataUsingEncoding:NSUTF8StringEncoding],
-                                       [@"Vibe 3" dataUsingEncoding:NSUTF8StringEncoding],
-                                       [@"Vibe 4" dataUsingEncoding:NSUTF8StringEncoding]]];
-  // TODO: How to do multiple characteristics? 
+- (void)peripheralServer:(LXCBPeripheralServer *)peripheral
+            centralDidSubscribe:(CBCentral *)central
+                chosenCharacteristic:(CBCharacteristic *) characteristic {
+  NSString* data = nil;
+  if([characteristic.UUID.UUIDString isEqual:VB1_UUID]) {
+      data = @"Vibe 1";
+  } else if ([characteristic.UUID.UUIDString isEqual:VB2_UUID]) {
+      data = @"Vibe 2";
+  } else if ([characteristic.UUID.UUIDString isEqual:VB3_UUID]) {
+      data = @"Vibe 3";
+  } else if ([characteristic.UUID.UUIDString isEqual:VB4_UUID]) {
+      data = @"Vibe 4";
+  } else {
+      data = @"Not a matching characteristic";
+  }
+    
+  [self.peripheral sendToSubscribers:[data dataUsingEncoding:NSUTF8StringEncoding]
+            chosenCharacteristic:characteristic];
+  
   [self.viewController centralDidConnect];
 }
 

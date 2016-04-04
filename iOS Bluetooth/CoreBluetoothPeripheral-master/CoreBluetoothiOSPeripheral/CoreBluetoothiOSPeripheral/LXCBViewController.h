@@ -4,7 +4,6 @@
 
 @property (strong) UILabel *label;
 
-- (void)buttonPressed:(UIButton *)button;
 - (void)centralDidConnect;
 - (void)centralDidDisconnect;
 

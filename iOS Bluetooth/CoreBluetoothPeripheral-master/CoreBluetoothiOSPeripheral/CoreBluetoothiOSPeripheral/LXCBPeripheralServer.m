@@ -1,6 +1,7 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 
 #import "LXCBPeripheralServer.h"
+#import "UUIDs.h"
 
 #ifndef LXCBLog
 # define LXCBLog NSLog
@@ -19,6 +20,7 @@
 @property(nonatomic, assign) BOOL serviceRequiresRegistration;
 @property(nonatomic, strong) CBMutableService *service;
 @property(nonatomic, strong) NSData *pendingData;
+@property(nonatomic, strong) CBCharacteristic *pendingCharacteristic;
 
 @end
 
@@ -70,30 +72,30 @@
   self.vb1 =
       [[CBMutableCharacteristic alloc]
           initWithType:self.vb1UUID
-            properties:CBCharacteristicPropertyNotify
+            properties:CBCharacteristicPropertyNotify|CBCharacteristicPropertyRead|CBCharacteristicPropertyIndicate
                  value:nil
-           permissions:0];
+           permissions:CBAttributePermissionsReadable];
     
   self.vb2 =
       [[CBMutableCharacteristic alloc]
           initWithType:self.vb2UUID
-            properties:CBCharacteristicPropertyNotify
+            properties:CBCharacteristicPropertyNotify|CBCharacteristicPropertyRead|CBCharacteristicPropertyIndicate
                  value:nil
-           permissions:0];
+           permissions:CBAttributePermissionsReadable];
     
   self.vb3 =
       [[CBMutableCharacteristic alloc]
           initWithType:self.vb3UUID
-            properties:CBCharacteristicPropertyNotify
+            properties:CBCharacteristicPropertyNotify|CBCharacteristicPropertyRead|CBCharacteristicPropertyIndicate
                  value:nil
-           permissions:0];
+           permissions:CBAttributePermissionsReadable];
     
   self.vb4 =
       [[CBMutableCharacteristic alloc]
           initWithType:self.vb4UUID
-            properties:CBCharacteristicPropertyNotify
+            properties:CBCharacteristicPropertyNotify|CBCharacteristicPropertyRead|CBCharacteristicPropertyIndicate
                  value:nil
-           permissions:0];
+           permissions:CBAttributePermissionsReadable];
 
   // Assign the characteristic.
   self.service.characteristics =
@@ -135,18 +137,20 @@
 
 #pragma mark -
 
-- (void)sendToSubscribers:(NSArray *)data {
+- (void)sendToSubscribers:(NSData *)data
+     chosenCharacteristic:(CBCharacteristic *)characteristic{
   if (self.peripheral.state != CBPeripheralManagerStatePoweredOn) {
     LXCBLog(@"sendToSubscribers: peripheral not ready for sending state: %ld", (long)self.peripheral.state);
     return;
   }
 
-  BOOL success = [self.peripheral updateValue:data[0]
-                            forCharacteristic:self.vb1
+  BOOL success = [self.peripheral updateValue:data
+                            forCharacteristic:(CBMutableCharacteristic *)characteristic
                          onSubscribedCentrals:nil];
   if (!success) {
     LXCBLog(@"Failed to send data, buffering data for retry once ready.");
-    self.pendingData = data[0];
+    self.pendingData = data;
+    self.pendingCharacteristic = characteristic;
     return;
   }
 }
@@ -219,7 +223,7 @@
 didSubscribeToCharacteristic:(CBCharacteristic *)characteristic {
   LXCBLog(@"didSubscribe: %@", characteristic.UUID);
   //LXCBLog(@"didSubscribe: - Central: %@", central.UUID);
-  [self.delegate peripheralServer:self centralDidSubscribe:central];
+  [self.delegate peripheralServer:self centralDidSubscribe:central chosenCharacteristic:characteristic];
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral
@@ -243,8 +247,47 @@ didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic {
   if (self.pendingData) {
     NSData *data = [self.pendingData copy];
     self.pendingData = nil;
-    [self sendToSubscribers:@[data]];
+    CBMutableCharacteristic *characteristic = [self.pendingCharacteristic copy];
+    self.pendingCharacteristic = nil;
+    [self sendToSubscribers:data chosenCharacteristic:characteristic];
   }
+}
+
+- (void)peripheralManager:(CBPeripheralManager *)peripheral
+    didReceiveReadRequest:(CBATTRequest *)request {
+    LXCBLog(@"didReceiveReadRequest");
+    
+    CBCharacteristic *characteristic = nil;
+    
+    if([request.characteristic.UUID isEqual:self.vb1.UUID]) {
+      self.vb1.value = (NSData *)@"Vibe 1";
+      characteristic = self.vb1;
+    } else if ([request.characteristic.UUID isEqual:self.vb2.UUID]) {
+        self.vb2.value = (NSData *)@"Vibe 2";
+        characteristic = self.vb2;
+    } else if ([request.characteristic.UUID isEqual:self.vb3.UUID]) {
+        self.vb3.value = (NSData *)@"Vibe 3";
+        characteristic = self.vb3;
+    } else if ([request.characteristic.UUID isEqual:self.vb4.UUID]) {
+        self.vb4.value = (NSData *)@"Vibe 4";
+        characteristic = self.vb4;
+    } else {
+        LXCBLog(@"Not a valid read request. Did not match any characteristic");
+        [peripheral respondToRequest:request withResult:CBATTErrorAttributeNotFound];
+        return;
+    }
+    
+    if(request.offset > characteristic.value.length) {
+      [peripheral respondToRequest:request withResult:CBATTErrorInvalidOffset];
+      return;
+    }
+    
+    request.value = characteristic.value;
+    /*request.value = [characteristic.value
+        subdataWithRange:NSMakeRange(request.offset,
+        characteristic.value.length - request.offset)];*/
+    
+    [peripheral respondToRequest:request withResult:CBATTErrorSuccess];
 }
 
 @end

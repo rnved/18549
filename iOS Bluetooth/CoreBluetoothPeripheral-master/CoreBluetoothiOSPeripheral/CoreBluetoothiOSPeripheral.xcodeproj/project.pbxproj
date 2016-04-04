@@ -24,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B02E3631CB2E74000EE18AA /* UUIDs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UUIDs.h; sourceTree = "<group>"; };
 		6463071516F94ECE004FD777 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		6463071616F94ECE004FD777 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		64ED9AA9164754A900F39EAE /* CoreBluetoothiOSPeripheral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreBluetoothiOSPeripheral.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +95,7 @@
 			children = (
 				64ED9ABC164754A900F39EAE /* LXCBAppDelegate.h */,
 				64ED9ABD164754A900F39EAE /* LXCBAppDelegate.m */,
+				5B02E3631CB2E74000EE18AA /* UUIDs.h */,
 				64ED9ACC1647551500F39EAE /* LXCBPeripheralServer.h */,
 				64ED9ACD1647551500F39EAE /* LXCBPeripheralServer.m */,
 				64ED9ADA16475D4800F39EAE /* LXCBViewController.h */,

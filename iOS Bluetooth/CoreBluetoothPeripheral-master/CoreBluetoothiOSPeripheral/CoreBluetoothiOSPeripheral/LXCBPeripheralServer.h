@@ -31,7 +31,7 @@
 
 - (id)initWithDelegate:(id<LXCBPeripheralServerDelegate>)delegate;
 
-- (void)sendToSubscribers:(NSArray *)data;
+- (void)sendToSubscribers:(NSData *)data chosenCharacteristic:(CBCharacteristic *)characteristic;
 
 // Called by the application if it enters the background.
 - (void)applicationDidEnterBackground;
@@ -50,7 +50,7 @@
 @protocol LXCBPeripheralServerDelegate <NSObject>
 
 // Called when the peripheral receives a new subscriber.
-- (void)peripheralServer:(LXCBPeripheralServer *)peripheral centralDidSubscribe:(CBCentral *)central;
+- (void)peripheralServer:(LXCBPeripheralServer *)peripheral centralDidSubscribe:(CBCentral *)central chosenCharacteristic:(CBCharacteristic *)characteristic;
 
 - (void)peripheralServer:(LXCBPeripheralServer *)peripheral centralDidUnsubscribe:(CBCentral *)central;
 
