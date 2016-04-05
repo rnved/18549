@@ -4,7 +4,7 @@
 #import "UUIDs.h"
 
 #ifndef LXCBLog
-# define LXCBLog NSLog
+#define LXCBLog NSLog
 #endif
 
 
@@ -254,40 +254,39 @@ didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic {
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral
-    didReceiveReadRequest:(CBATTRequest *)request {
-    LXCBLog(@"didReceiveReadRequest");
+  didReceiveReadRequest:(CBATTRequest *)request {
+  LXCBLog(@"didReceiveReadRequest");
     
-    CBCharacteristic *characteristic = nil;
+  CBCharacteristic *characteristic = nil;
     
-    if([request.characteristic.UUID isEqual:self.vb1.UUID]) {
-      self.vb1.value = (NSData *)@"Vibe 1";
-      characteristic = self.vb1;
-    } else if ([request.characteristic.UUID isEqual:self.vb2.UUID]) {
-        self.vb2.value = (NSData *)@"Vibe 2";
-        characteristic = self.vb2;
-    } else if ([request.characteristic.UUID isEqual:self.vb3.UUID]) {
-        self.vb3.value = (NSData *)@"Vibe 3";
-        characteristic = self.vb3;
-    } else if ([request.characteristic.UUID isEqual:self.vb4.UUID]) {
-        self.vb4.value = (NSData *)@"Vibe 4";
-        characteristic = self.vb4;
-    } else {
-        LXCBLog(@"Not a valid read request. Did not match any characteristic");
-        [peripheral respondToRequest:request withResult:CBATTErrorAttributeNotFound];
-        return;
-    }
-    
-    if(request.offset > characteristic.value.length) {
-      [peripheral respondToRequest:request withResult:CBATTErrorInvalidOffset];
+  if([request.characteristic.UUID isEqual:self.vb1.UUID]) {
+    self.vb1.value = [@"Vibe 1" dataUsingEncoding:NSUTF8StringEncoding];
+    characteristic = self.vb1;
+  } else if ([request.characteristic.UUID isEqual:self.vb2.UUID]) {
+      self.vb2.value = [@"Vibe 2" dataUsingEncoding:NSUTF8StringEncoding];
+      characteristic = self.vb2;
+  } else if ([request.characteristic.UUID isEqual:self.vb3.UUID]) {
+      self.vb3.value = [@"Vibe 3" dataUsingEncoding:NSUTF8StringEncoding];
+      characteristic = self.vb3;
+  } else if ([request.characteristic.UUID isEqual:self.vb4.UUID]) {
+      self.vb4.value = [@"Vibe 4" dataUsingEncoding:NSUTF8StringEncoding];
+      characteristic = self.vb4;
+  } else {
+      LXCBLog(@"Not a valid read request. Did not match any characteristic");
+      [peripheral respondToRequest:request withResult:CBATTErrorAttributeNotFound];
       return;
-    }
+  }
     
-    request.value = characteristic.value;
-    /*request.value = [characteristic.value
-        subdataWithRange:NSMakeRange(request.offset,
-        characteristic.value.length - request.offset)];*/
+  if(request.offset > characteristic.value.length) {
+  [_peripheral respondToRequest:request withResult:CBATTErrorInvalidOffset];
+    return;
+  }
+  
+  request.value = [characteristic.value
+      subdataWithRange:NSMakeRange(request.offset,
+      characteristic.value.length - request.offset)];
     
-    [peripheral respondToRequest:request withResult:CBATTErrorSuccess];
+  [peripheral respondToRequest:request withResult:CBATTErrorSuccess];
 }
 
 @end
