@@ -6,15 +6,58 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "LXCBPeripheralServer.h"
+#import "UUIDs.h"
+
+@interface AppDelegate () <LXCBPeripheralServerDelegate>
+
+@property (nonatomic, strong) LXCBPeripheralServer *peripheral;
+
+@end
 
 @implementation AppDelegate
 
+- (void)attachUserInterface {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    self.viewController = [[ViewController alloc] init];
+    self.window.rootViewController = self.viewController;
+    
+    [self.window makeKeyAndVisible];
+    
+}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    /********************* BEGIN BLUETOOTH *********************************/
+    // If the application is in the background state, then we have been
+    // woken up because of a bluetooth event. Otherwise, we can initialize the
+    // UI.
+    NSLog(@"didFinishedLaunching: %@", launchOptions);
+    if (application.applicationState != UIApplicationStateBackground) {
+        [self attachUserInterface];
+    }
+    
+    self.peripheral = [[LXCBPeripheralServer alloc] initWithDelegate:self];
+    self.peripheral.serviceName = SERVICE_NAME;
+    self.peripheral.serviceUUID = [CBUUID UUIDWithString:SERVICE_UUID];
+    self.peripheral.vb1UUID = [CBUUID UUIDWithString:VB1_UUID];
+    self.peripheral.vb2UUID = [CBUUID UUIDWithString:VB2_UUID];
+    self.peripheral.vb3UUID = [CBUUID UUIDWithString:VB3_UUID];
+    self.peripheral.vb4UUID = [CBUUID UUIDWithString:VB4_UUID];
+    
+    [self.peripheral startAdvertising];
+    
+    /********************** DONT MOVE TO NEXT PART UNTIL CONNECTION CONFIRMED **************/
+        
+    /********************** BEGIN STRUCTURE *********************************/
+    
     // STWirelessLog is very helpful for debugging while your Structure Sensor is plugged in.
     // See SDK documentation for how to start a listener on your computer.
     NSError* error = nil;
-    NSString *remoteLogHost = @"128.237.218.83";
+    NSString *remoteLogHost = @"128.237.234.196";
     [STWirelessLog broadcastLogsToWirelessConsoleAtAddress:remoteLogHost usingPort:4999 error:&error];
     if (error)
         NSLog(@"Oh no! Can't start wireless log: %@", [error localizedDescription]);
@@ -63,11 +106,16 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [self.peripheral applicationDidEnterBackground];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    if (!self.window) {
+        [self attachUserInterface];
+    }
+    [self.peripheral applicationWillEnterForeground];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -78,6 +126,43 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    NSLog(@"Application terminating");
+    // Cry for help.
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    notification.alertBody = @"I'm dying!";
+    notification.alertAction = @"Rescue";
+    notification.fireDate = [NSDate date];
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
+
+#pragma mark - LXCBPeripheralServerDelegate
+
+- (void)peripheralServer:(LXCBPeripheralServer *)peripheral
+     centralDidSubscribe:(CBCentral *)central
+    chosenCharacteristic:(CBCharacteristic *) characteristic {
+    NSString* data = nil;
+    if([characteristic.UUID.UUIDString isEqual:VB1_UUID]) {
+        data = @"Vibe 1";
+    } else if ([characteristic.UUID.UUIDString isEqual:VB2_UUID]) {
+        data = @"Vibe 2";
+    } else if ([characteristic.UUID.UUIDString isEqual:VB3_UUID]) {
+        data = @"Vibe 3";
+    } else if ([characteristic.UUID.UUIDString isEqual:VB4_UUID]) {
+        data = @"Vibe 4";
+    } else {
+        data = @"Not a matching characteristic";
+    }
+    
+    [self.peripheral sendToSubscribers:[data dataUsingEncoding:NSUTF8StringEncoding]
+                  chosenCharacteristic:characteristic];
+    
+    [self.viewController centralDidConnect];
+}
+
+- (void)peripheralServer:(LXCBPeripheralServer *)peripheral centralDidUnsubscribe:(CBCentral *)central {
+    [self.viewController centralDidDisconnect];
+    
+}
+
 
 @end

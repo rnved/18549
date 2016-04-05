@@ -18,14 +18,7 @@
   self.label.backgroundColor = [UIColor clearColor];
   self.label.textColor = [UIColor colorWithWhite:0.7 alpha:1.0];;
   [self.view addSubview:self.label];
-    
-  /*UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-  [button setTitle:@"Connect to BLE Module" forState:UIControlStateNormal];
-  [button sizeToFit];
-  button.center = CGPointMake(320/2, 60);
-  [button addTarget:self action:@selector(buttonPressed:)
-   forControlEvents:UIControlEventTouchUpInside];
-  [self.view addSubview:button];*/
+  
 }
 
 - (void)viewDidLayoutSubviews {
@@ -33,10 +26,6 @@
   self.label.center = CGPointMake(CGRectGetMidX(self.view.bounds),
                                   CGRectGetMidY(self.view.bounds));
 }
-
-/*- (void)buttonPressed:(UIButton *)button {
-    NSLog(@"Button Pressed");
-}*/
 
 - (void)centralDidConnect {
   // Pulse the screen blue.

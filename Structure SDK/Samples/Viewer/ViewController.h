@@ -10,4 +10,9 @@
 
 @interface ViewController : UIViewController <STSensorControllerDelegate>
 
+@property (strong) UILabel *label;
+
+- (void)centralDidConnect;
+- (void)centralDidDisconnect;
+
 @end

@@ -16,6 +16,8 @@
 		2DFFE049199142E800761886 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DFFE048199142E800761886 /* CoreMotion.framework */; };
 		2DFFE04B199142EE00761886 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DFFE04A199142EE00761886 /* libz.dylib */; };
 		431C6F5318455ABD00EDB38B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 431C6F5218455ABD00EDB38B /* AVFoundation.framework */; };
+		5B7BC0C91CB4521C00C71F8C /* LXCBPeripheralServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7BC0C81CB4521C00C71F8C /* LXCBPeripheralServer.m */; };
+		5B7BC0D01CB45C2500C71F8C /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B7BC0CF1CB45C2500C71F8C /* CoreBluetooth.framework */; };
 		6F1239081862A59D00BD1D7A /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1239071862A59D00BD1D7A /* Accelerate.framework */; };
 		6F12390A1862A5D300BD1D7A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1239091862A5D300BD1D7A /* ImageIO.framework */; };
 		6F2B4EDB1865324D00403B8C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F7C0CC217F0EA0500692EC1 /* CoreGraphics.framework */; };
@@ -45,6 +47,10 @@
 		2DFFE048199142E800761886 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		2DFFE04A199142EE00761886 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		431C6F5218455ABD00EDB38B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5B7BC0C71CB4521C00C71F8C /* LXCBPeripheralServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LXCBPeripheralServer.h; path = "../../../iOS Bluetooth/CoreBluetoothPeripheral-master/CoreBluetoothiOSPeripheral/CoreBluetoothiOSPeripheral/LXCBPeripheralServer.h"; sourceTree = "<group>"; };
+		5B7BC0C81CB4521C00C71F8C /* LXCBPeripheralServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LXCBPeripheralServer.m; path = "../../../iOS Bluetooth/CoreBluetoothPeripheral-master/CoreBluetoothiOSPeripheral/CoreBluetoothiOSPeripheral/LXCBPeripheralServer.m"; sourceTree = "<group>"; };
+		5B7BC0CA1CB4522D00C71F8C /* UUIDs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUIDs.h; path = "../../../iOS Bluetooth/CoreBluetoothPeripheral-master/CoreBluetoothiOSPeripheral/CoreBluetoothiOSPeripheral/UUIDs.h"; sourceTree = "<group>"; };
+		5B7BC0CF1CB45C2500C71F8C /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreBluetooth.framework; sourceTree = DEVELOPER_DIR; };
 		6F1239071862A59D00BD1D7A /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		6F1239091862A5D300BD1D7A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		6F2B4EDC1865325D00403B8C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -76,6 +82,7 @@
 			files = (
 				1F52A18A1AC9E442004205DD /* Structure.framework in Frameworks */,
 				2DFFE04B199142EE00761886 /* libz.dylib in Frameworks */,
+				5B7BC0D01CB45C2500C71F8C /* CoreBluetooth.framework in Frameworks */,
 				2DFFE049199142E800761886 /* CoreMotion.framework in Frameworks */,
 				01FAFAF21964A14700BF040D /* QuartzCore.framework in Frameworks */,
 				6F7C0CC117F0EA0500692EC1 /* Foundation.framework in Frameworks */,
@@ -132,6 +139,7 @@
 				01FAFAF11964A14700BF040D /* QuartzCore.framework */,
 				6F7C0CC017F0EA0500692EC1 /* Foundation.framework */,
 				431C6F5218455ABD00EDB38B /* AVFoundation.framework */,
+				5B7BC0CF1CB45C2500C71F8C /* CoreBluetooth.framework */,
 				6F1239071862A59D00BD1D7A /* Accelerate.framework */,
 				6F2B4EDC1865325D00403B8C /* OpenGLES.framework */,
 				6F1239091862A5D300BD1D7A /* ImageIO.framework */,
@@ -150,6 +158,9 @@
 			children = (
 				6F7C0CD117F0EA0500692EC1 /* AppDelegate.h */,
 				6F7C0CD217F0EA0500692EC1 /* AppDelegate.m */,
+				5B7BC0C71CB4521C00C71F8C /* LXCBPeripheralServer.h */,
+				5B7BC0C81CB4521C00C71F8C /* LXCBPeripheralServer.m */,
+				5B7BC0CA1CB4522D00C71F8C /* UUIDs.h */,
 				6F7C0CDC17F0EA0500692EC1 /* ViewController.h */,
 				6F7C0CDA17F0EA0500692EC1 /* ViewController.mm */,
 				6F7C0CC917F0EA0500692EC1 /* Supporting Files */,
@@ -198,11 +209,11 @@
 		6F7C0CB517F0EA0500692EC1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Occipital;
 				TargetAttributes = {
 					6F7C0CBC17F0EA0500692EC1 = {
-						DevelopmentTeam = MQSJFKRN9Q;
+						DevelopmentTeam = E762WQMZ23;
 					};
 				};
 			};
@@ -247,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F7C0CDB17F0EA0500692EC1 /* ViewController.mm in Sources */,
+				5B7BC0C91CB4521C00C71F8C /* LXCBPeripheralServer.m in Sources */,
 				6F7C0CD317F0EA0500692EC1 /* AppDelegate.m in Sources */,
 				6F7C0CCF17F0EA0500692EC1 /* main.m in Sources */,
 			);
@@ -275,6 +287,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Frameworks";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -293,7 +306,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Viewer/Viewer-Prefix.pch";
 				INFOPLIST_FILE = "Viewer/Viewer-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Yassine;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Rishi-18549";
 				PRODUCT_NAME = Viewer;
 				PROVISIONING_PROFILE = "";
 			};
@@ -326,7 +339,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Viewer/Viewer-Prefix.pch";
 				INFOPLIST_FILE = "Viewer/Viewer-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Yassine;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Rishi-18549";
 				PRODUCT_NAME = Viewer;
 				PROVISIONING_PROFILE = "";
 			};
