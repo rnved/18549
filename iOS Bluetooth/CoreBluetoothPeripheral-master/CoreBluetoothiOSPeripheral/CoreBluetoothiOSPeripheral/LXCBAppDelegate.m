@@ -1,6 +1,7 @@
 #import "LXCBAppDelegate.h"
 #import "LXCBPeripheralServer.h"
 #import "LXCBViewController.h"
+#import "UUIDs.h"
 
 @interface LXCBAppDelegate () <LXCBPeripheralServerDelegate>
 
@@ -33,11 +34,14 @@
     [self attachUserInterface];
   }
 
-
   self.peripheral = [[LXCBPeripheralServer alloc] initWithDelegate:self];
-  self.peripheral.serviceName = @"Test";
-  self.peripheral.serviceUUID = [CBUUID UUIDWithString:@"7e57"];
-  self.peripheral.characteristicUUID = [CBUUID UUIDWithString:@"b71e"];
+  self.peripheral.serviceName = SERVICE_NAME;
+  self.peripheral.serviceUUID = [CBUUID UUIDWithString:SERVICE_UUID];
+  self.peripheral.vb1UUID = [CBUUID UUIDWithString:VB1_UUID];
+  self.peripheral.vb2UUID = [CBUUID UUIDWithString:VB2_UUID];
+  self.peripheral.vb3UUID = [CBUUID UUIDWithString:VB3_UUID];
+  self.peripheral.vb4UUID = [CBUUID UUIDWithString:VB4_UUID];
+
   [self.peripheral startAdvertising];
 
   return YES;
@@ -72,8 +76,25 @@
 
 #pragma mark - LXCBPeripheralServerDelegate
 
-- (void)peripheralServer:(LXCBPeripheralServer *)peripheral centralDidSubscribe:(CBCentral *)central {
-  [self.peripheral sendToSubscribers:[@"Hello" dataUsingEncoding:NSUTF8StringEncoding]];
+- (void)peripheralServer:(LXCBPeripheralServer *)peripheral
+            centralDidSubscribe:(CBCentral *)central
+                chosenCharacteristic:(CBCharacteristic *) characteristic {
+  NSString* data = nil;
+  if([characteristic.UUID.UUIDString isEqual:VB1_UUID]) {
+      data = @"Vibe 1";
+  } else if ([characteristic.UUID.UUIDString isEqual:VB2_UUID]) {
+      data = @"Vibe 2";
+  } else if ([characteristic.UUID.UUIDString isEqual:VB3_UUID]) {
+      data = @"Vibe 3";
+  } else if ([characteristic.UUID.UUIDString isEqual:VB4_UUID]) {
+      data = @"Vibe 4";
+  } else {
+      data = @"Not a matching characteristic";
+  }
+    
+  [self.peripheral sendToSubscribers:[data dataUsingEncoding:NSUTF8StringEncoding]
+            chosenCharacteristic:characteristic];
+  
   [self.viewController centralDidConnect];
 }
 
