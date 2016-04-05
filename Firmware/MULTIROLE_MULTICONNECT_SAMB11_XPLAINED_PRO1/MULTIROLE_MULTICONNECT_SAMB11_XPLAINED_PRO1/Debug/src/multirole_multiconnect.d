@@ -115,9 +115,7 @@ src/multirole_multiconnect.d src/multirole_multiconnect.o: \
  ../src/ASF/thirdparty/wireless/ble_smart_sdk/utils/ble_utils.h \
  ../src/ASF/thirdparty/wireless/ble_smart_sdk/ble_profiles/pxp_monitor/pxp_monitor.h \
  ../src/ASF/thirdparty/wireless/ble_smart_sdk/ble_services/immediate_alert/immediate_alert.h \
- ../src/ASF/thirdparty/wireless/ble_smart_sdk/services/timer_hw.h \
- ../src/ASF/thirdparty/wireless/ble_smart_sdk/ble_services/tx_power/tx_power.h \
- ../src/ASF/thirdparty/wireless/ble_smart_sdk/ble_services/link_loss/link_loss.h
+ ../src/ASF/thirdparty/wireless/ble_smart_sdk/services/timer_hw.h
 
 ../src/asf.h:
 
@@ -358,7 +356,3 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 ../src/ASF/thirdparty/wireless/ble_smart_sdk/ble_services/immediate_alert/immediate_alert.h:
 
 ../src/ASF/thirdparty/wireless/ble_smart_sdk/services/timer_hw.h:
-
-../src/ASF/thirdparty/wireless/ble_smart_sdk/ble_services/tx_power/tx_power.h:
-
-../src/ASF/thirdparty/wireless/ble_smart_sdk/ble_services/link_loss/link_loss.h:
