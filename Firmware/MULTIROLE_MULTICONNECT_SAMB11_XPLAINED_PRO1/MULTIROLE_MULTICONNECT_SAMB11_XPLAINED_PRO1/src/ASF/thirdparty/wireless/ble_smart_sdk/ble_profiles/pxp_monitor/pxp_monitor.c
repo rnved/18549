@@ -93,6 +93,8 @@ static const ble_event_callback_t pxp_gatt_client_handle[] = {
 	NULL
 };
 
+extern ble_connected_dev_info_t *ble_dev_info;
+
 /* pxp reporter device address to connect */
 at_ble_addr_t pxp_reporter_address;
 
@@ -220,8 +222,8 @@ at_ble_status_t pxp_monitor_scan_data_handler(void *params)
 			service_uuid.uuid[1] = (uint8_t)(0xC3B20C01 >> 8);//(LINK_LOSS_SERVICE_UUID >> 8);
 			service_uuid.uuid[0] = (uint8_t)(0xC3B20C01 >> 0);//(uint8_t)LINK_LOSS_SERVICE_UUID;
 			*/
-			service_uuid.uuid[1] = (uint8_t)(0x6314 >> 8);
-			service_uuid.uuid[0] = (uint8_t)(0x6314 >> 0);
+			service_uuid.uuid[1] = (uint8_t)(PERCEPTION_SERVICE_UUID >> 8);
+			service_uuid.uuid[0] = (uint8_t)(PERCEPTION_SERVICE_UUID >> 0);
 			//service_uuid.uuid[1] = (LINK_LOSS_SERVICE_UUID >> 8);
 			//service_uuid.uuid[0] = (uint8_t)LINK_LOSS_SERVICE_UUID;
 			
@@ -309,12 +311,12 @@ at_ble_status_t pxp_monitor_start_scan(void)
 	
 	if(index_value == 'r') {
 		if (gap_dev_connect(&pxp_reporter_address) == AT_BLE_SUCCESS) {
-			DBG_LOG("PXP Re-Connect request sent");
+			DBG_LOG("Perception Re-Connect request sent");
 			pxp_connect_request_flag = PXP_DEV_CONNECTING;
 			hw_timer_start_func_cb(PXP_CONNECT_REQ_INTERVAL);
 			return AT_BLE_SUCCESS;
 			} else {
-			DBG_LOG("PXP Re-Connect request send failed");
+			DBG_LOG("Perception Re-Connect request send failed");
 		}
 	}
 	else if(index_value == 's') {
@@ -396,6 +398,7 @@ at_ble_status_t pxp_monitor_service_discover(at_ble_handle_t handle)
 
 at_ble_status_t pxp_monitor_pair_done_handler(void *params)
 {
+	DBG_LOG("PAIR DONE HANDLER");
 	at_ble_status_t discovery_status = AT_BLE_FAILURE;
 	at_ble_pair_done_t *pair_done_val;
 	pair_done_val = (at_ble_pair_done_t *)params;		
@@ -410,7 +413,8 @@ at_ble_status_t pxp_monitor_pair_done_handler(void *params)
 	if (pair_done_val->status == AT_BLE_SUCCESS) {
 		discovery_status = pxp_monitor_service_discover(pair_done_val->handle);
 	} else {
-			return AT_BLE_FAILURE;
+		DBG_LOG("FAILURE");
+		return AT_BLE_FAILURE;
 	}
 	
 	pxp_connect_request_flag = PXP_DEV_PAIRED;
@@ -458,11 +462,37 @@ at_ble_status_t pxp_monitor_connected_state_handler(void *params)
 
 	pxp_connect_request_flag = PXP_DEV_CONNECTED;
 
-	at_ble_status_t discovery_status = AT_BLE_FAILURE;
-	discovery_status = pxp_monitor_service_discover(conn_params->handle);
+	//at_ble_status_t discovery_status = AT_BLE_FAILURE;
+	//discovery_status = pxp_monitor_service_discover(conn_params->handle);
+	
+	at_ble_pair_features_t features;
+	features.bond = false;
+	features.desired_auth = AT_BLE_NO_SEC;
+	features.initiator_keys = AT_BLE_KEY_DIST_NONE;
+	features.io_cababilities = AT_BLE_IO_CAP_NO_INPUT_NO_OUTPUT;
+	features.max_key_size = AT_BLE_MAX_KEY_LEN;
+	features.min_key_size = 8;
+	features.mitm_protection = false;
+	features.oob_avaiable = false;
+	features.responder_keys = AT_BLE_KEY_DIST_NONE;
+	
+	uint8_t idx;
+	for (idx = 0; idx < BLE_MAX_DEVICE_CONNECTED; idx++)
+	{
+		if((ble_dev_info[idx].conn_info.handle == conn_params->handle) && (ble_dev_info[idx].conn_state == BLE_DEVICE_CONNECTED))
+		{
+			ble_dev_info[idx].conn_state = BLE_DEVICE_PAIRING;
+			break;
+		}
+	}
+	
+	at_ble_status_t status = at_ble_authenticate(conn_params->handle, &features, NULL, NULL);
+	if (AT_BLE_SUCCESS != status) {
+		DBG_LOG("Pairing Failed, Status: 0x%x", status);
+	}
 		
-	return discovery_status;
-	//return conn_params->conn_status;
+	//return discovery_status;
+	return conn_params->conn_status;
 }
 
 /**@brief Discover the Proximity services

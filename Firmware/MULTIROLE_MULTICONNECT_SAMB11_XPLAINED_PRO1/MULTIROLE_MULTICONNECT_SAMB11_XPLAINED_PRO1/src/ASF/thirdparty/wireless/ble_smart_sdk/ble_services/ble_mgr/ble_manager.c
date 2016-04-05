@@ -1197,6 +1197,7 @@ at_ble_status_t ble_pair_request_handler(void *params)
 /** @brief function handles pair key request */
 at_ble_status_t ble_pair_key_request_handler (void *params)
 {
+	DBG_LOG("WELL IM HERE");
 	at_ble_pair_key_request_t *pair_key;
 	pair_key = (at_ble_pair_key_request_t *)params;
 	/* Passkey has fixed value in this example MSB */
