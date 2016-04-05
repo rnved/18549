@@ -693,22 +693,22 @@ at_ble_status_t pxp_monitor_characteristic_found_handler(void *params)
 
 	if (charac_16_uuid == VIBE1_INTENSITY_CHAR_UUID) {
 		perception_handle.char_handle1 = characteristic_found->value_handle;
-		DBG_LOG("Vibe 1 intensity characteristics: Attrib handle %x property %x handle: %x uuid : %x",
+		DBG_LOG_PTS("Vibe 1 intensity characteristics: Attrib handle %x property %x handle: %x uuid : %x",
 		characteristic_found->char_handle, characteristic_found->properties,
 		perception_handle.char_handle1, charac_16_uuid);
 	} else if (charac_16_uuid == VIBE2_INTENSITY_CHAR_UUID) {
 		perception_handle.char_handle2 = characteristic_found->value_handle;
-		DBG_LOG("Vibe 2 intensity characteristics: Attrib handle %x property %x handle: %x uuid : %x",
+		DBG_LOG_PTS("Vibe 2 intensity characteristics: Attrib handle %x property %x handle: %x uuid : %x",
 		characteristic_found->char_handle, characteristic_found->properties,
 		perception_handle.char_handle2, charac_16_uuid);
 	} else if (charac_16_uuid == VIBE3_INTENSITY_CHAR_UUID) {
 		perception_handle.char_handle3 = characteristic_found->value_handle;
-		DBG_LOG("Vibe 3 intensity characteristics: Attrib handle %x property %x handle: %x uuid : %x",
+		DBG_LOG_PTS("Vibe 3 intensity characteristics: Attrib handle %x property %x handle: %x uuid : %x",
 		characteristic_found->char_handle, characteristic_found->properties,
 		perception_handle.char_handle3, charac_16_uuid);
 	} else if (charac_16_uuid == VIBE4_INTENSITY_CHAR_UUID) {
 		perception_handle.char_handle4 = characteristic_found->value_handle;
-		DBG_LOG("Vibe 4 intensity characteristics: Attrib handle %x property %x handle: %x uuid : %x",
+		DBG_LOG_PTS("Vibe 4 intensity characteristics: Attrib handle %x property %x handle: %x uuid : %x",
 		characteristic_found->char_handle, characteristic_found->properties,
 		perception_handle.char_handle4, charac_16_uuid);
 	}
