@@ -546,10 +546,26 @@ const uint16_t maxShiftValue = 2048;
     else {
         ver = @"Center";
     }
-
     
     //printf ("Closest Pt: Depth=%d, Pixel=%d, row=%d, col=%d \n", min, min_pixel, row, col);
-    NSLog(@"Closest Object( %d mm) is at %@ & %@ row=%d, col=%d", min, ver, hor, row, col);
+    //NSLog(@"Closest Object( %d mm) is at %@ & %@ row=%d, col=%d", min, ver, hor, row, col);
+    
+    /*Find the depth of the closest object*/
+    NSString *distance = @"Very Close";
+    if (min < 400) {
+        distance = @"Very Close";
+    }
+    else if (min >= 400 && min < 800) {
+        distance = @"Close";
+    }
+    else {
+        distance = @"Far";
+    }
+    
+    NSLog(@"Closest Object( %d mm) is %@", min, distance);
+    
+    //printf ("Closest Pt: Depth=%d, Pixel=%d, row=%d, col=%d \n", min, min_pixel, row, col);
+    //NSLog(@"Closest Object( %d mm) is at %@ & %@ row=%d, col=%d", min, ver, hor, row, col);
 
     //printf ("Closest Pt: Depth=%d, Pixel=%d, row=%d, col=%d", minValueAndPixel[0],  minValueAndPixel[1] , minValueAndPixel[2], minValueAndPixel[3]);
     // findMinDepth Code END +++++++++++++++++++++++++++++++ END

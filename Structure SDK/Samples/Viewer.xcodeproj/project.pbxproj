@@ -202,7 +202,7 @@
 				ORGANIZATIONNAME = Occipital;
 				TargetAttributes = {
 					6F7C0CBC17F0EA0500692EC1 = {
-						DevelopmentTeam = R726SF8CJS;
+						DevelopmentTeam = MQSJFKRN9Q;
 					};
 				};
 			};
@@ -293,7 +293,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Viewer/Viewer-Prefix.pch";
 				INFOPLIST_FILE = "Viewer/Viewer-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "baekkyok-18-549";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Yassine;
 				PRODUCT_NAME = Viewer;
 				PROVISIONING_PROFILE = "";
 			};
@@ -326,7 +326,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Viewer/Viewer-Prefix.pch";
 				INFOPLIST_FILE = "Viewer/Viewer-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "baekkyok-18-549";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Yassine;
 				PRODUCT_NAME = Viewer;
 				PROVISIONING_PROFILE = "";
 			};
