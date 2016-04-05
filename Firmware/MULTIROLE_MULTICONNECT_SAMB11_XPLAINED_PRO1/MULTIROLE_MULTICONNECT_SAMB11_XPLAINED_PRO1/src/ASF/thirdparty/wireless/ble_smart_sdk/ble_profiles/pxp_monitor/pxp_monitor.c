@@ -93,18 +93,6 @@ static const ble_event_callback_t pxp_gatt_client_handle[] = {
 	NULL
 };
 
-/*#if defined TX_POWER_SERVICE
-#include "tx_power.h"
-#endif
-
-#if defined LINK_LOSS_SERVICE
-#include "link_loss.h"
-#endif
-
-#if defined IMMEDIATE_ALERT_SERVICE
-#include "immediate_alert.h"
-#endif*/
-
 /* pxp reporter device address to connect */
 at_ble_addr_t pxp_reporter_address;
 
@@ -116,25 +104,6 @@ extern volatile uint8_t scan_response_count;
 extern at_ble_scan_info_t scan_info[MAX_SCAN_DEVICE];
 
 volatile uint8_t pxp_connect_request_flag = PXP_DEV_UNCONNECTED;
-
-/*#if defined TX_POWER_SERVICE
-gatt_txps_char_handler_t txps_handle =
-{0, 0, 0, AT_BLE_INVALID_PARAM, NULL};
-uint8_t tx_power_char_data[MAX_TX_POWER_CHAR_SIZE];
-#endif
-
-#if defined LINK_LOSS_SERVICE
-gatt_lls_char_handler_t lls_handle =
-{0, 0, 0, AT_BLE_INVALID_PARAM, NULL};
-uint8_t lls_char_data[MAX_LLS_CHAR_SIZE];
-#endif
-
-#if defined IMMEDIATE_ALERT_SERVICE
-gatt_ias_char_handler_t ias_handle =
-{0, 0, 0, AT_BLE_INVALID_PARAM, NULL};
-uint8_t ias_char_data[MAX_IAS_CHAR_SIZE];
-#endif*/
-
 
 gatt_perception_char_handler_t perception_handle =
 {0, 0, 0, 0, 0, 0, AT_BLE_INVALID_PARAM, NULL, NULL, NULL, NULL};
@@ -155,9 +124,6 @@ peripheral_state_cb_t peripheral_state_callback = NULL;
 void pxp_monitor_init(void *param)
 {
 	UNUSED(param);
-	/*lls_handle.char_data = lls_char_data;
-	ias_handle.char_data = ias_char_data;
-	txps_handle.char_data = tx_power_char_data;*/	
 	
 	perception_handle.char_data1 = perception_char_data1;
 	perception_handle.char_data2 = perception_char_data2;
@@ -544,51 +510,6 @@ at_ble_status_t pxp_monitor_service_found_handler(void *params)
 				perception_handle.char_discovery=(at_ble_status_t)DISCOVER_SUCCESS;
 			}
 			break;
-			
-			/* for link loss service Handler */
-			/*case LINK_LOSS_SERVICE_UUID:
-			{
-				lls_handle.start_handle
-				= primary_service_params->start_handle;
-				lls_handle.end_handle
-				= primary_service_params->end_handle;
-				DBG_LOG("link loss service discovered");
-				DBG_LOG_PTS("start_handle: %04X end_handle: %04X",
-				primary_service_params->start_handle,
-				primary_service_params->end_handle);				
-				lls_handle.char_discovery=(at_ble_status_t)DISCOVER_SUCCESS;
-			}
-			break;*/
-
-			/* for Immediate Alert service Handler */
-			/*case IMMEDIATE_ALERT_SERVICE_UUID:
-			{
-				ias_handle.start_handle
-				= primary_service_params->start_handle;
-				ias_handle.end_handle
-				= primary_service_params->end_handle;
-				DBG_LOG("Immediate Alert service discovered");
-				DBG_LOG_PTS("start_handle: %04X end_handle: %04X ",
-				primary_service_params->start_handle,
-				primary_service_params->end_handle);				
-				ias_handle.char_discovery=(at_ble_status_t)DISCOVER_SUCCESS;
-			}
-			break;*/
-
-			/* for Tx Power service Handler */
-			/*case TX_POWER_SERVICE_UUID:
-			{
-				txps_handle.start_handle
-				= primary_service_params->start_handle;
-				txps_handle.end_handle
-				= primary_service_params->end_handle;
-				DBG_LOG("Tx power service discovered");
-				DBG_LOG_PTS("start_handle: %04X end_handle: %04X",
-				primary_service_params->start_handle,
-				primary_service_params->end_handle);
-				txps_handle.char_discovery=(at_ble_status_t)DISCOVER_SUCCESS;
-			}
-			break;*/
 
 			default:
 			status = AT_BLE_INVALID_PARAM; 
@@ -646,75 +567,6 @@ at_ble_status_t pxp_monitor_discovery_complete_handler(void *params)
 			perception_handle.char_discovery = AT_BLE_INVALID_STATE;
 			discover_char_flag = false;
 		}
-		/*#if defined TX_POWER_SERVICE
-		if ((txps_handle.char_discovery == DISCOVER_SUCCESS) && (discover_char_flag)) {
-			if (at_ble_characteristic_discover_all(
-			discover_status->conn_handle,
-			txps_handle.start_handle,
-			txps_handle.end_handle) ==
-			AT_BLE_SUCCESS) {
-				DBG_LOG_DEV("Tx Characteristic Discovery Started");
-			} else {
-				DBG_LOG("Tx Characteristic Discovery Failed");
-			}
-			txps_handle.char_discovery = AT_BLE_FAILURE;
-			discover_char_flag = false;
-		} else if (txps_handle.char_discovery == AT_BLE_INVALID_PARAM) {
-			DBG_LOG("Tx Power Service not Found");
-			txps_handle.char_discovery = AT_BLE_INVALID_STATE;
-			discover_char_flag = false;
-		}
-
-		#endif
-
-		#if defined LINK_LOSS_SERVICE
-		if ((lls_handle.char_discovery == DISCOVER_SUCCESS) &&
-		(discover_char_flag)) {
-			if (at_ble_characteristic_discover_all(
-			discover_status->conn_handle,
-			lls_handle.start_handle,
-			lls_handle.end_handle) ==
-			AT_BLE_SUCCESS) 
-			{
-				DBG_LOG_DEV(
-				"Link Loss Characteristic Discovery Started");
-			} else {
-				lls_handle.char_discovery = AT_BLE_FAILURE;
-				DBG_LOG(
-				"Link Loss Characteristic Discovery Failed");
-			}
-			lls_handle.char_discovery = AT_BLE_FAILURE;
-			discover_char_flag = false;
-		} else if(lls_handle.char_discovery==AT_BLE_INVALID_PARAM) {
-			DBG_LOG("Link Loss Service not Available");
-			lls_handle.char_discovery = AT_BLE_INVALID_STATE;
-		}
-
-		#endif
-
-		#if defined IMMEDIATE_ALERT_SERVICE
-		if ((ias_handle.char_discovery == DISCOVER_SUCCESS) &&
-		(discover_char_flag)) {
-			if (at_ble_characteristic_discover_all(
-			discover_status->conn_handle,
-			ias_handle.start_handle,
-			ias_handle.end_handle) ==
-			AT_BLE_SUCCESS) {
-				DBG_LOG_DEV(
-				"Immediate Characteristic Discovery Started");
-				} else {
-				ias_handle.char_discovery = AT_BLE_FAILURE;
-				DBG_LOG(
-				"Immediate Characteristic Discovery Failed");
-			}
-			ias_handle.char_discovery = AT_BLE_FAILURE;
-			discover_char_flag = false;
-		} else if(ias_handle.char_discovery==AT_BLE_INVALID_PARAM) {
-			DBG_LOG("Immediate Alert Service not Available");
-			ias_handle.char_discovery = AT_BLE_INVALID_STATE;
-		}
-
-#endif*/
 		
 		if (perception_handle.char_discovery == AT_BLE_INVALID_STATE) {
 			DBG_LOG("PERCEPTION PROFILE NOT SUPPORTED");
@@ -723,34 +575,8 @@ at_ble_status_t pxp_monitor_discovery_complete_handler(void *params)
 		}
 		
 		
-		
-		/*if(lls_handle.char_discovery == AT_BLE_INVALID_STATE) {
-			DBG_LOG("PROXIMITY PROFILE NOT SUPPORTED");
-			discover_char_flag = false;
-			at_ble_disconnect(discover_status->conn_handle, AT_BLE_TERMINATED_BY_USER);
-		}*/
-		
 		if (discover_char_flag) {
-			//DBG_LOG("GOT HERE!!!!!");
 			DBG_LOG_DEV("GATT characteristic discovery completed");
-			/*#if defined LINK_LOSS_SERVICE
-			// set link loss profile to high alert upon connection
-			if (!(lls_alert_level_write(discover_status->conn_handle, lls_handle.char_handle,
-			LLS_ALERT_LEVEL) == AT_BLE_SUCCESS)) {
-				DBG_LOG("Link Loss write characteristics failed");
-			}
-
-			#endif
-
-			#if defined TX_POWER_SERVICE
-			if (!(txps_power_read(discover_status->conn_handle,
-			txps_handle.char_handle) ==
-			AT_BLE_SUCCESS)) {
-				DBG_LOG("Characteristic Read Request failed");
-			}
-
-			#endif
-			*/
 	
 			if (!(at_ble_characteristic_read(discover_status->conn_handle,
 			perception_handle.char_handle1,
@@ -885,25 +711,7 @@ at_ble_status_t pxp_monitor_characteristic_found_handler(void *params)
 		DBG_LOG("Vibe 4 intensity characteristics: Attrib handle %x property %x handle: %x uuid : %x",
 		characteristic_found->char_handle, characteristic_found->properties,
 		perception_handle.char_handle4, charac_16_uuid);
-	} /*else if (charac_16_uuid == TX_POWER_LEVEL_CHAR_UUID) {
-		txps_handle.char_handle = characteristic_found->value_handle;
-		DBG_LOG_PTS("Tx power characteristics: Attrib handle %x property %x handle: %x uuid : %x",
-					characteristic_found->char_handle, characteristic_found->properties,
-					txps_handle.char_handle, charac_16_uuid);
-	} else if ((charac_16_uuid == ALERT_LEVEL_CHAR_UUID)) {
-		if ((characteristic_found->char_handle > lls_handle.start_handle) &&
-				(characteristic_found->char_handle < lls_handle.end_handle)) {
-			lls_handle.char_handle = characteristic_found->value_handle;
-			DBG_LOG_PTS("link loss characteristics: Attrib handle %x property %x handle: %x uuid : %x",
-					characteristic_found->char_handle, characteristic_found->properties,
-					lls_handle.char_handle, charac_16_uuid);
-		} else {
-			ias_handle.char_handle = characteristic_found->value_handle;
-			DBG_LOG_PTS("Immediate alert characteristics: Attrib handle %x property %x handle: %x uuid : %x",
-					characteristic_found->char_handle, characteristic_found->properties,
-					ias_handle.char_handle, charac_16_uuid);
-		}
-	}*/
+	}
 	return AT_BLE_SUCCESS;
 }
 
