@@ -1,7 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 
-
 @protocol LXCBPeripheralServerDelegate;
 
 // Implements the Bluetooth 4.0 LE Peripheral (Server) interface

@@ -5,8 +5,8 @@
 */
 
 #import "AppDelegate.h"
-#import "ViewController.h"
 #import "LXCBPeripheralServer.h"
+#import "ViewController.h"
 #import "UUIDs.h"
 
 @interface AppDelegate () <LXCBPeripheralServerDelegate>
@@ -36,9 +36,11 @@
     // woken up because of a bluetooth event. Otherwise, we can initialize the
     // UI.
     NSLog(@"didFinishedLaunching: %@", launchOptions);
-    if (application.applicationState != UIApplicationStateBackground) {
+    
+    // Do we need peripheral UI?
+    /*if (application.applicationState != UIApplicationStateBackground) {
         [self attachUserInterface];
-    }
+    }*/
     
     self.peripheral = [[LXCBPeripheralServer alloc] initWithDelegate:self];
     self.peripheral.serviceName = SERVICE_NAME;

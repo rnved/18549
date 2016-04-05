@@ -210,7 +210,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = Occipital;
+				ORGANIZATIONNAME = "18549-Team12";
 				TargetAttributes = {
 					6F7C0CBC17F0EA0500692EC1 = {
 						DevelopmentTeam = E762WQMZ23;

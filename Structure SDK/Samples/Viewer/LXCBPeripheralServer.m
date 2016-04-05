@@ -1,5 +1,4 @@
 #import <CoreBluetooth/CoreBluetooth.h>
-
 #import "LXCBPeripheralServer.h"
 #import "UUIDs.h"
 
@@ -7,6 +6,10 @@
 #define LXCBLog NSLog
 #endif
 
+NSString *vb1Data;
+NSString *vb2Data;
+NSString *vb3Data;
+NSString *vb4Data;
 
 @interface LXCBPeripheralServer () <
     CBPeripheralManagerDelegate,
@@ -103,6 +106,12 @@
 
   // Add the service to the peripheral manager.
   [self.peripheral addService:self.service];
+    
+  vb1Data = @"Vibe 1";
+  vb2Data = @"Vibe 2";
+  vb3Data = @"Vibe 3";
+  vb4Data = @"Vibe 4";
+    
 }
 
 - (void)disableService {
@@ -260,16 +269,16 @@ didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic {
   CBCharacteristic *characteristic = nil;
     
   if([request.characteristic.UUID isEqual:self.vb1.UUID]) {
-    self.vb1.value = [@"Vibe 1" dataUsingEncoding:NSUTF8StringEncoding];
+    self.vb1.value = [vb1Data dataUsingEncoding:NSUTF8StringEncoding];
     characteristic = self.vb1;
   } else if ([request.characteristic.UUID isEqual:self.vb2.UUID]) {
-      self.vb2.value = [@"Vibe 2" dataUsingEncoding:NSUTF8StringEncoding];
+      self.vb2.value = [vb2Data dataUsingEncoding:NSUTF8StringEncoding];
       characteristic = self.vb2;
   } else if ([request.characteristic.UUID isEqual:self.vb3.UUID]) {
-      self.vb3.value = [@"Vibe 3" dataUsingEncoding:NSUTF8StringEncoding];
+      self.vb3.value = [vb3Data dataUsingEncoding:NSUTF8StringEncoding];
       characteristic = self.vb3;
   } else if ([request.characteristic.UUID isEqual:self.vb4.UUID]) {
-      self.vb4.value = [@"Vibe 4" dataUsingEncoding:NSUTF8StringEncoding];
+      self.vb4.value = [vb4Data dataUsingEncoding:NSUTF8StringEncoding];
       characteristic = self.vb4;
   } else {
       LXCBLog(@"Not a valid read request. Did not match any characteristic");

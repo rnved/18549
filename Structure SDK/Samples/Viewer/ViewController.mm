@@ -44,8 +44,8 @@ struct AppStatus
     AVCaptureDevice *_videoDevice;
 
     UIImageView *_depthImageView;
-    UIImageView *_normalsImageView;
-    UIImageView *_colorImageView;
+    //UIImageView *_normalsImageView;
+    //UIImageView *_colorImageView;
     
     uint16_t *_linearizeBuffer;
     uint8_t *_coloredDepthBuffer;
@@ -71,8 +71,7 @@ struct AppStatus
 
 @implementation ViewController
 
-/* BLUETOOTH START */
-- (void)loadView {
+/*- (void)loadView {
     CGRect frame = [[UIScreen mainScreen] applicationFrame];
     frame.origin = CGPointZero;
     
@@ -85,8 +84,7 @@ struct AppStatus
     self.label.backgroundColor = [UIColor clearColor];
     self.label.textColor = [UIColor colorWithWhite:0.7 alpha:1.0];;
     [self.view addSubview:self.label];
-    
-}
+}*/
 
 
 - (void)centralDidConnect {
@@ -127,7 +125,6 @@ struct AppStatus
                                     CGRectGetMidY(self.view.bounds));
 }
 
-/* BLUETOOTH END */
 
 - (void)viewDidLoad
 {
@@ -138,20 +135,22 @@ struct AppStatus
 
     // Create three image views where we will render our frames
     
-    CGRect depthFrame = self.view.frame;
+    CGRect depthFrame = [[UIScreen mainScreen] applicationFrame];
+    depthFrame.origin = CGPointZero;
+    /*CGRect depthFrame = self.view.frame;
     depthFrame.size.height /= 2;
     depthFrame.origin.y = self.view.frame.size.height/2;
     depthFrame.origin.x = 1;
-    depthFrame.origin.x = -self.view.frame.size.width * 0.25;
+    depthFrame.origin.x = -self.view.frame.size.width * 0.25;*/
     
-    CGRect normalsFrame = self.view.frame;
+    /*CGRect normalsFrame = self.view.frame;
     normalsFrame.size.height /= 2;
     normalsFrame.origin.y = self.view.frame.size.height/2;
     normalsFrame.origin.x = 1;
-    normalsFrame.origin.x = self.view.frame.size.width * 0.25;
+    normalsFrame.origin.x = self.view.frame.size.width * 0.25;*/
     
-    CGRect colorFrame = self.view.frame;
-    colorFrame.size.height /= 2;
+    /*CGRect colorFrame = self.view.frame;
+    colorFrame.size.height /= 2;*/
     
     _linearizeBuffer = NULL;
     _coloredDepthBuffer = NULL;
@@ -161,13 +160,13 @@ struct AppStatus
     _depthImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:_depthImageView];
     
-    _normalsImageView = [[UIImageView alloc] initWithFrame:normalsFrame];
+    /*_normalsImageView = [[UIImageView alloc] initWithFrame:normalsFrame];
     _normalsImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.view addSubview:_normalsImageView];
+    [self.view addSubview:_normalsImageView];*/
     
-    _colorImageView = [[UIImageView alloc] initWithFrame:colorFrame];
+    /*_colorImageView = [[UIImageView alloc] initWithFrame:colorFrame];
     _colorImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.view addSubview:_colorImageView];
+    [self.view addSubview:_colorImageView];*/
 
     [self setupColorCamera];
 }
@@ -713,7 +712,7 @@ const uint16_t maxShiftValue = 2048;
                                         false,
                                         kCGRenderingIntentDefault);
     
-    _normalsImageView.image = [[UIImage alloc] initWithCGImage:imageRef];
+    //_normalsImageView.image = [[UIImage alloc] initWithCGImage:imageRef];
     
     CGImageRelease(imageRef);
     CGDataProviderRelease(provider);
@@ -755,7 +754,7 @@ const uint16_t maxShiftValue = 2048;
                                         false,
                                         kCGRenderingIntentDefault);
     
-    _colorImageView.image = [[UIImage alloc] initWithCGImage:imageRef];
+    //_colorImageView.image = [[UIImage alloc] initWithCGImage:imageRef];
     
     CGImageRelease(imageRef);
     CGDataProviderRelease(provider);
