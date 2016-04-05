@@ -562,6 +562,7 @@ const uint16_t maxShiftValue = 2048;
         distance = @"Far";
     }
     
+    //print threshold values of distance
     NSLog(@"Closest Object( %d mm) is %@", min, distance);
     
     //printf ("Closest Pt: Depth=%d, Pixel=%d, row=%d, col=%d \n", min, min_pixel, row, col);
