@@ -63,9 +63,8 @@
 #include "pxp_monitor.h"
 #include "immediate_alert.h"
 #include "timer_hw.h"
-//#include "button.h"
 
-#if defined IMMEDIATE_ALERT_SERVICE
+/*#if defined IMMEDIATE_ALERT_SERVICE
 #include "immediate_alert.h"
 #endif
 
@@ -79,7 +78,7 @@
 
 #if defined PROXIMITY_REPORTER
 #include "pxp_reporter.h"
-#endif
+#endif*/
 
 //#if defined BATTERY_SERVICE
 //#include "battery.h"
@@ -99,9 +98,9 @@
 
 //bat_gatt_service_handler_t bas_service_handler;
 
-extern gatt_txps_char_handler_t txps_handle;
+/*extern gatt_txps_char_handler_t txps_handle;
 extern gatt_lls_char_handler_t lls_handle;
-extern gatt_ias_char_handler_t ias_handle;
+extern gatt_ias_char_handler_t ias_handle;*/
 
 extern ble_connected_dev_info_t ble_dev_info[BLE_MAX_DEVICE_CONNECTED];
 extern uint8_t pxp_connect_request_flag;
