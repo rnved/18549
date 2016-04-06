@@ -462,10 +462,10 @@ at_ble_status_t pxp_monitor_connected_state_handler(void *params)
 
 	pxp_connect_request_flag = PXP_DEV_CONNECTED;
 
-	//at_ble_status_t discovery_status = AT_BLE_FAILURE;
-	//discovery_status = pxp_monitor_service_discover(conn_params->handle);
+	at_ble_status_t discovery_status = AT_BLE_FAILURE;
+	discovery_status = pxp_monitor_service_discover(conn_params->handle);
 	
-	at_ble_pair_features_t features;
+	/*at_ble_pair_features_t features;
 	features.bond = false;
 	features.desired_auth = AT_BLE_NO_SEC;
 	features.initiator_keys = AT_BLE_KEY_DIST_NONE;
@@ -489,10 +489,10 @@ at_ble_status_t pxp_monitor_connected_state_handler(void *params)
 	at_ble_status_t status = at_ble_authenticate(conn_params->handle, &features, NULL, NULL);
 	if (AT_BLE_SUCCESS != status) {
 		DBG_LOG("Pairing Failed, Status: 0x%x", status);
-	}
+	}*/
 		
-	//return discovery_status;
-	return conn_params->conn_status;
+	return discovery_status;
+	//return conn_params->conn_status;
 }
 
 /**@brief Discover the Proximity services
