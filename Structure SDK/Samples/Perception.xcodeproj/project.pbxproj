@@ -47,6 +47,7 @@
 		2DFFE048199142E800761886 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		2DFFE04A199142EE00761886 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		431C6F5218455ABD00EDB38B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5B13DBC91CB48ABE004A0628 /* VIBE_GLOBALS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VIBE_GLOBALS.h; sourceTree = "<group>"; };
 		5B7BC0CF1CB45C2500C71F8C /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreBluetooth.framework; sourceTree = DEVELOPER_DIR; };
 		5B7BC0D11CB4658600C71F8C /* LXCBPeripheralServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXCBPeripheralServer.h; sourceTree = "<group>"; };
 		5B7BC0D21CB4658600C71F8C /* LXCBPeripheralServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXCBPeripheralServer.m; sourceTree = "<group>"; };
@@ -160,6 +161,7 @@
 				6F7C0CD217F0EA0500692EC1 /* AppDelegate.m */,
 				5B7BC0D11CB4658600C71F8C /* LXCBPeripheralServer.h */,
 				5B7BC0D21CB4658600C71F8C /* LXCBPeripheralServer.m */,
+				5B13DBC91CB48ABE004A0628 /* VIBE_GLOBALS.h */,
 				5B7BC0D31CB4658600C71F8C /* UUIDs.h */,
 				6F7C0CDC17F0EA0500692EC1 /* ViewController.h */,
 				6F7C0CDA17F0EA0500692EC1 /* ViewController.mm */,

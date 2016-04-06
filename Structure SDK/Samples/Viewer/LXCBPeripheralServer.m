@@ -1,6 +1,7 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "LXCBPeripheralServer.h"
 #import "UUIDs.h"
+#import "VIBE_GLOBALS.h"
 
 #ifndef LXCBLog
 #define LXCBLog NSLog

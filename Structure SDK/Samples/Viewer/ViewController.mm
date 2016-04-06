@@ -6,9 +6,15 @@
 
 
 #import "ViewController.h"
+#import "VIBE_GLOBALS.h"
 #import <AVFoundation/AVFoundation.h>
 #import <Structure/StructureSLAM.h>
 #include <algorithm>
+
+NSString *vb1Data;
+NSString *vb2Data;
+NSString *vb3Data;
+NSString *vb4Data;
 
 struct AppStatus
 {
@@ -550,6 +556,11 @@ const uint16_t maxShiftValue = 2048;
 
 - (void)renderDepthFrame:(STDepthFrame *)depthFrame
 {
+    vb1Data = @"Insert new value here";
+    vb2Data = @"Insert new value here";
+    vb3Data = @"Insert new value here";
+    vb4Data = @"Insert new value here";
+    
     size_t cols = depthFrame.width;
     size_t rows = depthFrame.height;
     
