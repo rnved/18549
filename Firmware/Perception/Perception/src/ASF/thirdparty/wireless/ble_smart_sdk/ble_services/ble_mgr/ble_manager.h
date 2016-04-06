@@ -337,6 +337,9 @@ typedef enum
 
 /** @brief Service UUID's */
 
+/* Perception service UUID */
+#define PERCEPTION_SERVICE_UUID                 (0x6314)
+
 /* Blood Pressure Service UUID */
 #define BLOOD_PRESSURE_SERVICE_UUID             (0x1810)
 
@@ -390,6 +393,18 @@ typedef enum
 #define HTPT_SERVICE_UUID						(0x1809)
 
 /* Characteristics UUID's */
+/* Vibe 1 Intensity Characteristic UUID */
+#define VIBE1_INTENSITY_CHAR_UUID               (0x4201)
+
+/* Vibe 2 Intensity Characteristic UUID */
+#define VIBE2_INTENSITY_CHAR_UUID               (0x706E)
+
+/* Vibe 3 Intensity Characteristic UUID */
+#define VIBE3_INTENSITY_CHAR_UUID               (0x3AA4)
+
+/* Vibe 4 Intensity Characteristic UUID */
+#define VIBE4_INTENSITY_CHAR_UUID               (0xE7CA)
+
 /* Alert Level Characteristic UUID */
 #define ALERT_LEVEL_CHAR_UUID					(0x2A06)
 

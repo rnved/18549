@@ -46,15 +46,54 @@
  * Support</a>
  */
 
-#ifndef __STARTUP_TEMPLATE_H__
-#define __STARTUP_TEMPLATE_H__
+#ifndef __PERCEPTION_H__
+#define __PERCEPTION_H__
 
-/** @brief APP_FAST_ADV between 0x0020 and 0x4000 in 0.625 ms units (20ms to 10.24s). */
-#define APP_FAST_ADV						(1600)
+typedef enum {
+	AD_TYPE_FLAGS = 01,
+	AD_TYPE_COMPLETE_LIST_UUID = 0x03,
+	AD_TYPE_COMPLETE_LOCAL_NAME = 0x09
+} AD_TYPE;
 
-/** @brief APP_ADV_TIMEOUT Advertising time-out between 0x0001 and 0x028F in seconds, 0x0000 disables time-out.*/
-#define APP_ADV_TIMEOUT						(655)
+typedef enum {
+	PERCEPTION_DEV_UNCONNECTED,
+	PERCEPTION_DEV_CONNECTING,
+	PERCEPTION_DEV_CONNECTED,
+	PERCEPTION_DEV_PAIRED,
+	PERCEPTION_DEV_SERVICE_FOUND,
+	PERCEPTION_DEV_CHAR_ALL_VIBE_FOUND
+} PERCEPTION_DEV;
+
+typedef struct gatt_perception_char_handler
+{
+	at_ble_handle_t start_handle;
+	at_ble_handle_t end_handle;
+	at_ble_handle_t char_handle1;
+	at_ble_handle_t char_handle2;
+	at_ble_handle_t char_handle3;
+	at_ble_handle_t char_handle4;
+	at_ble_status_t char_discovery;
+	uint8_t *char_data1;
+	uint8_t *char_data2;
+	uint8_t *char_data3;
+	uint8_t *char_data4;
+}gatt_perception_char_handler_t;
+
+#define PERCEPTION_ASCII_TO_DECIMAL_VALUE      ('0')
+
+#define PERCEPTION_CONNECT_REQ_INTERVAL        (20000)
+
+#define DISCOVER_SUCCESS				       (10)
+
+#define PERCEPTION_CHAR_READ_INTERVAL          (500)
+
+#define MAX_PERCEPTION_CHAR_SIZE               (6)
+
+#define PERCEPTION_READ_LENGTH                 (6)
+
+#define PERCEPTION_READ_OFFSET                 (0)
 
 
 
-#endif /* __STARTUP_TEMPLATE_H__ */
+
+#endif /* __PERCEPTION_H__ */

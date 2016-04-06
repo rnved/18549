@@ -743,7 +743,7 @@
     <None Include="src\ASF\sam0\drivers\timer\quick_start\qs_timer_basic.h">
       <SubType>compile</SubType>
     </None>
-    <None Include="src\startup_template_app.h">
+    <None Include="src\perception.h">
       <SubType>compile</SubType>
     </None>
     <None Include="src\ASF\common2\components\memory\eeprom\at30tse75x\at30tse75x.h">
@@ -977,7 +977,7 @@
     <Compile Include="src\ASF\thirdparty\wireless\ble_smart_sdk\src\port_from_sdk.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\startup_template_app.c">
+    <Compile Include="src\perception.c">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
