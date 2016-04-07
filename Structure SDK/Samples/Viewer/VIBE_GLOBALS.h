@@ -9,9 +9,9 @@
 #ifndef VIBE_GLOBALS_h
 #define VIBE_GLOBALS_h
 
-extern NSString *vb1Data;
-extern NSString *vb2Data;
-extern NSString *vb3Data;
-extern NSString *vb4Data;
+extern NSData *vb1Data;
+extern NSData *vb2Data;
+extern NSData *vb3Data;
+extern NSData *vb4Data;
 
 #endif /* VIBE_GLOBALS_h */

@@ -7,10 +7,10 @@
 #define LXCBLog NSLog
 #endif
 
-NSString *vb1Data;
-NSString *vb2Data;
-NSString *vb3Data;
-NSString *vb4Data;
+NSData *vb1Data;
+NSData *vb2Data;
+NSData *vb3Data;
+NSData *vb4Data;
 
 @interface LXCBPeripheralServer () <
     CBPeripheralManagerDelegate,
@@ -108,10 +108,11 @@ NSString *vb4Data;
   // Add the service to the peripheral manager.
   [self.peripheral addService:self.service];
     
-  vb1Data = @"Vibe 1";
-  vb2Data = @"Vibe 2";
-  vb3Data = @"Vibe 3";
-  vb4Data = @"Vibe 4";
+  int integer = 0;
+  vb1Data = [NSData dataWithBytes:& integer length:sizeof(integer)];
+  vb2Data = [NSData dataWithBytes:& integer length:sizeof(integer)];
+  vb3Data = [NSData dataWithBytes:& integer length:sizeof(integer)];
+  vb4Data = [NSData dataWithBytes:& integer length:sizeof(integer)];
     
 }
 
@@ -270,16 +271,16 @@ didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic {
   CBCharacteristic *characteristic = nil;
     
   if([request.characteristic.UUID isEqual:self.vb1.UUID]) {
-    self.vb1.value = [vb1Data dataUsingEncoding:NSUTF8StringEncoding];
+    self.vb1.value = vb1Data;
     characteristic = self.vb1;
   } else if ([request.characteristic.UUID isEqual:self.vb2.UUID]) {
-      self.vb2.value = [vb2Data dataUsingEncoding:NSUTF8StringEncoding];
+      self.vb2.value = vb2Data;
       characteristic = self.vb2;
   } else if ([request.characteristic.UUID isEqual:self.vb3.UUID]) {
-      self.vb3.value = [vb3Data dataUsingEncoding:NSUTF8StringEncoding];
+      self.vb3.value = vb3Data;
       characteristic = self.vb3;
   } else if ([request.characteristic.UUID isEqual:self.vb4.UUID]) {
-      self.vb4.value = [vb4Data dataUsingEncoding:NSUTF8StringEncoding];
+      self.vb4.value = vb4Data;
       characteristic = self.vb4;
   } else {
       LXCBLog(@"Not a valid read request. Did not match any characteristic");

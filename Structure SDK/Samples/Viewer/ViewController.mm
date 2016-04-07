@@ -11,10 +11,10 @@
 #import <Structure/StructureSLAM.h>
 #include <algorithm>
 
-NSString *vb1Data;
-NSString *vb2Data;
-NSString *vb3Data;
-NSString *vb4Data;
+NSData *vb1Data;
+NSData *vb2Data;
+NSData *vb3Data;
+NSData *vb4Data;
 
 struct AppStatus
 {
@@ -556,10 +556,11 @@ const uint16_t maxShiftValue = 2048;
 
 - (void)renderDepthFrame:(STDepthFrame *)depthFrame
 {
-    vb1Data = @"Insert new value here";
-    vb2Data = @"Insert new value here";
-    vb3Data = @"Insert new value here";
-    vb4Data = @"Insert new value here";
+    int integer = 10;
+    vb1Data = [NSData dataWithBytes:& integer length:sizeof(integer)];
+    vb2Data = [NSData dataWithBytes:& integer length:sizeof(integer)];
+    vb3Data = [NSData dataWithBytes:& integer length:sizeof(integer)];
+    vb4Data = [NSData dataWithBytes:& integer length:sizeof(integer)];
     
     size_t cols = depthFrame.width;
     size_t rows = depthFrame.height;
