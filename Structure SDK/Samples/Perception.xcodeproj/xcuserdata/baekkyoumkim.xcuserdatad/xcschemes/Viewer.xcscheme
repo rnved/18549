@@ -35,7 +35,7 @@
             BlueprintIdentifier = "6F7C0CBC17F0EA0500692EC1"
             BuildableName = "Viewer.app"
             BlueprintName = "Viewer"
-            ReferencedContainer = "container:Viewer.xcodeproj">
+            ReferencedContainer = "container:Perception.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,7 +58,7 @@
             BlueprintIdentifier = "6F7C0CBC17F0EA0500692EC1"
             BuildableName = "Viewer.app"
             BlueprintName = "Viewer"
-            ReferencedContainer = "container:Viewer.xcodeproj">
+            ReferencedContainer = "container:Perception.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>

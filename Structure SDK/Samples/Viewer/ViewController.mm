@@ -66,6 +66,7 @@ struct AppStatus
 }
 
 - (BOOL)connectAndStartStreaming;
+- (void)convertDepthtoVibeIntensity:(STDepthFrame *)depthFrame;
 - (void)renderDepthFrame:(STDepthFrame*)depthFrame;
 - (void)renderNormalsFrame:(STDepthFrame*)normalsFrame;
 - (void)renderColorFrame:(CMSampleBufferRef)sampleBuffer;
@@ -429,6 +430,7 @@ struct AppStatus
 - (void)sensorDidOutputDepthFrame:(STDepthFrame *)depthFrame
 {
     [self renderDepthFrame:depthFrame];
+    [self convertDepthtoVibeIntensity:depthFrame];
     [self renderNormalsFrame:depthFrame];
 }
 
@@ -440,6 +442,7 @@ struct AppStatus
                                 andColorFrame:(STColorFrame *)colorFrame
 {
     [self renderDepthFrame:depthFrame];
+    [self convertDepthtoVibeIntensity:depthFrame];
     [self renderNormalsFrame:depthFrame];
     [self renderColorFrame:colorFrame.sampleBuffer];
 }
@@ -526,116 +529,116 @@ const uint16_t maxShiftValue = 2048;
 }
 
 
--(int*) findMinDepth:(STDepthFrame *)depthFrame
+-(void) convertDepthtoVibeIntensity:(STDepthFrame *)depthFrame
 {
     size_t cols = depthFrame.width;
     size_t rows = depthFrame.height;
     float* depthValues = depthFrame.depthInMillimeters;
-    int min = 20000000;
+    int minDepth = 20000000;
     int min_pixel = 0;
-    int minValueAndPixel[4];
     for (int i = 0; i < cols*rows; i++)
     {
         int depthValue = (int)depthValues[i];
-        if(depthValue < min & depthValue != isnan(depthValue))
+        if(depthValue < minDepth & depthValue != isnan(depthValue))
         {
-            min = depthValue;
+            minDepth = depthValue;
             min_pixel = i;
         }
     }
-    minValueAndPixel[0] = min;
-    minValueAndPixel[1] = min_pixel;
     int row = min_pixel / cols;
     int col = min_pixel % cols;
-    minValueAndPixel[2] = row;
-    minValueAndPixel[3] = col;
-    return minValueAndPixel;
     
+    // Categorization at Pixel Level
+    NSString *hor = @"LEFT"; //Left or Right
+    
+    if (col < 160) {
+        hor = @"LEFT";
+    }
+    else {
+        hor = @"RIGHT";
+    }
+    
+    NSString *ver = @"TOP"; //Top or Bottom
+    
+    if (row < 120) {
+        ver = @"TOP";
+    }
+    else {
+        ver = @"BOTTOM";
+    }
+    
+    // Categorization of Depth
+    int intensity = 0;
+    // very close
+    if (minDepth < 400) {
+        intensity = 8;
+    }
+    // close
+    else if (minDepth >= 400 && minDepth < 800) {
+        intensity = 4;
+    }
+    // far
+    else {
+        intensity = 0;
+    }
+
+    int vb1_intensity = 0;
+    int vb2_intensity = 0;
+    int vb3_intensity = 0;
+    int vb4_intensity = 0;
+    
+    // Categorization of Vibe motors
+    if ([ver isEqualToString:@"TOP"] & [hor isEqualToString:@"LEFT"] )  //TOP LEFT
+    {
+        vb1_intensity = intensity;
+        vb2_intensity = 0;
+        vb3_intensity = 0;
+        vb4_intensity = 0;
+    }
+    else if ([ver isEqualToString:@"TOP"] & [hor isEqualToString:@"RIGHT"] )  //TOP RIGHT
+    {
+        vb1_intensity = 0;
+        vb2_intensity = intensity;
+        vb3_intensity = 0;
+        vb4_intensity = 0;
+    }
+    else if ([ver isEqualToString:@"BOTTOM"] & [hor isEqualToString:@"LEFT"] )  //BOTTOM LEFT
+    {
+        vb1_intensity = 0;
+        vb2_intensity = 0;
+        vb3_intensity = intensity;
+        vb4_intensity = 0;
+    }
+    else // BOTTOM RIGHT
+    {
+        vb1_intensity = 0;
+        vb2_intensity = 0;
+        vb3_intensity = 0;
+        vb4_intensity = intensity;
+    }
+    
+    NSLog(@"( %d mm) at %@ & %@:: vb1=%d, vb2=%d, vb3=%d, vb4=%d", minDepth, ver, hor, vb1_intensity, vb2_intensity, vb3_intensity, vb4_intensity);
+
+    //      deliver intensity values to BLE
+    //
+    //      Screen mapping of vibe motors:
+    //
+    //      vb1Data1 | vb1Data2
+    //      ———————————————————
+    //      vb1Data3 | vb1Data4
+    //
+    
+    vb1Data = [NSData dataWithBytes:& vb1_intensity length:sizeof(vb1_intensity)];
+    vb2Data = [NSData dataWithBytes:& vb1_intensity length:sizeof(vb2_intensity)];
+    vb3Data = [NSData dataWithBytes:& vb1_intensity length:sizeof(vb3_intensity)];
+    vb4Data = [NSData dataWithBytes:& vb1_intensity length:sizeof(vb4_intensity)];
 }
 
 
 - (void)renderDepthFrame:(STDepthFrame *)depthFrame
 {
-    int integer = 10;
-    vb1Data = [NSData dataWithBytes:& integer length:sizeof(integer)];
-    vb2Data = [NSData dataWithBytes:& integer length:sizeof(integer)];
-    vb3Data = [NSData dataWithBytes:& integer length:sizeof(integer)];
-    vb4Data = [NSData dataWithBytes:& integer length:sizeof(integer)];
-    
     size_t cols = depthFrame.width;
     size_t rows = depthFrame.height;
-    
-    // findMinDepth Code BEGIN +++++++++++++++++++++++++++++++ BEGIN
-    
-    int minValueAndPixel[4];
-    
-    float* depthValues = depthFrame.depthInMillimeters;
-    int min = 20000000;
-    int min_pixel = 0;
-    for (int i = 0; i < cols*rows; i++)
-    {
-        int depthValue = (int)depthValues[i];
-        if(depthValue < min & depthValue != isnan(depthValue))
-        {
-            min = depthValue;
-            min_pixel = i;
-        }
-    }
-    minValueAndPixel[0] = min;
-    minValueAndPixel[1] = min_pixel;
-    int row = min_pixel / cols;
-    int col = min_pixel % cols;
-    minValueAndPixel[2] = row;
-    minValueAndPixel[3] = col;
-    
-    NSString *hor = @"Center"; //Left, Center, or Right
-
-    if (col < 145) {
-        hor = @"Left";
-    }
-    else if (col > 175) {
-        hor = @"Right";
-    }
-    else {
-        hor = @"Center";
-    }
-    
-    NSString *ver = @"Center"; //Top, Center, or Bottom
-    
-    if (row < 105) {
-        ver = @"Top";
-    }
-    else if (row > 135) {
-        ver = @"Bottom";
-    }
-    else {
-        ver = @"Center";
-    }
-    
-    //printf ("Closest Pt: Depth=%d, Pixel=%d, row=%d, col=%d \n", min, min_pixel, row, col);
-    //NSLog(@"Closest Object( %d mm) is at %@ & %@ row=%d, col=%d", min, ver, hor, row, col);
-    
-    /*Find the depth of the closest object*/
-    NSString *distance = @"Very Close";
-    if (min < 400) {
-        distance = @"Very Close";
-    }
-    else if (min >= 400 && min < 800) {
-        distance = @"Close";
-    }
-    else {
-        distance = @"Far";
-    }
-    
-    //print threshold values of distances
-    NSLog(@"Closest Object( %d mm) is %@", min, distance);
-    
-    //printf ("Closest Pt: Depth=%d, Pixel=%d, row=%d, col=%d \n", min, min_pixel, row, col);
-    //NSLog(@"Closest Object( %d mm) is at %@ & %@ row=%d, col=%d", min, ver, hor, row, col);
-
-    //printf ("Closest Pt: Depth=%d, Pixel=%d, row=%d, col=%d", minValueAndPixel[0],  minValueAndPixel[1] , minValueAndPixel[2], minValueAndPixel[3]);
-    // findMinDepth Code END +++++++++++++++++++++++++++++++ END
-
     
     if (_linearizeBuffer == NULL || _normalsBuffer == NULL)
     {
@@ -683,8 +686,6 @@ const uint16_t maxShiftValue = 2048;
 {
     // Estimate surface normal direction from depth float values
     STNormalFrame *normalsFrame = [_normalsEstimator calculateNormalsWithDepthFrame:depthFrame];
-    
-    
     
     size_t cols = normalsFrame.width;
     size_t rows = normalsFrame.height;
