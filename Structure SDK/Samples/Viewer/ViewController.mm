@@ -531,6 +531,7 @@ const uint16_t maxShiftValue = 2048;
 
 -(void) convertDepthtoVibeIntensity:(STDepthFrame *)depthFrame
 {
+    //SHIT
     size_t cols = depthFrame.width;
     size_t rows = depthFrame.height;
     float* depthValues = depthFrame.depthInMillimeters;
