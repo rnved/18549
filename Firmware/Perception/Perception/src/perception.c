@@ -513,48 +513,48 @@ static at_ble_status_t ble_char_read_resp_app_event(void *param)
 		char_read_resp->char_handle);
 	
 	if (char_read_resp->char_handle == perception_handle.char_handle1) {
-		DBG_LOG(" ");
+		DBG_LOG("Vibe 1\n");
 		memcpy(&perception_handle.char_data1[0],
 			   &char_read_resp->char_value[PERCEPTION_READ_OFFSET],
 			   PERCEPTION_READ_LENGTH);
 		for (int i = 0; i < PERCEPTION_READ_LENGTH; i++) {
-			DBG_LOG_CONT("%c", perception_handle.char_data1[i]);
+			DBG_LOG_CONT("%d", perception_handle.char_data1[i]);
 		}
 		DBG_LOG(" ");
-		vibe1_duty = (vibe1_duty >= 100) ? 0 : vibe1_duty + 1;
+		vibe1_duty = perception_handle.char_data1[0] * 10;
 		pwm_set_duty_cycle(VIBE1, vibe1_duty);
 	} else if (char_read_resp->char_handle == perception_handle.char_handle2) {
-		DBG_LOG(" ");
+		DBG_LOG("Vibe 2\n");
 		memcpy(perception_handle.char_data2,
 			   &char_read_resp->char_value[PERCEPTION_READ_OFFSET],
 			   PERCEPTION_READ_LENGTH);
 		for (int i = 0; i < PERCEPTION_READ_LENGTH; i++) {
-			DBG_LOG_CONT("%c", perception_handle.char_data2[i]);
+			DBG_LOG_CONT("%d", perception_handle.char_data2[i]);
 		}
 		DBG_LOG(" ");
-		vibe2_duty = (vibe2_duty >= 99) ? 0 : vibe2_duty + 2;
+		vibe2_duty = perception_handle.char_data2[0] * 10;
 		pwm_set_duty_cycle(VIBE2, vibe2_duty);
 	} else if (char_read_resp->char_handle == perception_handle.char_handle3) {
-		DBG_LOG(" ");
+		DBG_LOG("Vibe 3\n");
 		memcpy(perception_handle.char_data3,
 			   &char_read_resp->char_value[PERCEPTION_READ_OFFSET],
 			   PERCEPTION_READ_LENGTH);
 		for (int i = 0; i < PERCEPTION_READ_LENGTH; i++) {
-			DBG_LOG_CONT("%c", perception_handle.char_data3[i]);
+			DBG_LOG_CONT("%d", perception_handle.char_data3[i]);
 		}
 		DBG_LOG(" ");
-		vibe3_duty = (vibe3_duty >= 98) ? 0 : vibe3_duty + 3;
+		vibe3_duty = perception_handle.char_data3[0] * 10;
 		pwm_set_duty_cycle(VIBE3, vibe3_duty);
 	} else if (char_read_resp->char_handle == perception_handle.char_handle4) {
-		DBG_LOG(" ");
+		DBG_LOG("Vibe 4\n");
 		memcpy(perception_handle.char_data4,
 			   &char_read_resp->char_value[PERCEPTION_READ_OFFSET],
 			   PERCEPTION_READ_LENGTH);
 		for (int i = 0; i < PERCEPTION_READ_LENGTH; i++) {
-			DBG_LOG_CONT("%c", char_read_resp->char_value[i]/*perception_handle.char_data4[i]*/);
+			DBG_LOG_CONT("%d", char_read_resp->char_value[i]/*perception_handle.char_data4[i]*/);
 		}
 		DBG_LOG(" ");
-		vibe4_duty = (vibe4_duty >= 97) ? 0 : vibe4_duty + 4;
+		vibe4_duty = perception_handle.char_data4[0] * 10;
 		pwm_set_duty_cycle(VIBE4, vibe4_duty);
 	} else if (char_read_resp->char_handle == 0xf208) {
 		perception_state_flag = PERCEPTION_DEV_UNCONNECTED;

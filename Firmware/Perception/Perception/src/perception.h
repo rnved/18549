@@ -87,9 +87,9 @@ typedef struct gatt_perception_char_handler
 
 #define PERCEPTION_CHAR_READ_INTERVAL          (500)
 
-#define MAX_PERCEPTION_CHAR_SIZE               (6)
+#define MAX_PERCEPTION_CHAR_SIZE               (1)
 
-#define PERCEPTION_READ_LENGTH                 (6)
+#define PERCEPTION_READ_LENGTH                 (1)
 
 #define PERCEPTION_READ_OFFSET                 (0)
 
