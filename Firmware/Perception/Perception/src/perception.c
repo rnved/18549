@@ -85,12 +85,59 @@ uint8_t perception_char_data2[MAX_PERCEPTION_CHAR_SIZE];
 uint8_t perception_char_data3[MAX_PERCEPTION_CHAR_SIZE];
 uint8_t perception_char_data4[MAX_PERCEPTION_CHAR_SIZE];
 
+uint8_t vibe1_duty;
+uint8_t vibe2_duty;
+uint8_t vibe3_duty;
+uint8_t vibe4_duty;
+
 
 /* Function Prototypes */
 at_ble_status_t perception_start_scan(void);
 at_ble_status_t perception_connect_request(at_ble_scan_info_t *scan_buffer,uint8_t index);
 at_ble_status_t perception_service_discover(at_ble_handle_t handle);
 
+
+/* PWM Initialization */
+static void configure_pwm(void)
+{
+	struct pwm_config cfg_vibe1;
+	struct pwm_config cfg_vibe2;
+	struct pwm_config cfg_vibe3;
+	struct pwm_config cfg_vibe4;
+
+	pwm_get_config_defaults(&cfg_vibe1);
+	pwm_get_config_defaults(&cfg_vibe2);
+	pwm_get_config_defaults(&cfg_vibe3);
+	pwm_get_config_defaults(&cfg_vibe4);
+
+	vibe1_duty = 0;
+	vibe2_duty = 0;
+	vibe3_duty = 0;
+	vibe4_duty = 0;
+
+	cfg_vibe1.duty_cycle = 0;
+	cfg_vibe1.pin_number_pad = VIBE1_PIN;
+	cfg_vibe1.pinmux_sel_pad = VIBE1_OUTMUX;
+	cfg_vibe2.duty_cycle = 0;
+	cfg_vibe2.pin_number_pad = VIBE2_PIN;
+	cfg_vibe2.pinmux_sel_pad = VIBE2_OUTMUX;
+	cfg_vibe3.duty_cycle = 0;
+	cfg_vibe3.pin_number_pad = VIBE3_PIN;
+	cfg_vibe3.pinmux_sel_pad = VIBE3_OUTMUX;
+	cfg_vibe4.duty_cycle = 0;
+	cfg_vibe4.pin_number_pad = VIBE4_PIN;
+	cfg_vibe4.pinmux_sel_pad = VIBE4_OUTMUX;
+
+	pwm_init(VIBE1, &cfg_vibe1);
+	pwm_init(VIBE2, &cfg_vibe2);
+	pwm_init(VIBE3, &cfg_vibe3);
+	pwm_init(VIBE4, &cfg_vibe4);
+
+	pwm_enable(VIBE1);
+	pwm_enable(VIBE2);
+	pwm_enable(VIBE3);
+	pwm_enable(VIBE4);
+}
 
 
 /**@brief Perception Application initialization
@@ -474,6 +521,8 @@ static at_ble_status_t ble_char_read_resp_app_event(void *param)
 			DBG_LOG_CONT("%c", perception_handle.char_data1[i]);
 		}
 		DBG_LOG(" ");
+		vibe1_duty = (vibe1_duty >= 100) ? 0 : vibe1_duty + 1;
+		pwm_set_duty_cycle(VIBE1, vibe1_duty);
 	} else if (char_read_resp->char_handle == perception_handle.char_handle2) {
 		DBG_LOG(" ");
 		memcpy(perception_handle.char_data2,
@@ -483,6 +532,8 @@ static at_ble_status_t ble_char_read_resp_app_event(void *param)
 			DBG_LOG_CONT("%c", perception_handle.char_data2[i]);
 		}
 		DBG_LOG(" ");
+		vibe2_duty = (vibe2_duty >= 99) ? 0 : vibe2_duty + 2;
+		pwm_set_duty_cycle(VIBE2, vibe2_duty);
 	} else if (char_read_resp->char_handle == perception_handle.char_handle3) {
 		DBG_LOG(" ");
 		memcpy(perception_handle.char_data3,
@@ -492,6 +543,8 @@ static at_ble_status_t ble_char_read_resp_app_event(void *param)
 			DBG_LOG_CONT("%c", perception_handle.char_data3[i]);
 		}
 		DBG_LOG(" ");
+		vibe3_duty = (vibe3_duty >= 98) ? 0 : vibe3_duty + 3;
+		pwm_set_duty_cycle(VIBE3, vibe3_duty);
 	} else if (char_read_resp->char_handle == perception_handle.char_handle4) {
 		DBG_LOG(" ");
 		memcpy(perception_handle.char_data4,
@@ -501,6 +554,8 @@ static at_ble_status_t ble_char_read_resp_app_event(void *param)
 			DBG_LOG_CONT("%c", char_read_resp->char_value[i]/*perception_handle.char_data4[i]*/);
 		}
 		DBG_LOG(" ");
+		vibe4_duty = (vibe4_duty >= 97) ? 0 : vibe4_duty + 4;
+		pwm_set_duty_cycle(VIBE4, vibe4_duty);
 	} else if (char_read_resp->char_handle == 0xf208) {
 		perception_state_flag = PERCEPTION_DEV_UNCONNECTED;
 		if (AT_BLE_SUCCESS == at_ble_disconnect(char_read_resp->conn_handle, AT_BLE_TERMINATED_BY_USER)) {
@@ -569,6 +624,8 @@ int main(void)
 	hw_timer_init();
 	
 	hw_timer_register_callback(timer_callback_fn);
+
+	configure_pwm();
 
 	DBG_LOG("Initializing Perception Application");
 	

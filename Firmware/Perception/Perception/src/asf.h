@@ -76,6 +76,9 @@
 // From module: Interrupt management - SAM implementation
 #include <interrupt.h>
 
+// From module: PWM - PWM Control for SAMB
+#include <pwm.h>
+
 // From module: Part identification macros
 #include <parts.h>
 
