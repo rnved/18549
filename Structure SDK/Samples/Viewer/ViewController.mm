@@ -630,9 +630,9 @@ const uint16_t maxShiftValue = 2048;
     //
     
     vb1Data = [NSData dataWithBytes:& vb1_intensity length:sizeof(vb1_intensity)];
-    vb2Data = [NSData dataWithBytes:& vb1_intensity length:sizeof(vb2_intensity)];
-    vb3Data = [NSData dataWithBytes:& vb1_intensity length:sizeof(vb3_intensity)];
-    vb4Data = [NSData dataWithBytes:& vb1_intensity length:sizeof(vb4_intensity)];
+    vb2Data = [NSData dataWithBytes:& vb2_intensity length:sizeof(vb2_intensity)];
+    vb3Data = [NSData dataWithBytes:& vb3_intensity length:sizeof(vb3_intensity)];
+    vb4Data = [NSData dataWithBytes:& vb4_intensity length:sizeof(vb4_intensity)];
 }
 
 
