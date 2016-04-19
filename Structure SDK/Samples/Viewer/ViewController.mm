@@ -550,10 +550,22 @@ const uint16_t maxShiftValue = 2048;
     int col = min_pixel % cols;
     
     // Categorization at Pixel Level
-    NSString *hor = @"LEFT"; //Left or Right
+    NSString *hor = @"LEFT"; //Left, CENTER or Right
     
+    /*
     if (col < 160) {
         hor = @"LEFT";
+    }
+    else {
+        hor = @"RIGHT";
+    }
+    */
+    
+    if (col < 105) {
+        hor = @"LEFT";
+    }
+    else if (col >= 110 & col <= 210) {
+        hor = @"CENTER";
     }
     else {
         hor = @"RIGHT";
@@ -596,6 +608,13 @@ const uint16_t maxShiftValue = 2048;
         vb3_intensity = 0;
         vb4_intensity = 0;
     }
+    else if ([ver isEqualToString:@"TOP"] & [hor isEqualToString:@"CENTER"] )  //TOP CENTER
+    {
+        vb1_intensity = intensity;
+        vb2_intensity = intensity;
+        vb3_intensity = 0;
+        vb4_intensity = 0;
+    }
     else if ([ver isEqualToString:@"TOP"] & [hor isEqualToString:@"RIGHT"] )  //TOP RIGHT
     {
         vb1_intensity = 0;
@@ -610,13 +629,27 @@ const uint16_t maxShiftValue = 2048;
         vb3_intensity = intensity;
         vb4_intensity = 0;
     }
-    else // BOTTOM RIGHT
+    else if ([ver isEqualToString:@"BOTTOM"] & [hor isEqualToString:@"CENTER"] )// BOTTOM CENTER
+    {
+        vb1_intensity = 0;
+        vb2_intensity = 0;
+        vb3_intensity = intensity;
+        vb4_intensity = intensity;
+    }
+    else if ([ver isEqualToString:@"BOTTOM"] & [hor isEqualToString:@"RIGHT"] )// BOTTOM RIGHT
     {
         vb1_intensity = 0;
         vb2_intensity = 0;
         vb3_intensity = 0;
         vb4_intensity = intensity;
     }
+    else { // Exception Case
+        vb1_intensity = 0;
+        vb2_intensity = 0;
+        vb3_intensity = 0;
+        vb4_intensity = 0;
+    }
+
     
     NSLog(@"( %d mm) at %@ & %@:: vb1=%d, vb2=%d, vb3=%d, vb4=%d", minDepth, ver, hor, vb1_intensity, vb2_intensity, vb3_intensity, vb4_intensity);
 
