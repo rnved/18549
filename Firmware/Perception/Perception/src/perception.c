@@ -77,6 +77,7 @@ volatile bool vibe4_char_found = false;
 extern ble_connected_dev_info_t ble_dev_info[BLE_MAX_DEVICE_CONNECTED];
 
 bool volatile timer_done = false;
+bool volatile waiting_for_char_resp = false;
 
 gatt_perception_char_handler_t perception_handle =
 {0, 0, 0, 0, 0, 0, AT_BLE_INVALID_PARAM, NULL, NULL, NULL, NULL};
@@ -345,6 +346,15 @@ static at_ble_status_t ble_disconnected_app_event(void *param)
 	at_ble_disconnected_t *disconnect;
 	disconnect = (at_ble_disconnected_t *)param;
 	
+	vibe1_duty = 0;
+	vibe2_duty = 0;
+	vibe3_duty = 0;
+	vibe4_duty = 0;
+	pwm_set_duty_cycle(VIBE1, vibe1_duty);
+	pwm_set_duty_cycle(VIBE2, vibe2_duty);
+	pwm_set_duty_cycle(VIBE3, vibe3_duty);
+	pwm_set_duty_cycle(VIBE4, vibe4_duty);
+	
 	if((ble_check_device_state(disconnect->handle, BLE_DEVICE_DISCONNECTED) == AT_BLE_SUCCESS) ||
 	(ble_check_device_state(disconnect->handle, BLE_DEVICE_DEFAULT_IDLE) == AT_BLE_SUCCESS)) {
 		if (disconnect->reason == AT_BLE_LL_COMMAND_DISALLOWED) {
@@ -516,6 +526,7 @@ static at_ble_status_t ble_char_read_resp_app_event(void *param)
 		char_read_resp->char_handle);
 	
 	if (char_read_resp->char_handle == perception_handle.char_handle1) {
+		waiting_for_char_resp = false;
 		DBG_LOG("Vibe 1\n");
 		memcpy(&perception_handle.char_data1[0],
 			   &char_read_resp->char_value[PERCEPTION_READ_OFFSET],
@@ -527,6 +538,7 @@ static at_ble_status_t ble_char_read_resp_app_event(void *param)
 		vibe1_duty = perception_handle.char_data1[0] * 10;
 		pwm_set_duty_cycle(VIBE1, vibe1_duty);
 	} else if (char_read_resp->char_handle == perception_handle.char_handle2) {
+		waiting_for_char_resp = false;
 		DBG_LOG("Vibe 2\n");
 		memcpy(perception_handle.char_data2,
 			   &char_read_resp->char_value[PERCEPTION_READ_OFFSET],
@@ -538,6 +550,7 @@ static at_ble_status_t ble_char_read_resp_app_event(void *param)
 		vibe2_duty = perception_handle.char_data2[0] * 10;
 		pwm_set_duty_cycle(VIBE2, vibe2_duty);
 	} else if (char_read_resp->char_handle == perception_handle.char_handle3) {
+		waiting_for_char_resp = false;
 		DBG_LOG("Vibe 3\n");
 		memcpy(perception_handle.char_data3,
 			   &char_read_resp->char_value[PERCEPTION_READ_OFFSET],
@@ -549,6 +562,7 @@ static at_ble_status_t ble_char_read_resp_app_event(void *param)
 		vibe3_duty = perception_handle.char_data3[0] * 10;
 		pwm_set_duty_cycle(VIBE3, vibe3_duty);
 	} else if (char_read_resp->char_handle == perception_handle.char_handle4) {
+		waiting_for_char_resp = false;
 		DBG_LOG("Vibe 4\n");
 		memcpy(perception_handle.char_data4,
 			   &char_read_resp->char_value[PERCEPTION_READ_OFFSET],
@@ -559,12 +573,8 @@ static at_ble_status_t ble_char_read_resp_app_event(void *param)
 		DBG_LOG(" ");
 		vibe4_duty = perception_handle.char_data4[0] * 10;
 		pwm_set_duty_cycle(VIBE4, vibe4_duty);
-	} else if (char_read_resp->char_handle == 0xf208) {
-		perception_state_flag = PERCEPTION_DEV_UNCONNECTED;
-		if (AT_BLE_SUCCESS == at_ble_disconnect(char_read_resp->conn_handle, AT_BLE_TERMINATED_BY_USER)) {
-			DBG_LOG("Connection Lost");
-		}
 	}
+	
 	return AT_BLE_SUCCESS;
 }
 
@@ -674,6 +684,18 @@ int main(void)
 			}
 
 			if (perception_state_flag == PERCEPTION_DEV_CHAR_ALL_VIBE_FOUND) {
+				
+				// Didn't get response since last read
+				if (waiting_for_char_resp) {
+					waiting_for_char_resp = false;
+					perception_state_flag = PERCEPTION_DEV_UNCONNECTED;
+					if (AT_BLE_SUCCESS == at_ble_disconnect(ble_dev_info[0].conn_info.handle, AT_BLE_TERMINATED_BY_USER)) {
+						DBG_LOG("Connection Lost");
+					}
+				} else {
+					waiting_for_char_resp = true;
+				}
+				
 				if (!(at_ble_characteristic_read(ble_dev_info[0].conn_info.handle,
 												 perception_handle.char_handle1,
 												 PERCEPTION_READ_OFFSET,
