@@ -160,17 +160,17 @@ static void perception_app_init(void)
 
 at_ble_status_t perception_start_scan(void)
 {
-	char index_value;
+	//char index_value;
 	// NOT SURE IF NEEDED
 	hw_timer_stop();
-	do
-	{
-		DBG_LOG("Select [r] to Reconnect or [s] Scan");
-		index_value = getchar_b11();
-		DBG_LOG("%c", index_value);
-	}	while (!((index_value == 'r') || (index_value == 's')));
+	//do
+	//{
+		//DBG_LOG("Select [r] to Reconnect or [s] Scan");
+		//index_value = getchar_b11();
+		//DBG_LOG("%c", index_value);
+	//}	while (!((index_value == 'r') || (index_value == 's')));
 	
-	if(index_value == 'r') {
+	/*if(index_value == 'r') {
 		if (gap_dev_connect(&perception_reporter_address) == AT_BLE_SUCCESS) {
 			DBG_LOG("Perception Re-Connect request sent");
 			perception_state_flag = PERCEPTION_DEV_CONNECTING;
@@ -179,11 +179,11 @@ at_ble_status_t perception_start_scan(void)
 		} else {
 			DBG_LOG("Perception Re-Connect request send failed");
 		}
-	}
-	else if(index_value == 's') {
+	}*/
+	//else if(index_value == 's') {
 		return gap_dev_scan();
-	}
-	return AT_BLE_FAILURE;
+	//}
+	//return AT_BLE_FAILURE;
 }
 
 at_ble_status_t perception_connect_request(at_ble_scan_info_t *scan_buffer,
@@ -283,9 +283,9 @@ static at_ble_status_t ble_scan_report_app_event(void *param)
 		at_ble_scan_stop();
 		
 		/*Updating the index pointer to connect */
-		if(perception_scan_device_count) {  
+		//if(perception_scan_device_count) {  
 			/* Successful device found event*/
-			uint8_t deci_index = perception_scan_device_count;
+			/*uint8_t deci_index = perception_scan_device_count;
 			deci_index+=PERCEPTION_ASCII_TO_DECIMAL_VALUE;
 			do {
 				DBG_LOG("Select Index number to Connect or [s] to scan");
@@ -299,10 +299,13 @@ static at_ble_status_t ble_scan_report_app_event(void *param)
 				index -= PERCEPTION_ASCII_TO_DECIMAL_VALUE;
 				return perception_connect_request(scan_buffer,scan_device[index]);
 			}			
-		}			
-	} else {  
+		}*/
+		if (scan_index) {
+			return perception_connect_request(scan_buffer, scan_device[perception_supp_scan_index[scan_index-1]]);
+		}
+	}
 		/* from no device found event*/
-		do
+		/*do
 		{
 			DBG_LOG("Select [s] to scan again");
 			index = getchar_b11();
@@ -311,10 +314,10 @@ static at_ble_status_t ble_scan_report_app_event(void *param)
 		
 		if(index == 's') {
 			return gap_dev_scan();
-		}
-	}		
-        ALL_UNUSED(param);
-	return AT_BLE_FAILURE;
+		}*/	
+		
+    ALL_UNUSED(param);
+	return gap_dev_scan();
 }
 
 /* Callback registered for AT_BLE_CONNECTED event from stack */

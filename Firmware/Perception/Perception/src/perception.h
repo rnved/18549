@@ -81,7 +81,7 @@ typedef struct gatt_perception_char_handler
 
 #define PERCEPTION_ASCII_TO_DECIMAL_VALUE      ('0')
 
-#define PERCEPTION_CONNECT_REQ_INTERVAL        (20000)
+#define PERCEPTION_CONNECT_REQ_INTERVAL        (5000)
 
 #define DISCOVER_SUCCESS				       (10)
 
