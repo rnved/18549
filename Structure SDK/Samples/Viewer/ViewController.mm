@@ -579,7 +579,7 @@ const uint16_t maxShiftValue = 2048;
         hor = @"RIGHT";
     }
     else {
-        ver = @"LEFT";
+        hor = @"LEFT";
     }
     
     // Categorization of Depth
