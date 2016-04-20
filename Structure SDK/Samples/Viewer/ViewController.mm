@@ -582,13 +582,28 @@ const uint16_t maxShiftValue = 2048;
     
     // Categorization of Depth
     int intensity = 0;
-    // very close
-    if (minDepth < 400) {
+    
+    // very close = black out on color frame
+    if (minDepth == 20000000) {
+        intensity = 10;
+    }
+    else if (minDepth < 250) {
+        intensity = 10;
+    }
+    else if (minDepth < 500 && minDepth >= 250) {
+        intensity = 9;
+    }
+    else if (minDepth < 750 && minDepth >= 500) {
         intensity = 8;
     }
-    // close
-    else if (minDepth >= 400 && minDepth < 800) {
-        intensity = 4;
+    else if (minDepth < 1000 && minDepth >= 750) {
+        intensity = 7;
+    }
+    else if (minDepth < 1250 && minDepth >= 1000) {
+        intensity = 6;
+    }
+    else if (minDepth < 1500 && minDepth >= 1250) {
+        intensity = 5;
     }
     // far
     else {
