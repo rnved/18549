@@ -552,15 +552,16 @@ const uint16_t maxShiftValue = 2048;
     // Categorization at Pixel Level
     NSString *hor = @"LEFT"; //Left, CENTER or Right
     
-    /*
+    
     if (col < 160) {
         hor = @"LEFT";
     }
     else {
         hor = @"RIGHT";
     }
-    */
     
+    
+    /*
     if (col < 105) {
         hor = @"LEFT";
     }
@@ -570,6 +571,7 @@ const uint16_t maxShiftValue = 2048;
     else {
         hor = @"RIGHT";
     }
+    */
     
     NSString *ver = @"TOP"; //Top or Bottom
     
@@ -590,14 +592,17 @@ const uint16_t maxShiftValue = 2048;
     else if (minDepth < 250) {
         intensity = 10;
     }
-    else if (minDepth < 500 && minDepth >= 250) {
+    else if (minDepth < 320 && minDepth >= 250) {
         intensity = 9;
     }
-    else if (minDepth < 750 && minDepth >= 500) {
+    else if (minDepth < 480 && minDepth >= 320) {
         intensity = 8;
     }
-    else if (minDepth < 1000 && minDepth >= 750) {
+    else if (minDepth < 640 && minDepth >= 480) {
         intensity = 7;
+    }
+    else if (minDepth < 800 && minDepth >= 640) {
+        intensity = 6;
     }
     /*
     else if (minDepth < 1250 && minDepth >= 1000) {
