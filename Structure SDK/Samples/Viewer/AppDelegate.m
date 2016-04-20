@@ -9,10 +9,10 @@
 #import "ViewController.h"
 #import "UUIDs.h"
 
-#define IP_ADDRESS  @"128.237.234.196" //Baek
+//#define IP_ADDRESS  @"128.237.234.196" //Baek
 //#define IP_ADDRESS  @"128.237.200.94" //Rishi
 //#define IP_ADDRESS  @"128.237.200.94" //Michael
-//#define IP_ADDRESS  @"128.237.200.94" //Yassine
+#define IP_ADDRESS  @"128.237.209.6" //Yassine
 
 @interface AppDelegate () <LXCBPeripheralServerDelegate>
 

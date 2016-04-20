@@ -550,14 +550,14 @@ const uint16_t maxShiftValue = 2048;
     int col = min_pixel % cols;
     
     // Categorization at Pixel Level
-    NSString *hor = @"LEFT"; //Left, CENTER or Right
+    NSString *ver = @"TOP"; //Left, CENTER or Right
     
     
     if (col < 160) {
-        hor = @"LEFT";
+        ver = @"TOP";
     }
     else {
-        hor = @"RIGHT";
+        ver = @"BOTTOM";
     }
     
     
@@ -573,13 +573,13 @@ const uint16_t maxShiftValue = 2048;
     }
     */
     
-    NSString *ver = @"TOP"; //Top or Bottom
+    NSString *hor = @"LEFT"; //Top or Bottom
     
     if (row < 120) {
-        ver = @"TOP";
+        hor = @"RIGHT";
     }
     else {
-        ver = @"BOTTOM";
+        ver = @"LEFT";
     }
     
     // Categorization of Depth
