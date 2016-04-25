@@ -215,7 +215,7 @@
 				ORGANIZATIONNAME = "18549-Team12";
 				TargetAttributes = {
 					6F7C0CBC17F0EA0500692EC1 = {
-						DevelopmentTeam = E762WQMZ23;
+						DevelopmentTeam = R726SF8CJS;
 					};
 				};
 			};
@@ -308,7 +308,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Viewer/Viewer-Prefix.pch";
 				INFOPLIST_FILE = "Viewer/Viewer-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rnved-549";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.baekkyok-18549a";
 				PRODUCT_NAME = Viewer;
 				PROVISIONING_PROFILE = "";
 			};
@@ -341,7 +341,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Viewer/Viewer-Prefix.pch";
 				INFOPLIST_FILE = "Viewer/Viewer-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rnved-549";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.baekkyok-18549a";
 				PRODUCT_NAME = Viewer;
 				PROVISIONING_PROFILE = "";
 			};

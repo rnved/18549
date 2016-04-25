@@ -552,26 +552,26 @@ const uint16_t maxShiftValue = 2048;
     // Categorization at Pixel Level
     NSString *ver = @"TOP"; //Left, CENTER or Right
     
-    
+    /*
     if (col < 160) {
         ver = @"TOP";
     }
     else {
         ver = @"BOTTOM";
     }
+    */
     
     
-    /*
-    if (col < 105) {
-        hor = @"LEFT";
+    if (col < 80) {
+        ver = @"TOP";
     }
-    else if (col >= 110 & col <= 210) {
-        hor = @"CENTER";
+    else if (col >= 80 & col <= 140) {
+        ver = @"CENTER";
     }
     else {
-        hor = @"RIGHT";
+        ver = @"BOTTOM";
     }
-    */
+    
     
     NSString *hor = @"LEFT"; //Top or Bottom
     
@@ -622,6 +622,7 @@ const uint16_t maxShiftValue = 2048;
         vb3_intensity = 0;
         vb4_intensity = 0;
     }
+    /*
     else if ([ver isEqualToString:@"TOP"] & [hor isEqualToString:@"CENTER"] )  //TOP CENTER
     {
         vb1_intensity = intensity;
@@ -629,6 +630,7 @@ const uint16_t maxShiftValue = 2048;
         vb3_intensity = 0;
         vb4_intensity = 0;
     }
+    */
     else if ([ver isEqualToString:@"TOP"] & [hor isEqualToString:@"RIGHT"] )  //TOP RIGHT
     {
         vb1_intensity = 0;
@@ -643,6 +645,7 @@ const uint16_t maxShiftValue = 2048;
         vb3_intensity = intensity;
         vb4_intensity = 0;
     }
+    /*
     else if ([ver isEqualToString:@"BOTTOM"] & [hor isEqualToString:@"CENTER"] )// BOTTOM CENTER
     {
         vb1_intensity = 0;
@@ -650,6 +653,7 @@ const uint16_t maxShiftValue = 2048;
         vb3_intensity = intensity;
         vb4_intensity = intensity;
     }
+     */
     else if ([ver isEqualToString:@"BOTTOM"] & [hor isEqualToString:@"RIGHT"] )// BOTTOM RIGHT
     {
         vb1_intensity = 0;
@@ -657,6 +661,22 @@ const uint16_t maxShiftValue = 2048;
         vb3_intensity = 0;
         vb4_intensity = intensity;
     }
+    
+    else if ([ver isEqualToString:@"CENTER"] & [hor isEqualToString:@"LEFT"] )  //CENTER LEFT
+    {
+        vb1_intensity = intensity;
+        vb2_intensity = 0;
+        vb3_intensity = intensity;
+        vb4_intensity = 0;
+    }
+     else if ([ver isEqualToString:@"CENTER"] & [hor isEqualToString:@"RIGHT"] )// CENTER RIGHT
+    {
+        vb1_intensity = 0;
+        vb2_intensity = intensity;
+        vb3_intensity = 0;
+        vb4_intensity = intensity;
+    }
+
     else { // Exception Case
         vb1_intensity = 0;
         vb2_intensity = 0;
