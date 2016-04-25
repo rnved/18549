@@ -8,12 +8,12 @@
 // This service works by using CoreBluetooth CBPeripheralManager to expose
 // a Bluetooth Peripheral (Server) that contains one primary |service|.
 //
-// The service has one subscribable/notifable |characteristic| that is
-// referenced by UUID "c0de".
+// The service has four readable |characteristics| that is
+// referenced by distinct UUIDs.
 //
-// Any Bluetooth 4.0 LE Central (aka. Client) that subscribes to this peripheral
+// Any Bluetooth 4.0 LE Central (aka. Client) that reads to this peripheral
 // will cause a delegate message to be sent. This in turn will allow the
-// peripheral to respond with data by calling the |sendToSubscribers| method.
+// peripheral to respond with data by calling the |didReceiveReadRequest| method.
 @interface LXCBPeripheralServer : NSObject
 
 @property(nonatomic, assign) id<LXCBPeripheralServerDelegate> delegate;

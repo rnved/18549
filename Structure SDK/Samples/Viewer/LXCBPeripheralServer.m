@@ -3,10 +3,6 @@
 #import "UUIDs.h"
 #import "VIBE_GLOBALS.h"
 
-#ifndef LXCBLog
-#define LXCBLog NSLog
-#endif
-
 NSData *vb1Data;
 NSData *vb2Data;
 NSData *vb3Data;
@@ -69,7 +65,7 @@ NSData *vb4Data;
                     initWithType:self.serviceUUID primary:YES];
 
   // Set up the vibe motor characteristics in the service. These characteristics are only
-  // readable through subscription (CBCharacteristicsPropertyNotify) and has
+  // readable through read requests (CBCharacteristicsPropertyRead) and has
   // no default value set.
   //
   // There is no need to set the permission on characteristic.
@@ -151,7 +147,7 @@ NSData *vb4Data;
 - (void)sendToSubscribers:(NSData *)data
      chosenCharacteristic:(CBCharacteristic *)characteristic{
   if (self.peripheral.state != CBPeripheralManagerStatePoweredOn) {
-    LXCBLog(@"sendToSubscribers: peripheral not ready for sending state: %ld", (long)self.peripheral.state);
+    NSLog(@"sendToSubscribers: peripheral not ready for sending state: %ld", (long)self.peripheral.state);
     return;
   }
 
@@ -159,7 +155,7 @@ NSData *vb4Data;
                             forCharacteristic:(CBMutableCharacteristic *)characteristic
                          onSubscribedCentrals:nil];
   if (!success) {
-    LXCBLog(@"Failed to send data, buffering data for retry once ready.");
+    NSLog(@"Failed to send data, buffering data for retry once ready.");
     self.pendingData = data;
     self.pendingCharacteristic = characteristic;
     return;
@@ -232,7 +228,7 @@ NSData *vb4Data;
 - (void)peripheralManager:(CBPeripheralManager *)peripheral
                   central:(CBCentral *)central
 didSubscribeToCharacteristic:(CBCharacteristic *)characteristic {
-  LXCBLog(@"didSubscribe: %@", characteristic.UUID);
+  NSLog(@"didSubscribe: %@", characteristic.UUID);
   //LXCBLog(@"didSubscribe: - Central: %@", central.UUID);
   [self.delegate peripheralServer:self centralDidSubscribe:central chosenCharacteristic:characteristic];
 }
@@ -247,14 +243,14 @@ didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic {
 - (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral
                                        error:(NSError *)error {
   if (error) {
-    LXCBLog(@"didStartAdvertising: Error: %@", error);
+    NSLog(@"didStartAdvertising: Error: %@", error);
     return;
   }
-  LXCBLog(@"didStartAdvertising");
+  NSLog(@"didStartAdvertising");
 }
 
 - (void)peripheralManagerIsReadyToUpdateSubscribers:(CBPeripheralManager *)peripheral {
-  LXCBLog(@"isReadyToUpdateSubscribers");
+  NSLog(@"isReadyToUpdateSubscribers");
   if (self.pendingData) {
     NSData *data = [self.pendingData copy];
     self.pendingData = nil;
@@ -266,7 +262,7 @@ didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic {
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral
   didReceiveReadRequest:(CBATTRequest *)request {
-  LXCBLog(@"didReceiveReadRequest");
+  NSLog(@"didReceiveReadRequest");
     
   CBCharacteristic *characteristic = nil;
     
@@ -283,7 +279,7 @@ didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic {
       self.vb4.value = vb4Data;
       characteristic = self.vb4;
   } else {
-      LXCBLog(@"Not a valid read request. Did not match any characteristic");
+      NSLog(@"Not a valid read request. Did not match any characteristic");
       [peripheral respondToRequest:request withResult:CBATTErrorAttributeNotFound];
       return;
   }

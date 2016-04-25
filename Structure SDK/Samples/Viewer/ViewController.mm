@@ -604,15 +604,6 @@ const uint16_t maxShiftValue = 2048;
     else if (minDepth < 800 && minDepth >= 640) {
         intensity = 6;
     }
-    /*
-    else if (minDepth < 1250 && minDepth >= 1000) {
-        intensity = 6;
-    }
-    else if (minDepth < 1500 && minDepth >= 1250) {
-        intensity = 5;
-    }
-    */
-    
     // far
     else {
         intensity = 0;

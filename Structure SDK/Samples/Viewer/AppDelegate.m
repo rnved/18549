@@ -10,7 +10,7 @@
 #import "UUIDs.h"
 
 //#define IP_ADDRESS  @"128.237.234.196" //Baek
-#define IP_ADDRESS  @"128.237.223.204" //Rishi
+#define IP_ADDRESS  @"128.237.177.149" //Rishi
 //#define IP_ADDRESS  @"128.237.200.94" //Michael
 //#define IP_ADDRESS  @"128.237.209.6" //Yassine
 
