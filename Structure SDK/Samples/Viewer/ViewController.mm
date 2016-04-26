@@ -14,6 +14,8 @@
 #define TOP_CNTR_EDGE 80
 #define BOTTOM_CNTR_EDGE 140
 #define HOR_CENTER_LINE 120
+#define MAX_DEPTH 1000
+#define MIN_DEPTH 250
 
 NSData *vb1Data;
 NSData *vb2Data;
@@ -72,8 +74,8 @@ struct AppStatus
 - (BOOL)connectAndStartStreaming;
 - (void)convertDepthtoVibeIntensity:(STDepthFrame *)depthFrame;
 - (void)renderDepthFrame:(STDepthFrame*)depthFrame;
-- (void)renderNormalsFrame:(STDepthFrame*)normalsFrame;
-- (void)renderColorFrame:(CMSampleBufferRef)sampleBuffer;
+//- (void)renderNormalsFrame:(STDepthFrame*)normalsFrame;
+//- (void)renderColorFrame:(CMSampleBufferRef)sampleBuffer;
 - (void)setupColorCamera;
 - (void)startColorCamera;
 - (void)stopColorCamera;
@@ -81,22 +83,6 @@ struct AppStatus
 @end
 
 @implementation ViewController
-
-/*- (void)loadView {
-    CGRect frame = [[UIScreen mainScreen] applicationFrame];
-    frame.origin = CGPointZero;
-    
-    self.view = [[UIView alloc] initWithFrame:frame];
-    self.view.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1.0];
-    
-    self.label = [[UILabel alloc] initWithFrame:self.view.bounds];
-    self.label.font = [UIFont fontWithName:@"AmericanTypewriter" size:24];
-    self.label.text = @"Perception Peripheral";
-    self.label.backgroundColor = [UIColor clearColor];
-    self.label.textColor = [UIColor colorWithWhite:0.7 alpha:1.0];;
-    [self.view addSubview:self.label];
-}*/
-
 
 - (void)centralDidConnect {
     // Pulse the screen blue.
@@ -144,7 +130,7 @@ struct AppStatus
     _sensorController = [STSensorController sharedController];
     _sensorController.delegate = self;
 
-    // Create three image views where we will render our frames
+    // Create one image views where we will render our frame
     
     CGRect depthFrame = [[UIScreen mainScreen] applicationFrame];
     depthFrame.origin = CGPointZero;
@@ -294,13 +280,6 @@ struct AppStatus
         _appStatus.sensorStatus = AppStatus::SensorStatusNeedsUserToConnect;
         [self updateAppStatusMessage];
     }
-    
-
-    
-    //Usage of wireless debugging API
-    //NSError* error = nil;
-    //[STWirelessLog broadcastLogsToWirelessConsoleAtAddress:@"128.237.240.174" usingPort:4999 error:&error];
-    //if (error) NSLog(@"Oh no! Can't start wireless log: %@", [error localizedDescription]);
 
     return didSucceed;
     
@@ -435,7 +414,7 @@ struct AppStatus
 {
     [self renderDepthFrame:depthFrame];
     [self convertDepthtoVibeIntensity:depthFrame];
-    [self renderNormalsFrame:depthFrame];
+    //[self renderNormalsFrame:depthFrame];
 }
 
 // This synchronized API will only be called when two frames match. Typically, timestamps are within 1ms of each other.
@@ -447,8 +426,8 @@ struct AppStatus
 {
     [self renderDepthFrame:depthFrame];
     [self convertDepthtoVibeIntensity:depthFrame];
-    [self renderNormalsFrame:depthFrame];
-    [self renderColorFrame:colorFrame.sampleBuffer];
+    //[self renderNormalsFrame:depthFrame];
+    //[self renderColorFrame:colorFrame.sampleBuffer];
 }
 
 
@@ -554,17 +533,7 @@ const uint16_t maxShiftValue = 2048;
     int col = min_pixel % cols;
     
     // Categorization at Pixel Level
-    NSString *ver = @"TOP"; //Left, CENTER or Right
-    
-    /*
-    if (col < 160) {
-        ver = @"TOP";
-    }
-    else {
-        ver = @"BOTTOM";
-    }
-    */
-    
+    NSString *ver = @"TOP"; //Top, Center, or Bottom
     
     if (col < TOP_CNTR_EDGE) {
         ver = @"TOP";
@@ -577,7 +546,7 @@ const uint16_t maxShiftValue = 2048;
     }
     
     
-    NSString *hor = @"LEFT"; //Top or Bottom
+    NSString *hor = @"LEFT"; //Left or Right
     
     if (row < HOR_CENTER_LINE) {
         hor = @"RIGHT";
@@ -593,22 +562,22 @@ const uint16_t maxShiftValue = 2048;
     if (minDepth == 20000000) {
         intensity = 10;
     }
-    else if (minDepth < 250) {
+    else if (minDepth < MIN_DEPTH) {
         intensity = 10;
     }
-    else if (minDepth < 320 && minDepth >= 250) {
+    else if (minDepth < ((1 * MAX_DEPTH)/3) && minDepth >= MIN_DEPTH) {
         intensity = 9;
     }
-    else if (minDepth < 480 && minDepth >= 320) {
+    else if (minDepth < ((1 * MAX_DEPTH)/2) && minDepth >= ((1 * MAX_DEPTH)/3)) {
         intensity = 8;
     }
-    else if (minDepth < 640 && minDepth >= 480) {
+    else if (minDepth < ((2 * MAX_DEPTH)/3) && minDepth >= ((1 * MAX_DEPTH)/2)) {
         intensity = 7;
     }
-    else if (minDepth < 800 && minDepth >= 640) {
+    else if (minDepth < ((5 * MAX_DEPTH)/6) && minDepth >= ((2 * MAX_DEPTH)/3)) {
         intensity = 6;
     }
-    else if (minDepth < 1000 && minDepth >= 800) {
+    else if (minDepth < MAX_DEPTH && minDepth >= ((5 * MAX_DEPTH)/6)) {
         intensity = 5;
     }
     // far
@@ -629,15 +598,6 @@ const uint16_t maxShiftValue = 2048;
         vb3_intensity = 0;
         vb4_intensity = 0;
     }
-    /*
-    else if ([ver isEqualToString:@"TOP"] & [hor isEqualToString:@"CENTER"] )  //TOP CENTER
-    {
-        vb1_intensity = intensity;
-        vb2_intensity = intensity;
-        vb3_intensity = 0;
-        vb4_intensity = 0;
-    }
-    */
     else if ([ver isEqualToString:@"TOP"] & [hor isEqualToString:@"RIGHT"] )  //TOP RIGHT
     {
         vb1_intensity = 0;
@@ -652,15 +612,6 @@ const uint16_t maxShiftValue = 2048;
         vb3_intensity = intensity;
         vb4_intensity = 0;
     }
-    /*
-    else if ([ver isEqualToString:@"BOTTOM"] & [hor isEqualToString:@"CENTER"] )// BOTTOM CENTER
-    {
-        vb1_intensity = 0;
-        vb2_intensity = 0;
-        vb3_intensity = intensity;
-        vb4_intensity = intensity;
-    }
-     */
     else if ([ver isEqualToString:@"BOTTOM"] & [hor isEqualToString:@"RIGHT"] )// BOTTOM RIGHT
     {
         vb1_intensity = 0;
@@ -683,7 +634,6 @@ const uint16_t maxShiftValue = 2048;
         vb3_intensity = 0;
         vb4_intensity = intensity;
     }
-
     else { // Exception Case
         vb1_intensity = 0;
         vb2_intensity = 0;
@@ -757,6 +707,7 @@ const uint16_t maxShiftValue = 2048;
     
 }
 
+/*
 - (void) renderNormalsFrame: (STDepthFrame*) depthFrame
 {
     // Estimate surface normal direction from depth float values
@@ -849,7 +800,7 @@ const uint16_t maxShiftValue = 2048;
     CGColorSpaceRelease(colorSpace);
     
 }
-
+*/
 
 
 #pragma mark -  AVFoundation
