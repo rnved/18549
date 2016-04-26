@@ -11,6 +11,10 @@
 #import <Structure/StructureSLAM.h>
 #include <algorithm>
 
+#define TOP_CNTR_EDGE 80
+#define BOTTOM_CNTR_EDGE 140
+#define HOR_CENTER_LINE 120
+
 NSData *vb1Data;
 NSData *vb2Data;
 NSData *vb3Data;
@@ -562,10 +566,10 @@ const uint16_t maxShiftValue = 2048;
     */
     
     
-    if (col < 80) {
+    if (col < TOP_CNTR_EDGE) {
         ver = @"TOP";
     }
-    else if (col >= 80 & col <= 140) {
+    else if (col >= TOP_CNTR_EDGE & col <= BOTTOM_CNTR_EDGE) {
         ver = @"CENTER";
     }
     else {
@@ -575,7 +579,7 @@ const uint16_t maxShiftValue = 2048;
     
     NSString *hor = @"LEFT"; //Top or Bottom
     
-    if (row < 120) {
+    if (row < HOR_CENTER_LINE) {
         hor = @"RIGHT";
     }
     else {
